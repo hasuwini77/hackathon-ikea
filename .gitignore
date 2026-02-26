@@ -1,0 +1,4 @@
+
+# Ignore secrets files
+**/secrets.yml
+**/values.yml
