@@ -1,0 +1,11 @@
+tools:
+  couchbase-server:
+    info: "Runs the Couchbase cluster"
+    run:
+      - tool: polytope/couchbase
+        args:
+          image: couchbase:enterprise-7.6.6
+          await: false
+          restart: { policy: always }
+          create: when-missing
+          data-volume: { id: couchbase-server-data, type: volume, scope: project }

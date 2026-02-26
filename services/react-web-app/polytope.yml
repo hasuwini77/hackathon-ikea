@@ -1,0 +1,30 @@
+tools:
+  react-web-app:
+    info: "Base module for other modules in this file to build on."
+    inputs:
+      restart-policy:
+        info: Restart policy for the container.
+        type: [default, [enum, always, on-failure], always]
+    run:
+      - tool: polytope/node
+        args:
+          await: false
+          id: react-web-app
+          image: oven/bun:alpine
+          create: when-missing
+          code: { type: repo, path: . }
+          cmd: ./bin/run
+          restart:
+            policy: pt.input restart-policy
+          services:
+            - id: react-web-app
+              ports:
+                - { protocol: http, port: pt.value react-web-app-port, expose-as: pt.value react-web-app-port }
+          env:
+            - { name: PORT, value: pt.value react-web-app-port }
+            - { name: LOG_LEVEL, value: pt.value react-web-app-log-level }
+          mounts:
+            - { path: /root/.cache/, source: { type: volume, scope: project, id: react-web-app-home-cache }}
+            - { path: /root/.bun/, source: { type: volume, scope: project, id: react-web-app-bun-cache }}
+            - { path: /app/node_modules/, source: { type: volume, scope: project, id: react-web-app-node-modules }}
+            - { path: /app/clients, source: { type: repo, path: /clients/typescript }}

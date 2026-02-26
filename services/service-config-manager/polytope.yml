@@ -1,0 +1,39 @@
+tools:
+  service-config-manager:
+    info: 'Service Config Manager - manages registered database servers based on configuration.
+
+      Reads managed services from /config/service-config-manager/managed-services.yaml.
+
+      '
+    run:
+    - tool: polytope/python
+      args:
+        await: false
+        image: python:3.11.8-slim-bookworm
+        id: service-config-manager
+        restart:
+          policy: always
+        code:
+          type: repo
+          path: .
+        cmd: ./bin/run
+        create: when-missing
+        env:
+        - name: ENVIRONMENT
+          value: pt.value service-config-manager-environment
+        - name: COUCHBASE_SERVER_HOST
+          value: pt.value couchbase-server-host
+        - name: COUCHBASE_SERVER_USERNAME
+          value: pt.value couchbase-server-username
+        - name: COUCHBASE_SERVER_PASSWORD
+          value: pt.secret couchbase-server-password
+        mounts:
+        - path: /config
+          source:
+            type: repo
+            path: /config
+        - path: /root/.cache/
+          source:
+            type: volume
+            scope: project
+            id: dependency-cache

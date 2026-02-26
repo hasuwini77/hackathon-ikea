@@ -1,0 +1,34 @@
+#!/bin/sh
+
+. "$(dirname "$0")/init"
+
+CMD="uv run python src/main.py"
+
+if [ -f /etc/os-release ]; then
+  DISTRO=$(cat /etc/os-release | grep '^NAME' | sed 's/.*"\([^ "]*\)[ "].*/\1/')
+
+  if [ "$DISTRO" = "Alpine Linux" ]; then
+    apk add -q --no-progress --no-cache watchexec
+  elif [ "$DISTRO" = "Ubuntu" ] || [ "$DISTRO" = "Debian" ]; then
+    ARCH=$(uname -m)
+    apt-get update -qq
+    apt-get install -qq -y wget
+
+    if [ "$ARCH" = "aarch64" ] || [ "$ARCH" = "arm64" ]; then
+      wget -q https://github.com/watchexec/watchexec/releases/download/v2.3.2/watchexec-2.3.2-aarch64-unknown-linux-musl.deb -O /tmp/watchexec.deb
+    elif [ "$ARCH" = "x86_64" ] || [ "$ARCH" = "amd64" ]; then
+      wget -q https://github.com/watchexec/watchexec/releases/download/v2.3.2/watchexec-2.3.2-x86_64-unknown-linux-musl.deb -O /tmp/watchexec.deb
+    else
+      echo "Unsupported architecture: $ARCH"
+      exit 1
+    fi
+
+    dpkg -i /tmp/watchexec.deb
+    rm /tmp/watchexec.deb
+  fi
+
+  exec watchexec --watch pyproject.toml --restart --shell=none -- $CMD
+else
+  exec $CMD
+fi
+

@@ -1,0 +1,31 @@
+tools:
+  sync-gateway:
+    info: Couchbase Sync Gateway for mobile sync
+    inputs:
+      restart-policy:
+        info: Restart policy for the container
+        type: [default, [enum, always, on-failure, never], always]
+    run:
+      - tool: polytope/container
+        args:
+          id: sync-gateway
+          image: couchbase/sync-gateway:3.1.1-enterprise
+          create: when-missing
+          entrypoint: /bin/sh
+          cmd: /etc/sync_gateway/entrypoint.sh
+          restart:
+            policy: pt.input restart-policy
+          services:
+            - id: sync-gateway
+              ports:
+                - { protocol: tcp, port: pt.value sync-gateway-public-port, expose-as: pt.value sync-gateway-public-port }
+                - { protocol: tcp, port: pt.value sync-gateway-admin-port, expose-as: pt.value sync-gateway-admin-port }
+          mounts:
+            - { path: /etc/sync_gateway/sync-gateway-config.json, source: { type: repo, path: sync-gateway-config.json } }
+            - { path: /etc/sync_gateway/database.json, source: { type: repo, path: database.json } }
+            - { path: /etc/sync_gateway/entrypoint.sh, source: { type: repo, path: entrypoint.sh } }
+          env:
+            - { name: COUCHBASE_SERVER, value: pt.value sync-gateway-couchbase-host }
+            - { name: COUCHBASE_BUCKET, value: pt.value sync-gateway-bucket }
+            - { name: COUCHBASE_USERNAME, value: pt.value sync-gateway-username }
+            - { name: COUCHBASE_PASSWORD, value: pt.secret sync-gateway-password }

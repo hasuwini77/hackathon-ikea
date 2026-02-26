@@ -1,0 +1,32 @@
+tools:
+  python-fast-api:
+    info: "'Base' module for other modules in this file to build on."
+    inputs:
+      restart-policy:
+        info: Restart policy for the container.
+        type: [default, [enum, always, never, on-failure], always]
+    run:
+      - tool: polytope/python
+        args:
+          id: python-fast-api
+          create: when-missing
+          image: astral/uv:python3.13-bookworm-slim
+          code: { type: repo, path: . }
+          await: false
+          cmd: ./bin/run
+          restart:
+            policy: pt.input restart-policy
+          services:
+            - id: python-fast-api
+              ports:
+                - { protocol: http, port: pt.value python-fast-api-http-port, expose-as: pt.value python-fast-api-http-port }
+          env:
+            - { name: HTTP_EXPOSE_ERRORS, value: pt.value python-fast-api-dev-mode }
+            - { name: HTTP_AUTORELOAD, value: pt.value python-fast-api-dev-mode }
+            - { name: HTTP_PORT, value: pt.value python-fast-api-http-port }
+            - { name: LOG_LEVEL, value: pt.value python-fast-api-log-level }
+          mounts:
+            - { path: /root/.cache/, source: { type: volume, scope: project, id: python-fast-api-dependency-cache } }
+            - { path: /clients/python, source: { type: repo, path: /clients/python } }
+            - { path: /models/python, source: { type: repo, path: /models/python } }
+
