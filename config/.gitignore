@@ -1,2 +1,4 @@
 values.yml
 secrets.yml
+.DS_Store
+*.log
