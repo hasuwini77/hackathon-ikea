@@ -2,3 +2,4 @@
 # Ignore secrets files
 **/secrets.yml
 **/values.yml
+EDWIN.md
