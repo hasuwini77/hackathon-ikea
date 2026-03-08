@@ -1,0 +1,83 @@
+services:
+  # React Web App
+  web:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - VITE_COUCHBASE_URL=/api/couchbase
+      - VITE_COUCHBASE_SERVER=http://edge-server:59840
+      - VITE_COUCHBASE_DB=ikea_products
+    depends_on:
+      edge-server:
+        condition: service_healthy
+
+  # Couchbase Edge Server - Internal REST API (not exposed to host/LAN)
+  edge-server:
+    image: couchbase/edge-server:latest
+    volumes:
+      - ./docker/edge-config.json:/etc/edge-server/config.json:ro
+      - ./docker/edge-entrypoint.sh:/etc/edge-server/entrypoint.sh:ro
+    entrypoint: /bin/sh
+    command: /etc/edge-server/entrypoint.sh
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:59840/ikea_products > /dev/null 2>&1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 5s
+    depends_on:
+      - sync-gateway
+
+  # Couchbase Sync Gateway - Internal sync service (not exposed to host/LAN)
+  sync-gateway:
+    image: couchbase/sync-gateway:3.1.1-enterprise
+    volumes:
+      - ./docker/sg-config.json:/etc/sync_gateway/sync-gateway-config.json:ro
+      - ./docker/sg-entrypoint.sh:/etc/sync_gateway/entrypoint.sh:ro
+      - ./docker/database.json:/etc/sync_gateway/database.json:ro
+    entrypoint: /bin/sh
+    command: /etc/sync_gateway/entrypoint.sh
+    environment:
+      - COUCHBASE_SERVER=couchbase-server
+      - COUCHBASE_BUCKET=ikea_products
+      - COUCHBASE_USERNAME=admin
+      - COUCHBASE_PASSWORD=password123
+    depends_on:
+      couchbase-server:
+        condition: service_healthy
+
+  # Couchbase Server - Internal database (not exposed to host/LAN)
+  couchbase-server:
+    image: couchbase:enterprise-7.2.0
+    volumes:
+      - couchbase-data:/opt/couchbase/var
+    environment:
+      - COUCHBASE_ADMINISTRATOR_USERNAME=admin
+      - COUCHBASE_ADMINISTRATOR_PASSWORD=password123
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS -u admin:password123 http://localhost:8091/pools > /dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  # One-shot data seeder (runs only when explicitly requested)
+  seed:
+    image: python:3.12-alpine
+    profiles: ["tools"]
+    volumes:
+      - ../../scripts:/scripts:ro
+    working_dir: /scripts
+    environment:
+      - COUCHBASE_URL=http://edge-server:59840
+      - COUCHBASE_DB=ikea_products
+    command: sh -c "pip install --no-cache-dir requests && python /scripts/seed_couchbase.py"
+    depends_on:
+      - edge-server
+
+volumes:
+  couchbase-data:

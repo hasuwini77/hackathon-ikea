@@ -1,0 +1,359 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+    <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1400" height="1000" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <rect x="0" y="0" width="1400" height="60" fill="url(#header-grad)"/>
+  <text x="700" y="38" font-family="system-ui, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">IKEA Offline-First Product Finder - System Architecture</text>
+
+  <!-- Legend -->
+  <g transform="translate(1150, 80)">
+    <rect x="0" y="0" width="230" height="140" rx="8" fill="white" stroke="#e2e8f0" filter="url(#shadow)"/>
+    <text x="115" y="25" font-family="system-ui" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">Legend</text>
+    <line x1="10" y1="35" x2="220" y2="35" stroke="#e2e8f0"/>
+    <rect x="15" y="50" width="16" height="16" rx="3" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="40" y="62" font-family="system-ui" font-size="11" fill="#475569">Frontend (React)</text>
+    <rect x="15" y="75" width="16" height="16" rx="3" fill="#dcfce7" stroke="#22c55e"/>
+    <text x="40" y="87" font-family="system-ui" font-size="11" fill="#475569">Backend (FastAPI)</text>
+    <rect x="15" y="100" width="16" height="16" rx="3" fill="#ffedd5" stroke="#f97316"/>
+    <text x="40" y="112" font-family="system-ui" font-size="11" fill="#475569">Database</text>
+    <rect x="15" y="125" width="16" height="16" rx="3" fill="#fef3c7" stroke="#eab308"/>
+    <text x="40" y="137" font-family="system-ui" font-size="11" fill="#475569">Shared Models</text>
+  </g>
+
+  <!-- ==================== CLIENT LAYER ==================== -->
+  <g transform="translate(50, 90)">
+    <text x="0" y="0" font-family="system-ui" font-size="16" font-weight="bold" fill="#1e40af">CLIENT LAYER</text>
+
+    <!-- React Web App Box -->
+    <rect x="0" y="20" width="500" height="380" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="20" width="500" height="40" rx="12" fill="#3b82f6"/>
+    <rect x="0" y="48" width="500" height="12" fill="#3b82f6"/>
+    <text x="250" y="47" font-family="system-ui" font-size="14" font-weight="bold" fill="white" text-anchor="middle">React Web App (:5173)</text>
+
+    <!-- Pages -->
+    <g transform="translate(15, 75)">
+      <rect x="0" y="0" width="140" height="100" rx="6" fill="white" stroke="#93c5fd"/>
+      <text x="70" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">Pages</text>
+      <text x="10" y="40" font-family="monospace" font-size="9" fill="#475569">home.tsx</text>
+      <text x="10" y="55" font-family="monospace" font-size="9" fill="#475569">scan.tsx</text>
+      <text x="10" y="70" font-family="monospace" font-size="9" fill="#475569">map.tsx</text>
+      <text x="10" y="85" font-family="monospace" font-size="9" fill="#475569">stock.tsx</text>
+    </g>
+
+    <!-- Components -->
+    <g transform="translate(170, 75)">
+      <rect x="0" y="0" width="150" height="100" rx="6" fill="white" stroke="#93c5fd"/>
+      <text x="75" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">Components</text>
+      <text x="10" y="40" font-family="monospace" font-size="9" fill="#475569">ProductCard</text>
+      <text x="10" y="55" font-family="monospace" font-size="9" fill="#475569">ProductDetail</text>
+      <text x="10" y="70" font-family="monospace" font-size="9" fill="#475569">BarcodeScanner</text>
+      <text x="10" y="85" font-family="monospace" font-size="9" fill="#475569">SyncStatus</text>
+    </g>
+
+    <!-- Store Map -->
+    <g transform="translate(335, 75)">
+      <rect x="0" y="0" width="150" height="100" rx="6" fill="white" stroke="#93c5fd"/>
+      <text x="75" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">Store Map</text>
+      <text x="10" y="40" font-family="monospace" font-size="9" fill="#475569">RealisticStoreMap</text>
+      <text x="10" y="55" font-family="monospace" font-size="9" fill="#475569">AisleColumn</text>
+      <text x="10" y="70" font-family="monospace" font-size="9" fill="#475569">BayCell</text>
+      <text x="10" y="85" font-family="monospace" font-size="9" fill="#475569">ProductMarker</text>
+    </g>
+
+    <!-- Hooks Layer -->
+    <g transform="translate(15, 190)">
+      <rect x="0" y="0" width="470" height="70" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+      <text x="235" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">React Hooks (Data Layer)</text>
+      <text x="30" y="45" font-family="monospace" font-size="9" fill="#475569">useProducts</text>
+      <text x="120" y="45" font-family="monospace" font-size="9" fill="#475569">useProduct</text>
+      <text x="200" y="45" font-family="monospace" font-size="9" fill="#475569">useSyncStatus</text>
+      <text x="310" y="45" font-family="monospace" font-size="9" fill="#475569">useUpdateStock</text>
+      <text x="410" y="45" font-family="monospace" font-size="9" fill="#475569">useOfflineQueue</text>
+    </g>
+
+    <!-- Client Libraries -->
+    <g transform="translate(15, 275)">
+      <rect x="0" y="0" width="220" height="110" rx="6" fill="white" stroke="#93c5fd"/>
+      <text x="110" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">lib/couchbase/</text>
+      <text x="10" y="40" font-family="monospace" font-size="9" fill="#475569">client.ts (REST + retry)</text>
+      <text x="10" y="55" font-family="monospace" font-size="9" fill="#475569">config.ts (Edge URL)</text>
+      <text x="10" y="70" font-family="monospace" font-size="9" fill="#475569">transforms.ts</text>
+      <rect x="10" y="80" width="200" height="20" rx="3" fill="#fef3c7" stroke="#eab308"/>
+      <text x="110" y="94" font-family="monospace" font-size="9" fill="#92400e" text-anchor="middle">Offline Queue (localStorage)</text>
+    </g>
+
+    <g transform="translate(250, 275)">
+      <rect x="0" y="0" width="235" height="110" rx="6" fill="white" stroke="#93c5fd"/>
+      <text x="117" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">lib/postgres/</text>
+      <text x="10" y="40" font-family="monospace" font-size="9" fill="#475569">client.ts (HTTP fetch)</text>
+      <text x="10" y="55" font-family="monospace" font-size="9" fill="#475569">hooks.ts</text>
+      <rect x="10" y="70" width="215" height="30" rx="3" fill="#fecaca" stroke="#ef4444"/>
+      <text x="117" y="89" font-family="monospace" font-size="9" fill="#991b1b" text-anchor="middle">ISSUE: Client-side filtering</text>
+    </g>
+  </g>
+
+  <!-- ==================== SHARED MODELS ==================== -->
+  <g transform="translate(580, 90)">
+    <text x="0" y="0" font-family="system-ui" font-size="16" font-weight="bold" fill="#ca8a04">SHARED MODELS</text>
+
+    <rect x="0" y="20" width="200" height="200" rx="12" fill="#fef3c7" stroke="#eab308" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="20" width="200" height="35" rx="12" fill="#eab308"/>
+    <rect x="0" y="43" width="200" height="12" fill="#eab308"/>
+    <text x="100" y="45" font-family="system-ui" font-size="13" font-weight="bold" fill="white" text-anchor="middle">/models</text>
+
+    <!-- TypeScript -->
+    <g transform="translate(15, 70)">
+      <rect x="0" y="0" width="170" height="60" rx="4" fill="white" stroke="#facc15"/>
+      <text x="85" y="18" font-family="system-ui" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">typescript/</text>
+      <text x="10" y="35" font-family="monospace" font-size="9" fill="#475569">product.ts</text>
+      <text x="10" y="50" font-family="monospace" font-size="9" fill="#475569">scan-event.ts</text>
+    </g>
+
+    <!-- Python -->
+    <g transform="translate(15, 140)">
+      <rect x="0" y="0" width="170" height="60" rx="4" fill="white" stroke="#facc15"/>
+      <text x="85" y="18" font-family="system-ui" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">python/</text>
+      <text x="10" y="35" font-family="monospace" font-size="9" fill="#475569">product.py (Pydantic)</text>
+      <text x="10" y="50" font-family="monospace" font-size="9" fill="#475569">responses.py</text>
+    </g>
+  </g>
+
+  <!-- ==================== BACKEND LAYER ==================== -->
+  <g transform="translate(820, 90)">
+    <text x="0" y="0" font-family="system-ui" font-size="16" font-weight="bold" fill="#16a34a">BACKEND LAYER</text>
+
+    <!-- FastAPI Box -->
+    <rect x="0" y="20" width="300" height="380" rx="12" fill="#dcfce7" stroke="#22c55e" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="20" width="300" height="40" rx="12" fill="#22c55e"/>
+    <rect x="0" y="48" width="300" height="12" fill="#22c55e"/>
+    <text x="150" y="47" font-family="system-ui" font-size="14" font-weight="bold" fill="white" text-anchor="middle">FastAPI Backend (:8000)</text>
+
+    <!-- Routes -->
+    <g transform="translate(15, 75)">
+      <rect x="0" y="0" width="270" height="90" rx="6" fill="white" stroke="#86efac"/>
+      <text x="135" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">Routes</text>
+      <text x="15" y="40" font-family="monospace" font-size="9" fill="#475569">GET /products ?search &amp;category &amp;zone</text>
+      <text x="15" y="55" font-family="monospace" font-size="9" fill="#475569">GET /products/{article_number}</text>
+      <text x="15" y="70" font-family="monospace" font-size="9" fill="#475569">PATCH /products/{id}/stock</text>
+      <text x="15" y="85" font-family="monospace" font-size="9" fill="#475569">GET /health</text>
+    </g>
+
+    <!-- SQLModel -->
+    <g transform="translate(15, 180)">
+      <rect x="0" y="0" width="270" height="80" rx="6" fill="white" stroke="#86efac"/>
+      <text x="135" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">SQLModel ORM</text>
+      <text x="15" y="40" font-family="monospace" font-size="9" fill="#475569">Product (id, article_number, name...)</text>
+      <text x="15" y="55" font-family="monospace" font-size="9" fill="#475569">zone, aisle, bay, section (location)</text>
+      <text x="15" y="70" font-family="monospace" font-size="9" fill="#475569">stock_quantity, price, dimensions</text>
+    </g>
+
+    <!-- Database Session -->
+    <g transform="translate(15, 275)">
+      <rect x="0" y="0" width="270" height="55" rx="6" fill="#f0fdf4" stroke="#86efac"/>
+      <text x="135" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">init/database.py</text>
+      <text x="15" y="40" font-family="monospace" font-size="9" fill="#475569">create_engine() + get_session()</text>
+    </g>
+
+    <!-- Utils -->
+    <g transform="translate(15, 340)">
+      <rect x="0" y="0" width="130" height="45" rx="4" fill="white" stroke="#86efac"/>
+      <text x="65" y="18" font-family="system-ui" font-size="10" font-weight="bold" fill="#166534" text-anchor="middle">utils/</text>
+      <text x="10" y="35" font-family="monospace" font-size="8" fill="#475569">auth.py, log.py</text>
+    </g>
+
+    <g transform="translate(155, 340)">
+      <rect x="0" y="0" width="130" height="45" rx="4" fill="white" stroke="#86efac"/>
+      <text x="65" y="18" font-family="system-ui" font-size="10" font-weight="bold" fill="#166534" text-anchor="middle">conf/</text>
+      <text x="10" y="35" font-family="monospace" font-size="8" fill="#475569">settings, env</text>
+    </g>
+  </g>
+
+  <!-- ==================== DATABASE LAYER ==================== -->
+  <g transform="translate(50, 520)">
+    <text x="0" y="0" font-family="system-ui" font-size="16" font-weight="bold" fill="#ea580c">DATABASE LAYER</text>
+
+    <!-- PostgreSQL (Legacy) -->
+    <rect x="0" y="20" width="280" height="180" rx="12" fill="#e5e7eb" stroke="#9ca3af" stroke-width="2" stroke-dasharray="5,5" filter="url(#shadow)"/>
+    <rect x="0" y="20" width="280" height="35" rx="12" fill="#9ca3af"/>
+    <rect x="0" y="43" width="280" height="12" fill="#9ca3af"/>
+    <text x="140" y="45" font-family="system-ui" font-size="13" font-weight="bold" fill="white" text-anchor="middle">PostgreSQL (Legacy)</text>
+
+    <g transform="translate(15, 70)">
+      <rect x="0" y="0" width="250" height="115" rx="6" fill="white" stroke="#d1d5db"/>
+      <text x="125" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#6b7280" text-anchor="middle">products table</text>
+      <text x="10" y="40" font-family="monospace" font-size="9" fill="#9ca3af">id UUID PRIMARY KEY</text>
+      <text x="10" y="55" font-family="monospace" font-size="9" fill="#9ca3af">article_number VARCHAR UNIQUE</text>
+      <text x="10" y="70" font-family="monospace" font-size="9" fill="#9ca3af">name, description, category</text>
+      <text x="10" y="85" font-family="monospace" font-size="9" fill="#9ca3af">zone, aisle, bay, section</text>
+      <text x="10" y="100" font-family="monospace" font-size="9" fill="#9ca3af">stock_quantity, price, tags JSONB</text>
+    </g>
+  </g>
+
+  <!-- Couchbase Edge (PRIMARY) -->
+  <g transform="translate(370, 520)">
+    <rect x="0" y="20" width="280" height="180" rx="12" fill="#ffedd5" stroke="#f97316" stroke-width="3" filter="url(#shadow)"/>
+    <rect x="0" y="20" width="280" height="35" rx="12" fill="#f97316"/>
+    <rect x="0" y="43" width="280" height="12" fill="#f97316"/>
+    <text x="140" y="45" font-family="system-ui" font-size="13" font-weight="bold" fill="white" text-anchor="middle">Couchbase Edge (PRIMARY)</text>
+
+    <g transform="translate(15, 70)">
+      <rect x="0" y="0" width="250" height="115" rx="6" fill="white" stroke="#fdba74"/>
+      <text x="125" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#c2410c" text-anchor="middle">ikea_products bucket</text>
+      <text x="10" y="40" font-family="monospace" font-size="9" fill="#475569">_id: "product:XXX.XXX.XX"</text>
+      <text x="10" y="55" font-family="monospace" font-size="9" fill="#475569">_rev: conflict resolution</text>
+      <text x="10" y="70" font-family="monospace" font-size="9" fill="#475569">type: "product"</text>
+      <text x="10" y="85" font-family="monospace" font-size="9" fill="#475569">stock: { quantity, location }</text>
+      <text x="10" y="100" font-family="monospace" font-size="9" fill="#475569">REST API + Offline-first</text>
+    </g>
+  </g>
+
+  <!-- Couchbase Server (Cloud/Main) -->
+  <g transform="translate(690, 520)">
+    <rect x="0" y="20" width="220" height="180" rx="12" fill="#ffedd5" stroke="#f97316" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="20" width="220" height="35" rx="12" fill="#f97316"/>
+    <rect x="0" y="43" width="220" height="12" fill="#f97316"/>
+    <text x="110" y="45" font-family="system-ui" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Couchbase Server</text>
+
+    <g transform="translate(15, 70)">
+      <rect x="0" y="0" width="190" height="55" rx="4" fill="white" stroke="#fdba74"/>
+      <text x="95" y="20" font-family="system-ui" font-size="10" fill="#c2410c" text-anchor="middle">Central data store</text>
+      <text x="95" y="38" font-family="system-ui" font-size="10" fill="#c2410c" text-anchor="middle">N1QL queries</text>
+    </g>
+
+    <g transform="translate(15, 135)">
+      <rect x="0" y="0" width="190" height="50" rx="4" fill="white" stroke="#fdba74"/>
+      <text x="95" y="20" font-family="system-ui" font-size="10" fill="#c2410c" text-anchor="middle">Sync Gateway</text>
+      <text x="95" y="35" font-family="system-ui" font-size="9" fill="#c2410c" text-anchor="middle">(bidirectional sync)</text>
+    </g>
+  </g>
+
+  <!-- ==================== SCRIPTS LAYER ==================== -->
+  <g transform="translate(950, 520)">
+    <text x="0" y="0" font-family="system-ui" font-size="16" font-weight="bold" fill="#7c3aed">SCRIPTS &amp; SEEDING</text>
+
+    <rect x="0" y="20" width="200" height="180" rx="12" fill="#ede9fe" stroke="#8b5cf6" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="20" width="200" height="35" rx="12" fill="#8b5cf6"/>
+    <rect x="0" y="43" width="200" height="12" fill="#8b5cf6"/>
+    <text x="100" y="45" font-family="system-ui" font-size="13" font-weight="bold" fill="white" text-anchor="middle">/scripts</text>
+
+    <g transform="translate(15, 70)">
+      <text x="0" y="15" font-family="monospace" font-size="9" fill="#5b21b6">seed_from_json.py</text>
+      <text x="0" y="35" font-family="monospace" font-size="9" fill="#5b21b6">seed_couchbase.py</text>
+      <text x="0" y="55" font-family="monospace" font-size="9" fill="#5b21b6">seed_postgres.py</text>
+      <text x="0" y="75" font-family="monospace" font-size="9" fill="#5b21b6">generate_products.py</text>
+      <rect x="0" y="90" width="170" height="30" rx="4" fill="white" stroke="#a78bfa"/>
+      <text x="85" y="109" font-family="monospace" font-size="9" fill="#6d28d9" text-anchor="middle">data/ikea_products.json</text>
+    </g>
+  </g>
+
+  <!-- ==================== DATA FLOW ARROWS ==================== -->
+
+  <!-- React to Couchbase -->
+  <path d="M 300 485 L 300 520 L 510 520 L 510 540" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrowhead-blue)"/>
+  <text x="380" y="510" font-family="system-ui" font-size="10" fill="#3b82f6">REST API</text>
+
+  <!-- React to FastAPI via proxy -->
+  <path d="M 450 485 C 450 505 700 505 920 485" stroke="#22c55e" stroke-width="2" fill="none" marker-end="url(#arrowhead-green)" stroke-dasharray="5,3"/>
+  <text x="680" y="495" font-family="system-ui" font-size="10" fill="#22c55e">/api/postgres proxy</text>
+
+  <!-- FastAPI to PostgreSQL -->
+  <path d="M 970 470 L 970 500 L 200 500 L 200 540" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#arrowhead-orange)"/>
+  <text x="580" y="490" font-family="system-ui" font-size="10" fill="#f97316">SQLModel/psycopg</text>
+
+  <!-- Couchbase Edge to Server -->
+  <path d="M 650 610 L 690 610" stroke="#9ca3af" stroke-width="2" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="5,3"/>
+  <text x="655" y="600" font-family="system-ui" font-size="9" fill="#9ca3af">sync</text>
+
+  <!-- Scripts to DBs -->
+  <path d="M 950 610 L 650 610" stroke="#8b5cf6" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)" stroke-dasharray="3,3"/>
+  <path d="M 950 650 L 330 650 L 200 650 L 200 700" stroke="#8b5cf6" stroke-width="1.5" fill="none" stroke-dasharray="3,3"/>
+
+  <!-- Shared models connections -->
+  <path d="M 580 190 L 550 190" stroke="#eab308" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 780 190 L 820 190" stroke="#eab308" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+
+  <!-- ==================== ISSUES / GAPS CALLOUTS ==================== -->
+  <g transform="translate(50, 740)">
+    <rect x="0" y="0" width="1100" height="240" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="0" y="0" width="1100" height="35" rx="12" fill="#ef4444"/>
+    <rect x="0" y="23" width="1100" height="12" fill="#ef4444"/>
+    <text x="550" y="24" font-family="system-ui" font-size="14" font-weight="bold" fill="white" text-anchor="middle">IDENTIFIED ISSUES &amp; REFACTORING OPPORTUNITIES</text>
+
+    <!-- Issue 1 -->
+    <g transform="translate(20, 50)">
+      <rect x="0" y="0" width="340" height="80" rx="6" fill="white" stroke="#fca5a5"/>
+      <text x="10" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#dc2626">1. OPTIMIZE SYNC GATEWAY</text>
+      <text x="10" y="38" font-family="system-ui" font-size="10" fill="#7f1d1d">Configure channels for filtering</text>
+      <text x="10" y="53" font-family="system-ui" font-size="10" fill="#7f1d1d">Set up conflict resolution policies</text>
+      <text x="10" y="70" font-family="system-ui" font-size="10" font-weight="bold" fill="#16a34a">FIX: Add sync function + channels</text>
+    </g>
+
+    <!-- Issue 2 -->
+    <g transform="translate(380, 50)">
+      <rect x="0" y="0" width="340" height="80" rx="6" fill="white" stroke="#fca5a5"/>
+      <text x="10" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#dc2626">2. ADD N1QL QUERIES</text>
+      <text x="10" y="38" font-family="system-ui" font-size="10" fill="#7f1d1d">Client-side filtering inefficient</text>
+      <text x="10" y="53" font-family="system-ui" font-size="10" fill="#7f1d1d">Use server-side N1QL for complex queries</text>
+      <text x="10" y="70" font-family="system-ui" font-size="10" font-weight="bold" fill="#16a34a">FIX: N1QL endpoint for search/filter</text>
+    </g>
+
+    <!-- Issue 3 -->
+    <g transform="translate(740, 50)">
+      <rect x="0" y="0" width="340" height="80" rx="6" fill="white" stroke="#fca5a5"/>
+      <text x="10" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#dc2626">3. HARDCODED CONFIG</text>
+      <text x="10" y="38" font-family="system-ui" font-size="10" fill="#7f1d1d">127.0.0.1:59840 in source code</text>
+      <text x="10" y="53" font-family="system-ui" font-size="10" fill="#7f1d1d">Can't deploy to production</text>
+      <text x="10" y="70" font-family="system-ui" font-size="10" font-weight="bold" fill="#16a34a">FIX: Environment variables</text>
+    </g>
+
+    <!-- Issue 4 -->
+    <g transform="translate(20, 140)">
+      <rect x="0" y="0" width="340" height="80" rx="6" fill="white" stroke="#fca5a5"/>
+      <text x="10" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#dc2626">4. IMPROVE DOCUMENT DESIGN</text>
+      <text x="10" y="38" font-family="system-ui" font-size="10" fill="#7f1d1d">Optimize document structure</text>
+      <text x="10" y="53" font-family="system-ui" font-size="10" fill="#7f1d1d">Add indexes for common queries</text>
+      <text x="10" y="70" font-family="system-ui" font-size="10" font-weight="bold" fill="#16a34a">FIX: Define schema + indexes</text>
+    </g>
+
+    <!-- Issue 5 -->
+    <g transform="translate(380, 140)">
+      <rect x="0" y="0" width="340" height="80" rx="6" fill="white" stroke="#fca5a5"/>
+      <text x="10" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#dc2626">5. NO WAYFINDING</text>
+      <text x="10" y="38" font-family="system-ui" font-size="10" fill="#7f1d1d">Map shows location but no route</text>
+      <text x="10" y="53" font-family="system-ui" font-size="10" fill="#7f1d1d">No "you are here" positioning</text>
+      <text x="10" y="70" font-family="system-ui" font-size="10" font-weight="bold" fill="#16a34a">FIX: Add pathfinding algorithm</text>
+    </g>
+
+    <!-- Issue 6 -->
+    <g transform="translate(740, 140)">
+      <rect x="0" y="0" width="340" height="80" rx="6" fill="white" stroke="#fca5a5"/>
+      <text x="10" y="20" font-family="system-ui" font-size="11" font-weight="bold" fill="#dc2626">6. NO CAMERA SCANNING</text>
+      <text x="10" y="38" font-family="system-ui" font-size="10" fill="#7f1d1d">BarcodeScanner is manual input only</text>
+      <text x="10" y="53" font-family="system-ui" font-size="10" fill="#7f1d1d">alert("Coming soon!") placeholder</text>
+      <text x="10" y="70" font-family="system-ui" font-size="10" font-weight="bold" fill="#16a34a">FIX: Integrate html5-qrcode</text>
+    </g>
+  </g>
+</svg>

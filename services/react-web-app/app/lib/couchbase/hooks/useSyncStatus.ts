@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { checkServerStatus, getDatabaseInfo } from '../client';
 import { SYNC_STATUS_POLL_INTERVAL } from '../config';
 import type { SyncStatus } from '../types';
+import { useOfflineQueue } from './useOfflineQueue';
 
 interface UseSyncStatusOptions {
   pollInterval?: number;
@@ -20,7 +21,7 @@ interface UseSyncStatusResult extends SyncStatus {
  * Hook to monitor Edge Server connectivity and sync status
  *
  * @param options - Configuration for polling and enabling
- * @returns Sync status information including online state
+ * @returns Sync status information including online state and pending changes from offline queue
  */
 export function useSyncStatus(
   options: UseSyncStatusOptions = {}
@@ -29,6 +30,9 @@ export function useSyncStatus(
     pollInterval = SYNC_STATUS_POLL_INTERVAL,
     enabled = true,
   } = options;
+
+  // Get the actual pending count from the offline queue
+  const { pendingCount } = useOfflineQueue();
 
   const [syncStatus, setSyncStatus] = useState<SyncStatus>({
     isOnline: true,
@@ -62,7 +66,7 @@ export function useSyncStatus(
               setSyncStatus({
                 isOnline: true,
                 lastSynced: new Date(),
-                pendingChanges: 0, // Would need actual replication info from Edge Server
+                pendingChanges: pendingCount,
                 error: undefined,
               });
             } catch (err) {
@@ -70,7 +74,7 @@ export function useSyncStatus(
               setSyncStatus({
                 isOnline: true,
                 lastSynced: new Date(),
-                pendingChanges: 0,
+                pendingChanges: pendingCount,
                 error: err instanceof Error ? err.message : 'Failed to get database info',
               });
             }
@@ -79,7 +83,7 @@ export function useSyncStatus(
             setSyncStatus(prev => ({
               isOnline: false,
               lastSynced: prev.lastSynced,
-              pendingChanges: prev.pendingChanges,
+              pendingChanges: pendingCount,
               error: 'Edge Server is offline',
             }));
           }
@@ -89,7 +93,7 @@ export function useSyncStatus(
           setSyncStatus(prev => ({
             isOnline: false,
             lastSynced: prev.lastSynced,
-            pendingChanges: prev.pendingChanges,
+            pendingChanges: pendingCount,
             error: err instanceof Error ? err.message : 'Status check failed',
           }));
         }
@@ -110,7 +114,7 @@ export function useSyncStatus(
         clearTimeout(timeoutId);
       }
     };
-  }, [enabled, pollInterval, refetchTrigger]);
+  }, [enabled, pollInterval, refetchTrigger, pendingCount]);
 
   return {
     ...syncStatus,

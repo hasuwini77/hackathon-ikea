@@ -1,0 +1,6364 @@
+[
+  {
+    "id": "prod_0001",
+    "article_number": "209.119.11",
+    "name": "KALLAX Table lamp",
+    "category": "Living Room",
+    "product_type": "Table lamp",
+    "price": 230,
+    "currency": "SEK",
+    "stock": 24,
+    "store_location": {
+      "aisle": 8,
+      "bay": 2,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Renewable material (wood). Designed to be used for years to come. Space-saving design.",
+    "dimensions": {
+      "length": 169,
+      "width": 143,
+      "height": 27,
+      "unit": "cm"
+    },
+    "weight": 27.7,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0002",
+    "article_number": "476.980.79",
+    "name": "KALLAX Cushion cover",
+    "category": "Living Room",
+    "product_type": "Cushion cover",
+    "price": 60,
+    "currency": "SEK",
+    "stock": 79,
+    "store_location": {
+      "aisle": 4,
+      "bay": 5,
+      "section": "B"
+    },
+    "description": "Scandinavian design meets functionality. Adjustable feet for stability on uneven floors. Designed to be used for years to come. Space-saving design. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 178,
+      "width": 90,
+      "height": 53,
+      "unit": "cm"
+    },
+    "weight": 46.8,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0003",
+    "article_number": "996.758.60",
+    "name": "PLATSA Table lamp",
+    "category": "Living Room",
+    "product_type": "Table lamp",
+    "price": 400,
+    "currency": "SEK",
+    "stock": 53,
+    "store_location": {
+      "aisle": 5,
+      "bay": 3,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Designed to be used for years to come. Made from sustainable materials.",
+    "dimensions": {
+      "length": 164,
+      "width": 32,
+      "height": 10,
+      "unit": "cm"
+    },
+    "weight": 45.7,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0004",
+    "article_number": "695.719.11",
+    "name": "EKTORP Curtains, 1 pair",
+    "category": "Living Room",
+    "product_type": "Curtains, 1 pair",
+    "price": 720,
+    "currency": "SEK",
+    "stock": 21,
+    "store_location": {
+      "aisle": 5,
+      "bay": 1,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Matches well with other furniture in the series. Easy to assemble - no tools required. Renewable material (wood).",
+    "dimensions": {
+      "length": 91,
+      "width": 40,
+      "height": 16,
+      "unit": "cm"
+    },
+    "weight": 6.6,
+    "colors_available": [
+      "Brown",
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0005",
+    "article_number": "138.484.13",
+    "name": "PAX Curtains, 1 pair",
+    "category": "Living Room",
+    "product_type": "Curtains, 1 pair",
+    "price": 550,
+    "currency": "SEK",
+    "stock": 38,
+    "store_location": {
+      "aisle": 8,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Designed to be used for years to come. Space-saving design.",
+    "dimensions": {
+      "length": 119,
+      "width": 135,
+      "height": 24,
+      "unit": "cm"
+    },
+    "weight": 10.5,
+    "colors_available": [
+      "Blue",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0006",
+    "article_number": "449.686.22",
+    "name": "LISABO Sofa, 2-seat",
+    "category": "Living Room",
+    "product_type": "Sofa, 2-seat",
+    "price": 2250,
+    "currency": "SEK",
+    "stock": 96,
+    "store_location": {
+      "aisle": 3,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Easy to assemble - no tools required. Space-saving design. Made from sustainable materials. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 100,
+      "width": 29,
+      "height": 14,
+      "unit": "cm"
+    },
+    "weight": 21.8,
+    "colors_available": [
+      "Brown",
+      "Black",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0007",
+    "article_number": "423.900.35",
+    "name": "VIMLE TV bench",
+    "category": "Living Room",
+    "product_type": "TV bench",
+    "price": 2700,
+    "currency": "SEK",
+    "stock": 89,
+    "store_location": {
+      "aisle": 4,
+      "bay": 10,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Good to know: wipe clean with a damp cloth. Easy to assemble - no tools required. Made from sustainable materials.",
+    "dimensions": {
+      "length": 104,
+      "width": 38,
+      "height": 50,
+      "unit": "cm"
+    },
+    "weight": 14.0,
+    "colors_available": [
+      "Black",
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0008",
+    "article_number": "206.986.72",
+    "name": "STUVA TV bench",
+    "category": "Living Room",
+    "product_type": "TV bench",
+    "price": 2335,
+    "currency": "SEK",
+    "stock": 87,
+    "store_location": {
+      "aisle": 4,
+      "bay": 10,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Space-saving design.",
+    "dimensions": {
+      "length": 42,
+      "width": 102,
+      "height": 13,
+      "unit": "cm"
+    },
+    "weight": 28.1,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0009",
+    "article_number": "988.793.11",
+    "name": "IVAR Side table",
+    "category": "Living Room",
+    "product_type": "Side table",
+    "price": 480,
+    "currency": "SEK",
+    "stock": 98,
+    "store_location": {
+      "aisle": 8,
+      "bay": 4,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Adjustable feet for stability on uneven floors. Easy to assemble - no tools required. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 148,
+      "width": 83,
+      "height": 34,
+      "unit": "cm"
+    },
+    "weight": 12.7,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0010",
+    "article_number": "896.201.30",
+    "name": "IDANÄS Table lamp",
+    "category": "Living Room",
+    "product_type": "Table lamp",
+    "price": 325,
+    "currency": "SEK",
+    "stock": 59,
+    "store_location": {
+      "aisle": 4,
+      "bay": 7,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Easy to assemble - no tools required. Made from sustainable materials.",
+    "dimensions": {
+      "length": 89,
+      "width": 64,
+      "height": 25,
+      "unit": "cm"
+    },
+    "weight": 20.4,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0011",
+    "article_number": "774.946.70",
+    "name": "KIVIK Bookcase",
+    "category": "Living Room",
+    "product_type": "Bookcase",
+    "price": 825,
+    "currency": "SEK",
+    "stock": 92,
+    "store_location": {
+      "aisle": 5,
+      "bay": 9,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Adjustable feet for stability on uneven floors. Made from sustainable materials.",
+    "dimensions": {
+      "length": 107,
+      "width": 139,
+      "height": 27,
+      "unit": "cm"
+    },
+    "weight": 39.7,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0012",
+    "article_number": "441.526.99",
+    "name": "IVAR Armchair",
+    "category": "Living Room",
+    "product_type": "Armchair",
+    "price": 2425,
+    "currency": "SEK",
+    "stock": 0,
+    "store_location": {
+      "aisle": 2,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Space-saving design. Matches well with other furniture in the series. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 138,
+      "width": 117,
+      "height": 38,
+      "unit": "cm"
+    },
+    "weight": 13.3,
+    "colors_available": [
+      "Blue",
+      "Black",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": false
+  },
+  {
+    "id": "prod_0013",
+    "article_number": "575.513.24",
+    "name": "PAX Table lamp",
+    "category": "Living Room",
+    "product_type": "Table lamp",
+    "price": 200,
+    "currency": "SEK",
+    "stock": 60,
+    "store_location": {
+      "aisle": 4,
+      "bay": 6,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Good to know: wipe clean with a damp cloth. Made from sustainable materials. Designed to be used for years to come. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 108,
+      "width": 83,
+      "height": 22,
+      "unit": "cm"
+    },
+    "weight": 45.0,
+    "colors_available": [
+      "Blue",
+      "Natural",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0014",
+    "article_number": "255.218.89",
+    "name": "MALM Storage unit",
+    "category": "Living Room",
+    "product_type": "Storage unit",
+    "price": 1860,
+    "currency": "SEK",
+    "stock": 26,
+    "store_location": {
+      "aisle": 7,
+      "bay": 4,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Easy to clean and maintain. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 104,
+      "width": 21,
+      "height": 13,
+      "unit": "cm"
+    },
+    "weight": 36.3,
+    "colors_available": [
+      "Brown",
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0015",
+    "article_number": "999.619.46",
+    "name": "STUVA Curtains, 1 pair",
+    "category": "Living Room",
+    "product_type": "Curtains, 1 pair",
+    "price": 235,
+    "currency": "SEK",
+    "stock": 36,
+    "store_location": {
+      "aisle": 1,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Easy to assemble - no tools required. Adjustable feet for stability on uneven floors. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 129,
+      "width": 29,
+      "height": 23,
+      "unit": "cm"
+    },
+    "weight": 3.8,
+    "colors_available": [
+      "Brown",
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0016",
+    "article_number": "957.840.82",
+    "name": "IDANÄS Media storage",
+    "category": "Living Room",
+    "product_type": "Media storage",
+    "price": 1365,
+    "currency": "SEK",
+    "stock": 46,
+    "store_location": {
+      "aisle": 8,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Matches well with other furniture in the series. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 173,
+      "width": 54,
+      "height": 63,
+      "unit": "cm"
+    },
+    "weight": 0.6,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0017",
+    "article_number": "102.883.56",
+    "name": "POÄNG Side table",
+    "category": "Living Room",
+    "product_type": "Side table",
+    "price": 740,
+    "currency": "SEK",
+    "stock": 61,
+    "store_location": {
+      "aisle": 5,
+      "bay": 5,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Easy to clean and maintain. Can be placed anywhere in the room. Space-saving design.",
+    "dimensions": {
+      "length": 114,
+      "width": 147,
+      "height": 34,
+      "unit": "cm"
+    },
+    "weight": 12.7,
+    "colors_available": [
+      "Grey",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0018",
+    "article_number": "163.538.84",
+    "name": "BILLY Bookcase",
+    "category": "Living Room",
+    "product_type": "Bookcase",
+    "price": 1420,
+    "currency": "SEK",
+    "stock": 84,
+    "store_location": {
+      "aisle": 2,
+      "bay": 4,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Renewable material (wood). Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 126,
+      "width": 45,
+      "height": 82,
+      "unit": "cm"
+    },
+    "weight": 21.7,
+    "colors_available": [
+      "Natural",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0019",
+    "article_number": "916.234.13",
+    "name": "SÖDERHAMN Side table",
+    "category": "Living Room",
+    "product_type": "Side table",
+    "price": 530,
+    "currency": "SEK",
+    "stock": 43,
+    "store_location": {
+      "aisle": 7,
+      "bay": 3,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Easy to clean and maintain. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 44,
+      "width": 90,
+      "height": 33,
+      "unit": "cm"
+    },
+    "weight": 43.1,
+    "colors_available": [
+      "Natural",
+      "Grey",
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0020",
+    "article_number": "311.791.70",
+    "name": "NORDLI Sofa, 2-seat",
+    "category": "Living Room",
+    "product_type": "Sofa, 2-seat",
+    "price": 4770,
+    "currency": "SEK",
+    "stock": 70,
+    "store_location": {
+      "aisle": 2,
+      "bay": 6,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Easy to clean and maintain. Made from sustainable materials.",
+    "dimensions": {
+      "length": 193,
+      "width": 125,
+      "height": 49,
+      "unit": "cm"
+    },
+    "weight": 1.5,
+    "colors_available": [
+      "Black",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0021",
+    "article_number": "322.144.71",
+    "name": "BILLY Side table",
+    "category": "Living Room",
+    "product_type": "Side table",
+    "price": 415,
+    "currency": "SEK",
+    "stock": 35,
+    "store_location": {
+      "aisle": 3,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Made from sustainable materials. Renewable material (wood). Easy to clean and maintain.",
+    "dimensions": {
+      "length": 124,
+      "width": 74,
+      "height": 12,
+      "unit": "cm"
+    },
+    "weight": 27.8,
+    "colors_available": [
+      "Grey",
+      "Blue",
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0022",
+    "article_number": "429.713.52",
+    "name": "HAUGA Coffee table",
+    "category": "Living Room",
+    "product_type": "Coffee table",
+    "price": 890,
+    "currency": "SEK",
+    "stock": 22,
+    "store_location": {
+      "aisle": 6,
+      "bay": 3,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Good to know: wipe clean with a damp cloth. Easy to assemble - no tools required. Can be placed anywhere in the room. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 155,
+      "width": 79,
+      "height": 55,
+      "unit": "cm"
+    },
+    "weight": 26.2,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0023",
+    "article_number": "867.546.41",
+    "name": "LISABO Ottoman",
+    "category": "Living Room",
+    "product_type": "Ottoman",
+    "price": 715,
+    "currency": "SEK",
+    "stock": 58,
+    "store_location": {
+      "aisle": 1,
+      "bay": 2,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Designed to be used for years to come. Easy to clean and maintain. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 86,
+      "width": 125,
+      "height": 95,
+      "unit": "cm"
+    },
+    "weight": 9.7,
+    "colors_available": [
+      "Blue",
+      "Natural",
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0024",
+    "article_number": "528.424.70",
+    "name": "HAUGA Bookcase",
+    "category": "Living Room",
+    "product_type": "Bookcase",
+    "price": 1130,
+    "currency": "SEK",
+    "stock": 22,
+    "store_location": {
+      "aisle": 2,
+      "bay": 1,
+      "section": "A"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Made from sustainable materials. Designed to be used for years to come. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 200,
+      "width": 100,
+      "height": 59,
+      "unit": "cm"
+    },
+    "weight": 13.6,
+    "colors_available": [
+      "White",
+      "Brown",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0025",
+    "article_number": "412.881.57",
+    "name": "POÄNG Coffee table",
+    "category": "Living Room",
+    "product_type": "Coffee table",
+    "price": 1365,
+    "currency": "SEK",
+    "stock": 13,
+    "store_location": {
+      "aisle": 8,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Designed to be used for years to come. Can be placed anywhere in the room. Good to know: wipe clean with a damp cloth. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 178,
+      "width": 135,
+      "height": 94,
+      "unit": "cm"
+    },
+    "weight": 40.1,
+    "colors_available": [
+      "Brown",
+      "Black",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0026",
+    "article_number": "596.809.74",
+    "name": "IVAR Cushion cover",
+    "category": "Living Room",
+    "product_type": "Cushion cover",
+    "price": 170,
+    "currency": "SEK",
+    "stock": 54,
+    "store_location": {
+      "aisle": 4,
+      "bay": 7,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Can be placed anywhere in the room. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 55,
+      "width": 55,
+      "height": 99,
+      "unit": "cm"
+    },
+    "weight": 12.2,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0027",
+    "article_number": "768.457.60",
+    "name": "POÄNG Bookcase",
+    "category": "Living Room",
+    "product_type": "Bookcase",
+    "price": 1380,
+    "currency": "SEK",
+    "stock": 41,
+    "store_location": {
+      "aisle": 4,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Can be placed anywhere in the room. Space-saving design. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 147,
+      "width": 143,
+      "height": 63,
+      "unit": "cm"
+    },
+    "weight": 42.3,
+    "colors_available": [
+      "Blue",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0028",
+    "article_number": "827.583.75",
+    "name": "FRIHETEN Storage box",
+    "category": "Bedroom",
+    "product_type": "Storage box",
+    "price": 140,
+    "currency": "SEK",
+    "stock": 82,
+    "store_location": {
+      "aisle": 14,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Can be placed anywhere in the room. Designed to be used for years to come. Easy to clean and maintain. Space-saving design.",
+    "dimensions": {
+      "length": 89,
+      "width": 53,
+      "height": 35,
+      "unit": "cm"
+    },
+    "weight": 40.3,
+    "colors_available": [
+      "Grey",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0029",
+    "article_number": "124.243.99",
+    "name": "RÅSKOG Blackout curtains",
+    "category": "Bedroom",
+    "product_type": "Blackout curtains",
+    "price": 840,
+    "currency": "SEK",
+    "stock": 52,
+    "store_location": {
+      "aisle": 11,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Adjustable feet for stability on uneven floors. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 79,
+      "width": 28,
+      "height": 27,
+      "unit": "cm"
+    },
+    "weight": 43.5,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0030",
+    "article_number": "252.768.91",
+    "name": "VIMLE Storage box",
+    "category": "Bedroom",
+    "product_type": "Storage box",
+    "price": 75,
+    "currency": "SEK",
+    "stock": 80,
+    "store_location": {
+      "aisle": 11,
+      "bay": 1,
+      "section": "A"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Matches well with other furniture in the series. Made from sustainable materials.",
+    "dimensions": {
+      "length": 187,
+      "width": 101,
+      "height": 86,
+      "unit": "cm"
+    },
+    "weight": 40.1,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0031",
+    "article_number": "635.317.54",
+    "name": "PAX Nightstand",
+    "category": "Bedroom",
+    "product_type": "Nightstand",
+    "price": 970,
+    "currency": "SEK",
+    "stock": 84,
+    "store_location": {
+      "aisle": 11,
+      "bay": 1,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Space-saving design. Good to know: wipe clean with a damp cloth. Made from sustainable materials. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 191,
+      "width": 22,
+      "height": 18,
+      "unit": "cm"
+    },
+    "weight": 39.4,
+    "colors_available": [
+      "Brown",
+      "Grey",
+      "White"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0032",
+    "article_number": "111.825.14",
+    "name": "PLATSA Bed frame",
+    "category": "Bedroom",
+    "product_type": "Bed frame",
+    "price": 5775,
+    "currency": "SEK",
+    "stock": 7,
+    "store_location": {
+      "aisle": 9,
+      "bay": 6,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Adjustable feet for stability on uneven floors. Matches well with other furniture in the series. Space-saving design. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 154,
+      "width": 90,
+      "height": 66,
+      "unit": "cm"
+    },
+    "weight": 18.2,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0033",
+    "article_number": "692.812.10",
+    "name": "BILLY Clothes rack",
+    "category": "Bedroom",
+    "product_type": "Clothes rack",
+    "price": 660,
+    "currency": "SEK",
+    "stock": 11,
+    "store_location": {
+      "aisle": 9,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Designed to be used for years to come. Good to know: wipe clean with a damp cloth. Adjustable feet for stability on uneven floors. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 22,
+      "width": 79,
+      "height": 92,
+      "unit": "cm"
+    },
+    "weight": 38.2,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0034",
+    "article_number": "306.835.97",
+    "name": "NORDLI Pillow",
+    "category": "Bedroom",
+    "product_type": "Pillow",
+    "price": 380,
+    "currency": "SEK",
+    "stock": 70,
+    "store_location": {
+      "aisle": 11,
+      "bay": 8,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Adjustable feet for stability on uneven floors. Made from sustainable materials. Designed to be used for years to come. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 164,
+      "width": 40,
+      "height": 43,
+      "unit": "cm"
+    },
+    "weight": 36.1,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0035",
+    "article_number": "837.915.57",
+    "name": "HEMNES Blackout curtains",
+    "category": "Bedroom",
+    "product_type": "Blackout curtains",
+    "price": 415,
+    "currency": "SEK",
+    "stock": 86,
+    "store_location": {
+      "aisle": 13,
+      "bay": 5,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Made from sustainable materials. Designed to be used for years to come. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 145,
+      "width": 57,
+      "height": 74,
+      "unit": "cm"
+    },
+    "weight": 30.7,
+    "colors_available": [
+      "Brown",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0036",
+    "article_number": "881.152.29",
+    "name": "BILLY Mirror",
+    "category": "Bedroom",
+    "product_type": "Mirror",
+    "price": 935,
+    "currency": "SEK",
+    "stock": 94,
+    "store_location": {
+      "aisle": 11,
+      "bay": 5,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Designed to be used for years to come. Renewable material (wood).",
+    "dimensions": {
+      "length": 197,
+      "width": 76,
+      "height": 56,
+      "unit": "cm"
+    },
+    "weight": 47.8,
+    "colors_available": [
+      "White",
+      "Beige",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0037",
+    "article_number": "772.363.29",
+    "name": "HEMNES Bed frame",
+    "category": "Bedroom",
+    "product_type": "Bed frame",
+    "price": 4360,
+    "currency": "SEK",
+    "stock": 69,
+    "store_location": {
+      "aisle": 12,
+      "bay": 4,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Adjustable feet for stability on uneven floors. Renewable material (wood). Matches well with other furniture in the series. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 180,
+      "width": 117,
+      "height": 40,
+      "unit": "cm"
+    },
+    "weight": 25.1,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0038",
+    "article_number": "813.684.36",
+    "name": "LISABO Chest of 6 drawers",
+    "category": "Bedroom",
+    "product_type": "Chest of 6 drawers",
+    "price": 925,
+    "currency": "SEK",
+    "stock": 31,
+    "store_location": {
+      "aisle": 14,
+      "bay": 5,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Designed to be used for years to come. Good to know: wipe clean with a damp cloth. Adjustable feet for stability on uneven floors. Space-saving design.",
+    "dimensions": {
+      "length": 88,
+      "width": 60,
+      "height": 75,
+      "unit": "cm"
+    },
+    "weight": 14.9,
+    "colors_available": [
+      "Grey",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0039",
+    "article_number": "290.608.94",
+    "name": "RÅSKOG Clothes rack",
+    "category": "Bedroom",
+    "product_type": "Clothes rack",
+    "price": 345,
+    "currency": "SEK",
+    "stock": 17,
+    "store_location": {
+      "aisle": 10,
+      "bay": 10,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Easy to assemble - no tools required. Made from sustainable materials. Matches well with other furniture in the series. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 173,
+      "width": 66,
+      "height": 65,
+      "unit": "cm"
+    },
+    "weight": 5.0,
+    "colors_available": [
+      "Blue",
+      "Grey",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0040",
+    "article_number": "751.795.48",
+    "name": "EKTORP Nightstand",
+    "category": "Bedroom",
+    "product_type": "Nightstand",
+    "price": 685,
+    "currency": "SEK",
+    "stock": 30,
+    "store_location": {
+      "aisle": 9,
+      "bay": 7,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Space-saving design. Can be placed anywhere in the room. Made from sustainable materials. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 20,
+      "width": 27,
+      "height": 67,
+      "unit": "cm"
+    },
+    "weight": 0.5,
+    "colors_available": [
+      "Black",
+      "Blue",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0041",
+    "article_number": "484.996.99",
+    "name": "LISABO Table lamp",
+    "category": "Bedroom",
+    "product_type": "Table lamp",
+    "price": 590,
+    "currency": "SEK",
+    "stock": 76,
+    "store_location": {
+      "aisle": 9,
+      "bay": 6,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Designed to be used for years to come. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 137,
+      "width": 110,
+      "height": 100,
+      "unit": "cm"
+    },
+    "weight": 46.6,
+    "colors_available": [
+      "Brown",
+      "White",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0042",
+    "article_number": "320.917.15",
+    "name": "PAX Bed frame",
+    "category": "Bedroom",
+    "product_type": "Bed frame",
+    "price": 3665,
+    "currency": "SEK",
+    "stock": 5,
+    "store_location": {
+      "aisle": 14,
+      "bay": 1,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Renewable material (wood). Matches well with other furniture in the series. Space-saving design.",
+    "dimensions": {
+      "length": 137,
+      "width": 143,
+      "height": 77,
+      "unit": "cm"
+    },
+    "weight": 33.2,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0043",
+    "article_number": "958.775.24",
+    "name": "PLATSA Storage box",
+    "category": "Bedroom",
+    "product_type": "Storage box",
+    "price": 130,
+    "currency": "SEK",
+    "stock": 65,
+    "store_location": {
+      "aisle": 11,
+      "bay": 1,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Can be placed anywhere in the room. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 101,
+      "width": 135,
+      "height": 19,
+      "unit": "cm"
+    },
+    "weight": 28.9,
+    "colors_available": [
+      "Brown",
+      "White",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0044",
+    "article_number": "707.655.62",
+    "name": "RÅSKOG Mattress",
+    "category": "Bedroom",
+    "product_type": "Mattress",
+    "price": 3635,
+    "currency": "SEK",
+    "stock": 30,
+    "store_location": {
+      "aisle": 10,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Renewable material (wood). Space-saving design. Adjustable feet for stability on uneven floors. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 104,
+      "width": 92,
+      "height": 42,
+      "unit": "cm"
+    },
+    "weight": 31.7,
+    "colors_available": [
+      "Grey",
+      "White",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0045",
+    "article_number": "227.157.53",
+    "name": "BESTÅ Bedside table",
+    "category": "Bedroom",
+    "product_type": "Bedside table",
+    "price": 560,
+    "currency": "SEK",
+    "stock": 89,
+    "store_location": {
+      "aisle": 13,
+      "bay": 4,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Can be placed anywhere in the room. Space-saving design.",
+    "dimensions": {
+      "length": 70,
+      "width": 142,
+      "height": 64,
+      "unit": "cm"
+    },
+    "weight": 38.9,
+    "colors_available": [
+      "Black",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0046",
+    "article_number": "895.230.75",
+    "name": "RÅSKOG Bedside table",
+    "category": "Bedroom",
+    "product_type": "Bedside table",
+    "price": 535,
+    "currency": "SEK",
+    "stock": 36,
+    "store_location": {
+      "aisle": 10,
+      "bay": 2,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Adjustable feet for stability on uneven floors. Renewable material (wood). Made from sustainable materials.",
+    "dimensions": {
+      "length": 105,
+      "width": 44,
+      "height": 97,
+      "unit": "cm"
+    },
+    "weight": 17.3,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0047",
+    "article_number": "824.327.87",
+    "name": "NORDLI Wardrobe",
+    "category": "Bedroom",
+    "product_type": "Wardrobe",
+    "price": 6040,
+    "currency": "SEK",
+    "stock": 48,
+    "store_location": {
+      "aisle": 10,
+      "bay": 10,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Made from sustainable materials. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 177,
+      "width": 36,
+      "height": 41,
+      "unit": "cm"
+    },
+    "weight": 18.9,
+    "colors_available": [
+      "Grey",
+      "Natural",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0048",
+    "article_number": "824.562.88",
+    "name": "MALM Bed frame",
+    "category": "Bedroom",
+    "product_type": "Bed frame",
+    "price": 1835,
+    "currency": "SEK",
+    "stock": 21,
+    "store_location": {
+      "aisle": 9,
+      "bay": 3,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Adjustable feet for stability on uneven floors. Renewable material (wood). Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 181,
+      "width": 91,
+      "height": 77,
+      "unit": "cm"
+    },
+    "weight": 19.7,
+    "colors_available": [
+      "Grey",
+      "Natural",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0049",
+    "article_number": "965.427.85",
+    "name": "FRIHETEN Bedside table",
+    "category": "Bedroom",
+    "product_type": "Bedside table",
+    "price": 845,
+    "currency": "SEK",
+    "stock": 33,
+    "store_location": {
+      "aisle": 13,
+      "bay": 7,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Can be placed anywhere in the room. Adjustable feet for stability on uneven floors. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 197,
+      "width": 119,
+      "height": 24,
+      "unit": "cm"
+    },
+    "weight": 21.0,
+    "colors_available": [
+      "Grey",
+      "Natural",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0050",
+    "article_number": "483.244.34",
+    "name": "LISABO Bed frame",
+    "category": "Bedroom",
+    "product_type": "Bed frame",
+    "price": 5870,
+    "currency": "SEK",
+    "stock": 44,
+    "store_location": {
+      "aisle": 13,
+      "bay": 7,
+      "section": "A"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Made from sustainable materials.",
+    "dimensions": {
+      "length": 91,
+      "width": 149,
+      "height": 97,
+      "unit": "cm"
+    },
+    "weight": 7.2,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0051",
+    "article_number": "218.610.17",
+    "name": "KALLAX Chest of 6 drawers",
+    "category": "Bedroom",
+    "product_type": "Chest of 6 drawers",
+    "price": 2130,
+    "currency": "SEK",
+    "stock": 74,
+    "store_location": {
+      "aisle": 10,
+      "bay": 1,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Made from sustainable materials. Matches well with other furniture in the series. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 44,
+      "width": 100,
+      "height": 86,
+      "unit": "cm"
+    },
+    "weight": 27.1,
+    "colors_available": [
+      "Natural",
+      "Blue",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0052",
+    "article_number": "965.889.97",
+    "name": "FRIHETEN Mattress",
+    "category": "Bedroom",
+    "product_type": "Mattress",
+    "price": 2805,
+    "currency": "SEK",
+    "stock": 24,
+    "store_location": {
+      "aisle": 9,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Easy to assemble - no tools required. Made from sustainable materials.",
+    "dimensions": {
+      "length": 144,
+      "width": 110,
+      "height": 41,
+      "unit": "cm"
+    },
+    "weight": 48.0,
+    "colors_available": [
+      "Brown",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0053",
+    "article_number": "704.373.61",
+    "name": "STUVA Nightstand",
+    "category": "Bedroom",
+    "product_type": "Nightstand",
+    "price": 950,
+    "currency": "SEK",
+    "stock": 85,
+    "store_location": {
+      "aisle": 14,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Renewable material (wood). Made from sustainable materials.",
+    "dimensions": {
+      "length": 196,
+      "width": 147,
+      "height": 64,
+      "unit": "cm"
+    },
+    "weight": 13.8,
+    "colors_available": [
+      "Grey",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0054",
+    "article_number": "326.324.64",
+    "name": "MALM Table lamp",
+    "category": "Bedroom",
+    "product_type": "Table lamp",
+    "price": 220,
+    "currency": "SEK",
+    "stock": 93,
+    "store_location": {
+      "aisle": 11,
+      "bay": 5,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Adjustable feet for stability on uneven floors. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 73,
+      "width": 41,
+      "height": 20,
+      "unit": "cm"
+    },
+    "weight": 10.3,
+    "colors_available": [
+      "Blue",
+      "Natural"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0055",
+    "article_number": "825.133.64",
+    "name": "MIXTUR Knife set, 3-piece",
+    "category": "Kitchen",
+    "product_type": "Knife set, 3-piece",
+    "price": 295,
+    "currency": "SEK",
+    "stock": 53,
+    "store_location": {
+      "aisle": 15,
+      "bay": 4,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Renewable material (wood). Good to know: wipe clean with a damp cloth. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 145,
+      "width": 120,
+      "height": 75,
+      "unit": "cm"
+    },
+    "weight": 23.8,
+    "colors_available": [
+      "Beige",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0056",
+    "article_number": "301.851.72",
+    "name": "LÄTTÖL Dining table",
+    "category": "Kitchen",
+    "product_type": "Dining table",
+    "price": 1690,
+    "currency": "SEK",
+    "stock": 21,
+    "store_location": {
+      "aisle": 15,
+      "bay": 9,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Easy to clean and maintain. Made from sustainable materials.",
+    "dimensions": {
+      "length": 112,
+      "width": 24,
+      "height": 32,
+      "unit": "cm"
+    },
+    "weight": 42.0,
+    "colors_available": [
+      "Grey",
+      "Brown",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0057",
+    "article_number": "338.837.32",
+    "name": "RINNIG Food container, set of 3",
+    "category": "Kitchen",
+    "product_type": "Food container, set of 3",
+    "price": 170,
+    "currency": "SEK",
+    "stock": 7,
+    "store_location": {
+      "aisle": 16,
+      "bay": 10,
+      "section": "C"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Easy to clean and maintain. Renewable material (wood).",
+    "dimensions": {
+      "length": 66,
+      "width": 101,
+      "height": 19,
+      "unit": "cm"
+    },
+    "weight": 5.5,
+    "colors_available": [
+      "Natural",
+      "Brown",
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0058",
+    "article_number": "955.329.75",
+    "name": "VARDAGEN Dining table",
+    "category": "Kitchen",
+    "product_type": "Dining table",
+    "price": 1015,
+    "currency": "SEK",
+    "stock": 14,
+    "store_location": {
+      "aisle": 16,
+      "bay": 3,
+      "section": "B"
+    },
+    "description": "Scandinavian design meets functionality. Good to know: wipe clean with a damp cloth. Matches well with other furniture in the series. Easy to assemble - no tools required. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 97,
+      "width": 42,
+      "height": 72,
+      "unit": "cm"
+    },
+    "weight": 32.1,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0059",
+    "article_number": "318.557.14",
+    "name": "OFTAST Bar stool",
+    "category": "Kitchen",
+    "product_type": "Bar stool",
+    "price": 1000,
+    "currency": "SEK",
+    "stock": 20,
+    "store_location": {
+      "aisle": 15,
+      "bay": 6,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 118,
+      "width": 64,
+      "height": 99,
+      "unit": "cm"
+    },
+    "weight": 9.9,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0060",
+    "article_number": "252.355.78",
+    "name": "IKEA 365+ Kitchen cart",
+    "category": "Kitchen",
+    "product_type": "Kitchen cart",
+    "price": 620,
+    "currency": "SEK",
+    "stock": 29,
+    "store_location": {
+      "aisle": 16,
+      "bay": 7,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Easy to assemble - no tools required. Space-saving design. Renewable material (wood).",
+    "dimensions": {
+      "length": 72,
+      "width": 90,
+      "height": 68,
+      "unit": "cm"
+    },
+    "weight": 29.7,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0061",
+    "article_number": "624.403.72",
+    "name": "KONCIS Dinnerware set, 18-piece",
+    "category": "Kitchen",
+    "product_type": "Dinnerware set, 18-piece",
+    "price": 795,
+    "currency": "SEK",
+    "stock": 77,
+    "store_location": {
+      "aisle": 17,
+      "bay": 3,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Easy to clean and maintain. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 104,
+      "width": 109,
+      "height": 100,
+      "unit": "cm"
+    },
+    "weight": 42.2,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0062",
+    "article_number": "592.589.37",
+    "name": "STÄM Cookware set, 5 pieces",
+    "category": "Kitchen",
+    "product_type": "Cookware set, 5 pieces",
+    "price": 1025,
+    "currency": "SEK",
+    "stock": 59,
+    "store_location": {
+      "aisle": 18,
+      "bay": 4,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Can be placed anywhere in the room. Made from sustainable materials. Space-saving design. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 165,
+      "width": 84,
+      "height": 80,
+      "unit": "cm"
+    },
+    "weight": 33.5,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0063",
+    "article_number": "402.351.77",
+    "name": "KONCIS Dining table",
+    "category": "Kitchen",
+    "product_type": "Dining table",
+    "price": 3170,
+    "currency": "SEK",
+    "stock": 54,
+    "store_location": {
+      "aisle": 17,
+      "bay": 7,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Can be placed anywhere in the room. Designed to be used for years to come. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 190,
+      "width": 129,
+      "height": 31,
+      "unit": "cm"
+    },
+    "weight": 0.7,
+    "colors_available": [
+      "White",
+      "Natural",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0064",
+    "article_number": "724.811.31",
+    "name": "RINNIG Bar stool",
+    "category": "Kitchen",
+    "product_type": "Bar stool",
+    "price": 780,
+    "currency": "SEK",
+    "stock": 80,
+    "store_location": {
+      "aisle": 16,
+      "bay": 10,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Adjustable feet for stability on uneven floors. Easy to assemble - no tools required. Space-saving design.",
+    "dimensions": {
+      "length": 39,
+      "width": 63,
+      "height": 60,
+      "unit": "cm"
+    },
+    "weight": 5.0,
+    "colors_available": [
+      "Grey",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0065",
+    "article_number": "715.446.51",
+    "name": "MIXTUR Food container, set of 3",
+    "category": "Kitchen",
+    "product_type": "Food container, set of 3",
+    "price": 65,
+    "currency": "SEK",
+    "stock": 84,
+    "store_location": {
+      "aisle": 15,
+      "bay": 3,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Space-saving design.",
+    "dimensions": {
+      "length": 101,
+      "width": 133,
+      "height": 10,
+      "unit": "cm"
+    },
+    "weight": 8.0,
+    "colors_available": [
+      "Blue",
+      "Brown",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0066",
+    "article_number": "498.563.18",
+    "name": "RINNIG Dinnerware set, 18-piece",
+    "category": "Kitchen",
+    "product_type": "Dinnerware set, 18-piece",
+    "price": 530,
+    "currency": "SEK",
+    "stock": 50,
+    "store_location": {
+      "aisle": 18,
+      "bay": 6,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Can be placed anywhere in the room. Space-saving design. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 112,
+      "width": 53,
+      "height": 93,
+      "unit": "cm"
+    },
+    "weight": 6.6,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0067",
+    "article_number": "559.723.83",
+    "name": "FINMAT Mixing bowl set",
+    "category": "Kitchen",
+    "product_type": "Mixing bowl set",
+    "price": 185,
+    "currency": "SEK",
+    "stock": 77,
+    "store_location": {
+      "aisle": 17,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Good to know: wipe clean with a damp cloth. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 73,
+      "width": 34,
+      "height": 16,
+      "unit": "cm"
+    },
+    "weight": 41.8,
+    "colors_available": [
+      "Grey",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0068",
+    "article_number": "611.581.39",
+    "name": "OFTAST Dining table",
+    "category": "Kitchen",
+    "product_type": "Dining table",
+    "price": 3345,
+    "currency": "SEK",
+    "stock": 81,
+    "store_location": {
+      "aisle": 17,
+      "bay": 3,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Renewable material (wood). Can be placed anywhere in the room. Made from sustainable materials. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 66,
+      "width": 61,
+      "height": 46,
+      "unit": "cm"
+    },
+    "weight": 13.8,
+    "colors_available": [
+      "Blue",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0069",
+    "article_number": "114.766.81",
+    "name": "TILLREDA Bar stool",
+    "category": "Kitchen",
+    "product_type": "Bar stool",
+    "price": 845,
+    "currency": "SEK",
+    "stock": 76,
+    "store_location": {
+      "aisle": 16,
+      "bay": 8,
+      "section": "C"
+    },
+    "description": "Durable and easy to assemble. Easy to assemble - no tools required. Renewable material (wood).",
+    "dimensions": {
+      "length": 146,
+      "width": 77,
+      "height": 34,
+      "unit": "cm"
+    },
+    "weight": 2.8,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0070",
+    "article_number": "885.398.90",
+    "name": "OFTAST Kitchen cart",
+    "category": "Kitchen",
+    "product_type": "Kitchen cart",
+    "price": 920,
+    "currency": "SEK",
+    "stock": 75,
+    "store_location": {
+      "aisle": 15,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Good to know: wipe clean with a damp cloth. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 100,
+      "width": 22,
+      "height": 90,
+      "unit": "cm"
+    },
+    "weight": 2.7,
+    "colors_available": [
+      "Black",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0071",
+    "article_number": "301.320.15",
+    "name": "STÄM Kitchen organizer",
+    "category": "Kitchen",
+    "product_type": "Kitchen organizer",
+    "price": 145,
+    "currency": "SEK",
+    "stock": 51,
+    "store_location": {
+      "aisle": 17,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Easy to clean and maintain. Made from sustainable materials.",
+    "dimensions": {
+      "length": 149,
+      "width": 50,
+      "height": 64,
+      "unit": "cm"
+    },
+    "weight": 42.3,
+    "colors_available": [
+      "Blue",
+      "Beige",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0072",
+    "article_number": "919.467.47",
+    "name": "IKEA 365+ Glass, set of 6",
+    "category": "Kitchen",
+    "product_type": "Glass, set of 6",
+    "price": 130,
+    "currency": "SEK",
+    "stock": 93,
+    "store_location": {
+      "aisle": 16,
+      "bay": 3,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Can be placed anywhere in the room. Made from sustainable materials. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 131,
+      "width": 112,
+      "height": 43,
+      "unit": "cm"
+    },
+    "weight": 23.7,
+    "colors_available": [
+      "Blue",
+      "Black",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0073",
+    "article_number": "662.410.12",
+    "name": "RINNIG Food container, set of 3",
+    "category": "Kitchen",
+    "product_type": "Food container, set of 3",
+    "price": 200,
+    "currency": "SEK",
+    "stock": 22,
+    "store_location": {
+      "aisle": 18,
+      "bay": 6,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Good to know: wipe clean with a damp cloth. Easy to clean and maintain. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 82,
+      "width": 101,
+      "height": 75,
+      "unit": "cm"
+    },
+    "weight": 2.5,
+    "colors_available": [
+      "White",
+      "Black",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0074",
+    "article_number": "699.935.95",
+    "name": "LÄTTÖL Cookware set, 5 pieces",
+    "category": "Kitchen",
+    "product_type": "Cookware set, 5 pieces",
+    "price": 1490,
+    "currency": "SEK",
+    "stock": 35,
+    "store_location": {
+      "aisle": 16,
+      "bay": 3,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Good to know: wipe clean with a damp cloth. Matches well with other furniture in the series. Renewable material (wood). Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 127,
+      "width": 92,
+      "height": 13,
+      "unit": "cm"
+    },
+    "weight": 46.1,
+    "colors_available": [
+      "Natural",
+      "Grey",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0075",
+    "article_number": "615.532.43",
+    "name": "OFTAST Knife set, 3-piece",
+    "category": "Kitchen",
+    "product_type": "Knife set, 3-piece",
+    "price": 280,
+    "currency": "SEK",
+    "stock": 1,
+    "store_location": {
+      "aisle": 16,
+      "bay": 4,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 160,
+      "width": 148,
+      "height": 16,
+      "unit": "cm"
+    },
+    "weight": 20.0,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0076",
+    "article_number": "367.162.24",
+    "name": "IKEA 365+ Pot with lid",
+    "category": "Kitchen",
+    "product_type": "Pot with lid",
+    "price": 340,
+    "currency": "SEK",
+    "stock": 29,
+    "store_location": {
+      "aisle": 17,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Easy to clean and maintain. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 191,
+      "width": 123,
+      "height": 17,
+      "unit": "cm"
+    },
+    "weight": 42.1,
+    "colors_available": [
+      "Black",
+      "Blue",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0077",
+    "article_number": "467.133.70",
+    "name": "IKEA 365+ Mixing bowl set",
+    "category": "Kitchen",
+    "product_type": "Mixing bowl set",
+    "price": 195,
+    "currency": "SEK",
+    "stock": 81,
+    "store_location": {
+      "aisle": 15,
+      "bay": 8,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Made from sustainable materials. Designed to be used for years to come. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 52,
+      "width": 29,
+      "height": 33,
+      "unit": "cm"
+    },
+    "weight": 15.1,
+    "colors_available": [
+      "Black",
+      "Natural",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0078",
+    "article_number": "763.512.48",
+    "name": "KONCIS Cookware set, 5 pieces",
+    "category": "Kitchen",
+    "product_type": "Cookware set, 5 pieces",
+    "price": 320,
+    "currency": "SEK",
+    "stock": 48,
+    "store_location": {
+      "aisle": 15,
+      "bay": 5,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Designed to be used for years to come. Renewable material (wood). Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 133,
+      "width": 60,
+      "height": 49,
+      "unit": "cm"
+    },
+    "weight": 12.0,
+    "colors_available": [
+      "Brown",
+      "Natural",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0079",
+    "article_number": "328.595.91",
+    "name": "MIXTUR Knife set, 3-piece",
+    "category": "Kitchen",
+    "product_type": "Knife set, 3-piece",
+    "price": 325,
+    "currency": "SEK",
+    "stock": 17,
+    "store_location": {
+      "aisle": 17,
+      "bay": 10,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Matches well with other furniture in the series. Made from sustainable materials. Easy to clean and maintain. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 96,
+      "width": 148,
+      "height": 54,
+      "unit": "cm"
+    },
+    "weight": 12.1,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0080",
+    "article_number": "371.296.82",
+    "name": "OFTAST Kitchen cart",
+    "category": "Kitchen",
+    "product_type": "Kitchen cart",
+    "price": 870,
+    "currency": "SEK",
+    "stock": 85,
+    "store_location": {
+      "aisle": 18,
+      "bay": 4,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Can be placed anywhere in the room. Renewable material (wood). Made from sustainable materials.",
+    "dimensions": {
+      "length": 100,
+      "width": 85,
+      "height": 73,
+      "unit": "cm"
+    },
+    "weight": 25.0,
+    "colors_available": [
+      "Brown",
+      "White"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0081",
+    "article_number": "110.295.73",
+    "name": "RINNIG Dining table",
+    "category": "Kitchen",
+    "product_type": "Dining table",
+    "price": 3955,
+    "currency": "SEK",
+    "stock": 32,
+    "store_location": {
+      "aisle": 18,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Renewable material (wood). Space-saving design. Easy to assemble - no tools required. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 189,
+      "width": 118,
+      "height": 68,
+      "unit": "cm"
+    },
+    "weight": 21.5,
+    "colors_available": [
+      "Beige",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0082",
+    "article_number": "472.410.50",
+    "name": "GRADVIS Hand towel",
+    "category": "Bathroom",
+    "product_type": "Hand towel",
+    "price": 80,
+    "currency": "SEK",
+    "stock": 24,
+    "store_location": {
+      "aisle": 20,
+      "bay": 5,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Can be placed anywhere in the room. Matches well with other furniture in the series. Renewable material (wood). Designed to be used for years to come.",
+    "dimensions": {
+      "length": 126,
+      "width": 132,
+      "height": 99,
+      "unit": "cm"
+    },
+    "weight": 30.8,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0083",
+    "article_number": "704.713.40",
+    "name": "IKEA PS Wall shelf",
+    "category": "Bathroom",
+    "product_type": "Wall shelf",
+    "price": 320,
+    "currency": "SEK",
+    "stock": 35,
+    "store_location": {
+      "aisle": 21,
+      "bay": 10,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Easy to assemble - no tools required. Designed to be used for years to come. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 67,
+      "width": 43,
+      "height": 66,
+      "unit": "cm"
+    },
+    "weight": 17.1,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0084",
+    "article_number": "727.876.63",
+    "name": "RÅSKOG Bathmat",
+    "category": "Bathroom",
+    "product_type": "Bathmat",
+    "price": 105,
+    "currency": "SEK",
+    "stock": 28,
+    "store_location": {
+      "aisle": 19,
+      "bay": 8,
+      "section": "C"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Made from sustainable materials.",
+    "dimensions": {
+      "length": 99,
+      "width": 97,
+      "height": 14,
+      "unit": "cm"
+    },
+    "weight": 22.2,
+    "colors_available": [
+      "Beige",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0085",
+    "article_number": "826.640.36",
+    "name": "POÄNG Bathmat",
+    "category": "Bathroom",
+    "product_type": "Bathmat",
+    "price": 280,
+    "currency": "SEK",
+    "stock": 58,
+    "store_location": {
+      "aisle": 21,
+      "bay": 6,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Matches well with other furniture in the series. Space-saving design. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 156,
+      "width": 142,
+      "height": 87,
+      "unit": "cm"
+    },
+    "weight": 27.9,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0086",
+    "article_number": "943.226.77",
+    "name": "TVILLING Mirror",
+    "category": "Bathroom",
+    "product_type": "Mirror",
+    "price": 560,
+    "currency": "SEK",
+    "stock": 28,
+    "store_location": {
+      "aisle": 19,
+      "bay": 9,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Matches well with other furniture in the series. Easy to clean and maintain. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 82,
+      "width": 67,
+      "height": 15,
+      "unit": "cm"
+    },
+    "weight": 18.6,
+    "colors_available": [
+      "Beige",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0087",
+    "article_number": "944.489.15",
+    "name": "BILLY Bathmat",
+    "category": "Bathroom",
+    "product_type": "Bathmat",
+    "price": 215,
+    "currency": "SEK",
+    "stock": 58,
+    "store_location": {
+      "aisle": 21,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Good to know: wipe clean with a damp cloth. Adjustable feet for stability on uneven floors. Matches well with other furniture in the series. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 125,
+      "width": 25,
+      "height": 100,
+      "unit": "cm"
+    },
+    "weight": 49.3,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0088",
+    "article_number": "691.837.18",
+    "name": "STUVA Mirror cabinet",
+    "category": "Bathroom",
+    "product_type": "Mirror cabinet",
+    "price": 1555,
+    "currency": "SEK",
+    "stock": 50,
+    "store_location": {
+      "aisle": 21,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Scandinavian design meets functionality. Made from sustainable materials. Good to know: wipe clean with a damp cloth. Space-saving design. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 76,
+      "width": 71,
+      "height": 65,
+      "unit": "cm"
+    },
+    "weight": 19.4,
+    "colors_available": [
+      "Grey",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0089",
+    "article_number": "137.954.92",
+    "name": "VINTER Wash-stand with 2 drawers",
+    "category": "Bathroom",
+    "product_type": "Wash-stand with 2 drawers",
+    "price": 2460,
+    "currency": "SEK",
+    "stock": 79,
+    "store_location": {
+      "aisle": 19,
+      "bay": 3,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Renewable material (wood). Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 63,
+      "width": 79,
+      "height": 32,
+      "unit": "cm"
+    },
+    "weight": 44.6,
+    "colors_available": [
+      "Natural",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0090",
+    "article_number": "591.727.32",
+    "name": "FEJKA Hand towel",
+    "category": "Bathroom",
+    "product_type": "Hand towel",
+    "price": 80,
+    "currency": "SEK",
+    "stock": 10,
+    "store_location": {
+      "aisle": 19,
+      "bay": 2,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Matches well with other furniture in the series. Can be placed anywhere in the room. Made from sustainable materials. Space-saving design.",
+    "dimensions": {
+      "length": 64,
+      "width": 127,
+      "height": 81,
+      "unit": "cm"
+    },
+    "weight": 13.0,
+    "colors_available": [
+      "Natural",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0091",
+    "article_number": "506.631.89",
+    "name": "BESTÅ Towel rack",
+    "category": "Bathroom",
+    "product_type": "Towel rack",
+    "price": 305,
+    "currency": "SEK",
+    "stock": 39,
+    "store_location": {
+      "aisle": 20,
+      "bay": 7,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Made from sustainable materials. Renewable material (wood).",
+    "dimensions": {
+      "length": 154,
+      "width": 138,
+      "height": 56,
+      "unit": "cm"
+    },
+    "weight": 19.1,
+    "colors_available": [
+      "Black",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0092",
+    "article_number": "516.719.84",
+    "name": "KALLAX Hand towel",
+    "category": "Bathroom",
+    "product_type": "Hand towel",
+    "price": 80,
+    "currency": "SEK",
+    "stock": 52,
+    "store_location": {
+      "aisle": 19,
+      "bay": 6,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 76,
+      "width": 20,
+      "height": 29,
+      "unit": "cm"
+    },
+    "weight": 45.3,
+    "colors_available": [
+      "Beige",
+      "Black"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0093",
+    "article_number": "982.964.80",
+    "name": "PLATSA Bathroom shelf unit",
+    "category": "Bathroom",
+    "product_type": "Bathroom shelf unit",
+    "price": 385,
+    "currency": "SEK",
+    "stock": 71,
+    "store_location": {
+      "aisle": 21,
+      "bay": 6,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Made from sustainable materials. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 46,
+      "width": 97,
+      "height": 54,
+      "unit": "cm"
+    },
+    "weight": 5.7,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0094",
+    "article_number": "745.618.40",
+    "name": "PLATSA Bathroom shelf unit",
+    "category": "Bathroom",
+    "product_type": "Bathroom shelf unit",
+    "price": 495,
+    "currency": "SEK",
+    "stock": 99,
+    "store_location": {
+      "aisle": 19,
+      "bay": 3,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Easy to clean and maintain. Adjustable feet for stability on uneven floors. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 126,
+      "width": 80,
+      "height": 21,
+      "unit": "cm"
+    },
+    "weight": 49.8,
+    "colors_available": [
+      "Natural",
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0095",
+    "article_number": "784.825.24",
+    "name": "FEJKA Hand towel",
+    "category": "Bathroom",
+    "product_type": "Hand towel",
+    "price": 40,
+    "currency": "SEK",
+    "stock": 11,
+    "store_location": {
+      "aisle": 20,
+      "bay": 4,
+      "section": "A"
+    },
+    "description": "Simple, modern design with clean lines. Made from sustainable materials. Easy to assemble - no tools required. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 140,
+      "width": 31,
+      "height": 52,
+      "unit": "cm"
+    },
+    "weight": 3.0,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0096",
+    "article_number": "165.877.31",
+    "name": "STUVA Bathmat",
+    "category": "Bathroom",
+    "product_type": "Bathmat",
+    "price": 105,
+    "currency": "SEK",
+    "stock": 95,
+    "store_location": {
+      "aisle": 20,
+      "bay": 10,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Easy to clean and maintain. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 163,
+      "width": 130,
+      "height": 63,
+      "unit": "cm"
+    },
+    "weight": 24.7,
+    "colors_available": [
+      "Black",
+      "Blue",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0097",
+    "article_number": "510.280.89",
+    "name": "FRIHETEN Towel rack",
+    "category": "Bathroom",
+    "product_type": "Towel rack",
+    "price": 230,
+    "currency": "SEK",
+    "stock": 26,
+    "store_location": {
+      "aisle": 19,
+      "bay": 1,
+      "section": "C"
+    },
+    "description": "Practical and stylish. Renewable material (wood). Easy to assemble - no tools required. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 81,
+      "width": 78,
+      "height": 15,
+      "unit": "cm"
+    },
+    "weight": 41.0,
+    "colors_available": [
+      "Blue",
+      "Brown",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0098",
+    "article_number": "573.968.28",
+    "name": "BESTÅ Soap dispenser",
+    "category": "Bathroom",
+    "product_type": "Soap dispenser",
+    "price": 70,
+    "currency": "SEK",
+    "stock": 90,
+    "store_location": {
+      "aisle": 21,
+      "bay": 5,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Easy to assemble - no tools required. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 155,
+      "width": 89,
+      "height": 98,
+      "unit": "cm"
+    },
+    "weight": 48.5,
+    "colors_available": [
+      "White",
+      "Black",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0099",
+    "article_number": "615.364.56",
+    "name": "HEMNES Bathroom shelf unit",
+    "category": "Bathroom",
+    "product_type": "Bathroom shelf unit",
+    "price": 225,
+    "currency": "SEK",
+    "stock": 83,
+    "store_location": {
+      "aisle": 19,
+      "bay": 10,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Good to know: wipe clean with a damp cloth. Matches well with other furniture in the series. Can be placed anywhere in the room. Made from sustainable materials.",
+    "dimensions": {
+      "length": 118,
+      "width": 36,
+      "height": 79,
+      "unit": "cm"
+    },
+    "weight": 0.7,
+    "colors_available": [
+      "Grey",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0100",
+    "article_number": "119.173.53",
+    "name": "RÅSKOG Bathroom shelf unit",
+    "category": "Bathroom",
+    "product_type": "Bathroom shelf unit",
+    "price": 680,
+    "currency": "SEK",
+    "stock": 18,
+    "store_location": {
+      "aisle": 21,
+      "bay": 6,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Renewable material (wood). Space-saving design. Designed to be used for years to come. Made from sustainable materials.",
+    "dimensions": {
+      "length": 159,
+      "width": 108,
+      "height": 72,
+      "unit": "cm"
+    },
+    "weight": 7.3,
+    "colors_available": [
+      "Beige",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0101",
+    "article_number": "828.578.66",
+    "name": "PAX Hand towel",
+    "category": "Bathroom",
+    "product_type": "Hand towel",
+    "price": 70,
+    "currency": "SEK",
+    "stock": 93,
+    "store_location": {
+      "aisle": 21,
+      "bay": 3,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Easy to clean and maintain. Made from sustainable materials.",
+    "dimensions": {
+      "length": 51,
+      "width": 82,
+      "height": 67,
+      "unit": "cm"
+    },
+    "weight": 37.8,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0102",
+    "article_number": "885.849.64",
+    "name": "POÄNG Soap dispenser",
+    "category": "Bathroom",
+    "product_type": "Soap dispenser",
+    "price": 40,
+    "currency": "SEK",
+    "stock": 90,
+    "store_location": {
+      "aisle": 19,
+      "bay": 9,
+      "section": "C"
+    },
+    "description": "Durable and easy to assemble. Easy to clean and maintain. Renewable material (wood). Matches well with other furniture in the series. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 41,
+      "width": 47,
+      "height": 29,
+      "unit": "cm"
+    },
+    "weight": 25.6,
+    "colors_available": [
+      "White",
+      "Blue",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0103",
+    "article_number": "593.828.81",
+    "name": "PAX Bath towel",
+    "category": "Bathroom",
+    "product_type": "Bath towel",
+    "price": 160,
+    "currency": "SEK",
+    "stock": 39,
+    "store_location": {
+      "aisle": 19,
+      "bay": 4,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Renewable material (wood). Easy to clean and maintain.",
+    "dimensions": {
+      "length": 52,
+      "width": 110,
+      "height": 60,
+      "unit": "cm"
+    },
+    "weight": 27.8,
+    "colors_available": [
+      "Grey",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0104",
+    "article_number": "318.307.96",
+    "name": "SMYCKA Towel rack",
+    "category": "Bathroom",
+    "product_type": "Towel rack",
+    "price": 315,
+    "currency": "SEK",
+    "stock": 32,
+    "store_location": {
+      "aisle": 21,
+      "bay": 7,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Easy to clean and maintain. Good to know: wipe clean with a damp cloth. Made from sustainable materials. Renewable material (wood).",
+    "dimensions": {
+      "length": 162,
+      "width": 135,
+      "height": 58,
+      "unit": "cm"
+    },
+    "weight": 45.9,
+    "colors_available": [
+      "Beige",
+      "Natural",
+      "Black"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0105",
+    "article_number": "213.267.80",
+    "name": "STUVA Mirror cabinet",
+    "category": "Bathroom",
+    "product_type": "Mirror cabinet",
+    "price": 1140,
+    "currency": "SEK",
+    "stock": 79,
+    "store_location": {
+      "aisle": 19,
+      "bay": 1,
+      "section": "C"
+    },
+    "description": "Practical and stylish. Renewable material (wood). Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 47,
+      "width": 28,
+      "height": 47,
+      "unit": "cm"
+    },
+    "weight": 32.5,
+    "colors_available": [
+      "Grey",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0106",
+    "article_number": "364.622.20",
+    "name": "POÄNG Mirror",
+    "category": "Bathroom",
+    "product_type": "Mirror",
+    "price": 370,
+    "currency": "SEK",
+    "stock": 15,
+    "store_location": {
+      "aisle": 20,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Practical and stylish. Space-saving design. Designed to be used for years to come. Matches well with other furniture in the series. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 44,
+      "width": 122,
+      "height": 30,
+      "unit": "cm"
+    },
+    "weight": 49.5,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0107",
+    "article_number": "944.415.29",
+    "name": "SMYCKA Storage box with lid",
+    "category": "Bathroom",
+    "product_type": "Storage box with lid",
+    "price": 85,
+    "currency": "SEK",
+    "stock": 41,
+    "store_location": {
+      "aisle": 20,
+      "bay": 1,
+      "section": "C"
+    },
+    "description": "Practical and stylish. Made from sustainable materials. Designed to be used for years to come. Good to know: wipe clean with a damp cloth. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 20,
+      "width": 47,
+      "height": 81,
+      "unit": "cm"
+    },
+    "weight": 36.0,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0108",
+    "article_number": "542.832.40",
+    "name": "SANELA Bath towel",
+    "category": "Bathroom",
+    "product_type": "Bath towel",
+    "price": 105,
+    "currency": "SEK",
+    "stock": 34,
+    "store_location": {
+      "aisle": 20,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Made from sustainable materials. Easy to clean and maintain. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 90,
+      "width": 84,
+      "height": 33,
+      "unit": "cm"
+    },
+    "weight": 4.9,
+    "colors_available": [
+      "Black",
+      "Natural"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0109",
+    "article_number": "175.527.12",
+    "name": "IDANÄS Desk pad",
+    "category": "Office",
+    "product_type": "Desk pad",
+    "price": 115,
+    "currency": "SEK",
+    "stock": 37,
+    "store_location": {
+      "aisle": 23,
+      "bay": 10,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Designed to be used for years to come. Adjustable feet for stability on uneven floors. Space-saving design. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 135,
+      "width": 137,
+      "height": 60,
+      "unit": "cm"
+    },
+    "weight": 43.4,
+    "colors_available": [
+      "Beige",
+      "White",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0110",
+    "article_number": "700.900.18",
+    "name": "MALM Letter tray",
+    "category": "Office",
+    "product_type": "Letter tray",
+    "price": 80,
+    "currency": "SEK",
+    "stock": 4,
+    "store_location": {
+      "aisle": 24,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Practical and stylish. Can be placed anywhere in the room. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 68,
+      "width": 63,
+      "height": 60,
+      "unit": "cm"
+    },
+    "weight": 48.4,
+    "colors_available": [
+      "Beige",
+      "White",
+      "Natural"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0111",
+    "article_number": "899.972.77",
+    "name": "PLATSA Drawer unit on castors",
+    "category": "Office",
+    "product_type": "Drawer unit on castors",
+    "price": 1015,
+    "currency": "SEK",
+    "stock": 8,
+    "store_location": {
+      "aisle": 22,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Made from sustainable materials. Space-saving design.",
+    "dimensions": {
+      "length": 162,
+      "width": 102,
+      "height": 39,
+      "unit": "cm"
+    },
+    "weight": 7.1,
+    "colors_available": [
+      "Black",
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0112",
+    "article_number": "270.124.40",
+    "name": "HEMNES Monitor stand",
+    "category": "Office",
+    "product_type": "Monitor stand",
+    "price": 225,
+    "currency": "SEK",
+    "stock": 44,
+    "store_location": {
+      "aisle": 24,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Renewable material (wood). Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 145,
+      "width": 144,
+      "height": 71,
+      "unit": "cm"
+    },
+    "weight": 31.3,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0113",
+    "article_number": "860.905.39",
+    "name": "IVAR Filing cabinet",
+    "category": "Office",
+    "product_type": "Filing cabinet",
+    "price": 950,
+    "currency": "SEK",
+    "stock": 81,
+    "store_location": {
+      "aisle": 22,
+      "bay": 9,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Matches well with other furniture in the series. Made from sustainable materials.",
+    "dimensions": {
+      "length": 25,
+      "width": 134,
+      "height": 57,
+      "unit": "cm"
+    },
+    "weight": 45.6,
+    "colors_available": [
+      "Beige",
+      "Brown",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0114",
+    "article_number": "968.499.77",
+    "name": "BESTÅ Desk organizer",
+    "category": "Office",
+    "product_type": "Desk organizer",
+    "price": 110,
+    "currency": "SEK",
+    "stock": 0,
+    "store_location": {
+      "aisle": 24,
+      "bay": 1,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Easy to clean and maintain. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 96,
+      "width": 62,
+      "height": 29,
+      "unit": "cm"
+    },
+    "weight": 26.8,
+    "colors_available": [
+      "Grey",
+      "Black"
+    ],
+    "assembly_required": false,
+    "in_stock": false
+  },
+  {
+    "id": "prod_0115",
+    "article_number": "178.742.28",
+    "name": "PLATSA Letter tray",
+    "category": "Office",
+    "product_type": "Letter tray",
+    "price": 60,
+    "currency": "SEK",
+    "stock": 7,
+    "store_location": {
+      "aisle": 24,
+      "bay": 3,
+      "section": "A"
+    },
+    "description": "Simple, modern design with clean lines. Easy to assemble - no tools required. Adjustable feet for stability on uneven floors. Made from sustainable materials. Space-saving design.",
+    "dimensions": {
+      "length": 149,
+      "width": 33,
+      "height": 29,
+      "unit": "cm"
+    },
+    "weight": 10.1,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0116",
+    "article_number": "569.373.22",
+    "name": "POÄNG Footrest",
+    "category": "Office",
+    "product_type": "Footrest",
+    "price": 285,
+    "currency": "SEK",
+    "stock": 46,
+    "store_location": {
+      "aisle": 24,
+      "bay": 5,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Made from sustainable materials. Adjustable feet for stability on uneven floors. Good to know: wipe clean with a damp cloth. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 125,
+      "width": 136,
+      "height": 24,
+      "unit": "cm"
+    },
+    "weight": 10.4,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0117",
+    "article_number": "841.380.79",
+    "name": "MALM Bookcase",
+    "category": "Office",
+    "product_type": "Bookcase",
+    "price": 1420,
+    "currency": "SEK",
+    "stock": 34,
+    "store_location": {
+      "aisle": 24,
+      "bay": 3,
+      "section": "B"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Matches well with other furniture in the series. Renewable material (wood).",
+    "dimensions": {
+      "length": 182,
+      "width": 21,
+      "height": 31,
+      "unit": "cm"
+    },
+    "weight": 29.3,
+    "colors_available": [
+      "Brown",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0118",
+    "article_number": "228.451.89",
+    "name": "LISABO Filing cabinet",
+    "category": "Office",
+    "product_type": "Filing cabinet",
+    "price": 405,
+    "currency": "SEK",
+    "stock": 24,
+    "store_location": {
+      "aisle": 22,
+      "bay": 2,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Space-saving design. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 181,
+      "width": 92,
+      "height": 97,
+      "unit": "cm"
+    },
+    "weight": 6.8,
+    "colors_available": [
+      "Blue",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0119",
+    "article_number": "509.225.96",
+    "name": "IDANÄS Desk organizer",
+    "category": "Office",
+    "product_type": "Desk organizer",
+    "price": 135,
+    "currency": "SEK",
+    "stock": 23,
+    "store_location": {
+      "aisle": 23,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Easy to assemble - no tools required. Matches well with other furniture in the series. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 83,
+      "width": 96,
+      "height": 62,
+      "unit": "cm"
+    },
+    "weight": 41.3,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0120",
+    "article_number": "401.206.10",
+    "name": "BESTÅ Cable management box",
+    "category": "Office",
+    "product_type": "Cable management box",
+    "price": 70,
+    "currency": "SEK",
+    "stock": 23,
+    "store_location": {
+      "aisle": 23,
+      "bay": 9,
+      "section": "C"
+    },
+    "description": "Practical and stylish. Can be placed anywhere in the room. Space-saving design. Easy to assemble - no tools required. Renewable material (wood).",
+    "dimensions": {
+      "length": 150,
+      "width": 25,
+      "height": 93,
+      "unit": "cm"
+    },
+    "weight": 32.9,
+    "colors_available": [
+      "White",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0121",
+    "article_number": "772.657.57",
+    "name": "IVAR Filing cabinet",
+    "category": "Office",
+    "product_type": "Filing cabinet",
+    "price": 850,
+    "currency": "SEK",
+    "stock": 82,
+    "store_location": {
+      "aisle": 24,
+      "bay": 1,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Good to know: wipe clean with a damp cloth. Made from sustainable materials. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 24,
+      "width": 52,
+      "height": 19,
+      "unit": "cm"
+    },
+    "weight": 32.2,
+    "colors_available": [
+      "Grey",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0122",
+    "article_number": "794.526.17",
+    "name": "RÅSKOG Desk",
+    "category": "Office",
+    "product_type": "Desk",
+    "price": 2740,
+    "currency": "SEK",
+    "stock": 42,
+    "store_location": {
+      "aisle": 23,
+      "bay": 1,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Renewable material (wood). Easy to clean and maintain. Matches well with other furniture in the series. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 55,
+      "width": 92,
+      "height": 23,
+      "unit": "cm"
+    },
+    "weight": 36.0,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0123",
+    "article_number": "935.219.72",
+    "name": "HEMNES Drawer unit on castors",
+    "category": "Office",
+    "product_type": "Drawer unit on castors",
+    "price": 695,
+    "currency": "SEK",
+    "stock": 6,
+    "store_location": {
+      "aisle": 23,
+      "bay": 10,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Easy to clean and maintain. Adjustable feet for stability on uneven floors. Can be placed anywhere in the room. Made from sustainable materials.",
+    "dimensions": {
+      "length": 183,
+      "width": 132,
+      "height": 44,
+      "unit": "cm"
+    },
+    "weight": 25.9,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0124",
+    "article_number": "313.435.41",
+    "name": "MALM Footrest",
+    "category": "Office",
+    "product_type": "Footrest",
+    "price": 250,
+    "currency": "SEK",
+    "stock": 83,
+    "store_location": {
+      "aisle": 23,
+      "bay": 8,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Easy to clean and maintain. Can be placed anywhere in the room. Good to know: wipe clean with a damp cloth. Made from sustainable materials.",
+    "dimensions": {
+      "length": 35,
+      "width": 137,
+      "height": 55,
+      "unit": "cm"
+    },
+    "weight": 23.7,
+    "colors_available": [
+      "Brown",
+      "Black",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0125",
+    "article_number": "698.563.98",
+    "name": "LISABO Desk organizer",
+    "category": "Office",
+    "product_type": "Desk organizer",
+    "price": 90,
+    "currency": "SEK",
+    "stock": 18,
+    "store_location": {
+      "aisle": 24,
+      "bay": 10,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Designed to be used for years to come. Space-saving design. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 112,
+      "width": 124,
+      "height": 19,
+      "unit": "cm"
+    },
+    "weight": 1.5,
+    "colors_available": [
+      "Beige",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0126",
+    "article_number": "116.295.39",
+    "name": "MALM Desk",
+    "category": "Office",
+    "product_type": "Desk",
+    "price": 685,
+    "currency": "SEK",
+    "stock": 24,
+    "store_location": {
+      "aisle": 23,
+      "bay": 10,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Easy to clean and maintain. Space-saving design. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 105,
+      "width": 22,
+      "height": 51,
+      "unit": "cm"
+    },
+    "weight": 23.9,
+    "colors_available": [
+      "White",
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0127",
+    "article_number": "903.517.68",
+    "name": "NORDLI Monitor stand",
+    "category": "Office",
+    "product_type": "Monitor stand",
+    "price": 455,
+    "currency": "SEK",
+    "stock": 17,
+    "store_location": {
+      "aisle": 24,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Can be placed anywhere in the room. Designed to be used for years to come. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 145,
+      "width": 85,
+      "height": 50,
+      "unit": "cm"
+    },
+    "weight": 33.4,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0128",
+    "article_number": "838.933.76",
+    "name": "KALLAX Footrest",
+    "category": "Office",
+    "product_type": "Footrest",
+    "price": 205,
+    "currency": "SEK",
+    "stock": 13,
+    "store_location": {
+      "aisle": 22,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Designed to be used for years to come. Matches well with other furniture in the series. Renewable material (wood).",
+    "dimensions": {
+      "length": 108,
+      "width": 63,
+      "height": 63,
+      "unit": "cm"
+    },
+    "weight": 30.5,
+    "colors_available": [
+      "Grey",
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0129",
+    "article_number": "875.729.92",
+    "name": "PAX Footrest",
+    "category": "Office",
+    "product_type": "Footrest",
+    "price": 145,
+    "currency": "SEK",
+    "stock": 53,
+    "store_location": {
+      "aisle": 22,
+      "bay": 2,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Designed to be used for years to come. Space-saving design. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 76,
+      "width": 21,
+      "height": 59,
+      "unit": "cm"
+    },
+    "weight": 9.6,
+    "colors_available": [
+      "Natural",
+      "White",
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0130",
+    "article_number": "251.940.95",
+    "name": "NORDLI Filing cabinet",
+    "category": "Office",
+    "product_type": "Filing cabinet",
+    "price": 415,
+    "currency": "SEK",
+    "stock": 0,
+    "store_location": {
+      "aisle": 23,
+      "bay": 4,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Easy to assemble - no tools required. Easy to clean and maintain. Space-saving design. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 21,
+      "width": 28,
+      "height": 75,
+      "unit": "cm"
+    },
+    "weight": 18.4,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": false
+  },
+  {
+    "id": "prod_0131",
+    "article_number": "160.606.93",
+    "name": "POÄNG Drawer unit on castors",
+    "category": "Office",
+    "product_type": "Drawer unit on castors",
+    "price": 375,
+    "currency": "SEK",
+    "stock": 23,
+    "store_location": {
+      "aisle": 23,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Easy to assemble - no tools required. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 44,
+      "width": 128,
+      "height": 87,
+      "unit": "cm"
+    },
+    "weight": 20.6,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0132",
+    "article_number": "734.494.76",
+    "name": "BESTÅ Office chair",
+    "category": "Office",
+    "product_type": "Office chair",
+    "price": 2290,
+    "currency": "SEK",
+    "stock": 22,
+    "store_location": {
+      "aisle": 23,
+      "bay": 3,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Made from sustainable materials. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 43,
+      "width": 111,
+      "height": 55,
+      "unit": "cm"
+    },
+    "weight": 6.2,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0133",
+    "article_number": "352.119.89",
+    "name": "NORDLI Letter tray",
+    "category": "Office",
+    "product_type": "Letter tray",
+    "price": 85,
+    "currency": "SEK",
+    "stock": 32,
+    "store_location": {
+      "aisle": 23,
+      "bay": 7,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Matches well with other furniture in the series. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 100,
+      "width": 131,
+      "height": 42,
+      "unit": "cm"
+    },
+    "weight": 27.8,
+    "colors_available": [
+      "Brown",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0134",
+    "article_number": "452.428.59",
+    "name": "PLATSA Filing cabinet",
+    "category": "Office",
+    "product_type": "Filing cabinet",
+    "price": 1350,
+    "currency": "SEK",
+    "stock": 10,
+    "store_location": {
+      "aisle": 22,
+      "bay": 2,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Space-saving design. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 56,
+      "width": 141,
+      "height": 60,
+      "unit": "cm"
+    },
+    "weight": 49.1,
+    "colors_available": [
+      "Grey",
+      "Black"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0135",
+    "article_number": "395.160.86",
+    "name": "PAX Office chair",
+    "category": "Office",
+    "product_type": "Office chair",
+    "price": 1655,
+    "currency": "SEK",
+    "stock": 59,
+    "store_location": {
+      "aisle": 23,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Made from sustainable materials. Matches well with other furniture in the series. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 86,
+      "width": 116,
+      "height": 29,
+      "unit": "cm"
+    },
+    "weight": 8.9,
+    "colors_available": [
+      "Grey",
+      "Beige",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0136",
+    "article_number": "531.258.40",
+    "name": "RÅSKOG Outdoor cushion",
+    "category": "Outdoor",
+    "product_type": "Outdoor cushion",
+    "price": 100,
+    "currency": "SEK",
+    "stock": 20,
+    "store_location": {
+      "aisle": 26,
+      "bay": 1,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Renewable material (wood). Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 130,
+      "width": 99,
+      "height": 70,
+      "unit": "cm"
+    },
+    "weight": 1.0,
+    "colors_available": [
+      "Blue",
+      "White",
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0137",
+    "article_number": "705.663.10",
+    "name": "VINTER Storage bench, outdoor",
+    "category": "Outdoor",
+    "product_type": "Storage bench, outdoor",
+    "price": 1990,
+    "currency": "SEK",
+    "stock": 26,
+    "store_location": {
+      "aisle": 26,
+      "bay": 10,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Easy to assemble - no tools required. Renewable material (wood). Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 133,
+      "width": 46,
+      "height": 81,
+      "unit": "cm"
+    },
+    "weight": 17.6,
+    "colors_available": [
+      "Blue",
+      "Brown",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0138",
+    "article_number": "841.180.53",
+    "name": "IDANÄS Watering can",
+    "category": "Outdoor",
+    "product_type": "Watering can",
+    "price": 105,
+    "currency": "SEK",
+    "stock": 1,
+    "store_location": {
+      "aisle": 25,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Simple, modern design with clean lines. Matches well with other furniture in the series. Renewable material (wood).",
+    "dimensions": {
+      "length": 82,
+      "width": 127,
+      "height": 96,
+      "unit": "cm"
+    },
+    "weight": 12.8,
+    "colors_available": [
+      "Brown",
+      "Grey",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0139",
+    "article_number": "482.259.51",
+    "name": "STUVA Blanket, outdoor",
+    "category": "Outdoor",
+    "product_type": "Blanket, outdoor",
+    "price": 540,
+    "currency": "SEK",
+    "stock": 45,
+    "store_location": {
+      "aisle": 25,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Timeless design that fits any home. Made from sustainable materials. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 63,
+      "width": 129,
+      "height": 74,
+      "unit": "cm"
+    },
+    "weight": 15.8,
+    "colors_available": [
+      "Beige",
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0140",
+    "article_number": "844.689.67",
+    "name": "BILLY Chair, outdoor",
+    "category": "Outdoor",
+    "product_type": "Chair, outdoor",
+    "price": 235,
+    "currency": "SEK",
+    "stock": 42,
+    "store_location": {
+      "aisle": 25,
+      "bay": 3,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Good to know: wipe clean with a damp cloth. Space-saving design. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 187,
+      "width": 119,
+      "height": 76,
+      "unit": "cm"
+    },
+    "weight": 39.7,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0141",
+    "article_number": "427.155.61",
+    "name": "FRIHETEN Table, outdoor",
+    "category": "Outdoor",
+    "product_type": "Table, outdoor",
+    "price": 1430,
+    "currency": "SEK",
+    "stock": 44,
+    "store_location": {
+      "aisle": 26,
+      "bay": 7,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Matches well with other furniture in the series. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 176,
+      "width": 85,
+      "height": 40,
+      "unit": "cm"
+    },
+    "weight": 30.1,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0142",
+    "article_number": "149.957.49",
+    "name": "KIVIK Blanket, outdoor",
+    "category": "Outdoor",
+    "product_type": "Blanket, outdoor",
+    "price": 205,
+    "currency": "SEK",
+    "stock": 71,
+    "store_location": {
+      "aisle": 25,
+      "bay": 6,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Renewable material (wood). Designed to be used for years to come.",
+    "dimensions": {
+      "length": 148,
+      "width": 128,
+      "height": 99,
+      "unit": "cm"
+    },
+    "weight": 38.4,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0143",
+    "article_number": "975.957.67",
+    "name": "RÅSKOG Chair, outdoor",
+    "category": "Outdoor",
+    "product_type": "Chair, outdoor",
+    "price": 530,
+    "currency": "SEK",
+    "stock": 3,
+    "store_location": {
+      "aisle": 26,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Space-saving design. Good to know: wipe clean with a damp cloth. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 23,
+      "width": 86,
+      "height": 13,
+      "unit": "cm"
+    },
+    "weight": 14.2,
+    "colors_available": [
+      "Black",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0144",
+    "article_number": "983.675.82",
+    "name": "LISABO Table, outdoor",
+    "category": "Outdoor",
+    "product_type": "Table, outdoor",
+    "price": 1805,
+    "currency": "SEK",
+    "stock": 8,
+    "store_location": {
+      "aisle": 26,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 137,
+      "width": 92,
+      "height": 76,
+      "unit": "cm"
+    },
+    "weight": 14.0,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0145",
+    "article_number": "496.967.41",
+    "name": "BILLY Outdoor cushion",
+    "category": "Outdoor",
+    "product_type": "Outdoor cushion",
+    "price": 255,
+    "currency": "SEK",
+    "stock": 43,
+    "store_location": {
+      "aisle": 26,
+      "bay": 6,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Designed to be used for years to come. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 85,
+      "width": 75,
+      "height": 65,
+      "unit": "cm"
+    },
+    "weight": 18.9,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0146",
+    "article_number": "746.186.75",
+    "name": "KNOPPÄNG Table, outdoor",
+    "category": "Outdoor",
+    "product_type": "Table, outdoor",
+    "price": 890,
+    "currency": "SEK",
+    "stock": 10,
+    "store_location": {
+      "aisle": 25,
+      "bay": 3,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Good to know: wipe clean with a damp cloth. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 86,
+      "width": 109,
+      "height": 88,
+      "unit": "cm"
+    },
+    "weight": 7.1,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0147",
+    "article_number": "656.604.92",
+    "name": "MAJGULL Storage bench, outdoor",
+    "category": "Outdoor",
+    "product_type": "Storage bench, outdoor",
+    "price": 1200,
+    "currency": "SEK",
+    "stock": 78,
+    "store_location": {
+      "aisle": 26,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Matches well with other furniture in the series. Designed to be used for years to come. Space-saving design.",
+    "dimensions": {
+      "length": 142,
+      "width": 61,
+      "height": 81,
+      "unit": "cm"
+    },
+    "weight": 15.2,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0148",
+    "article_number": "614.107.96",
+    "name": "NORDLI Watering can",
+    "category": "Outdoor",
+    "product_type": "Watering can",
+    "price": 130,
+    "currency": "SEK",
+    "stock": 89,
+    "store_location": {
+      "aisle": 25,
+      "bay": 6,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Easy to assemble - no tools required. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 37,
+      "width": 112,
+      "height": 58,
+      "unit": "cm"
+    },
+    "weight": 29.0,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0149",
+    "article_number": "775.860.78",
+    "name": "PAX Plant pot",
+    "category": "Outdoor",
+    "product_type": "Plant pot",
+    "price": 90,
+    "currency": "SEK",
+    "stock": 73,
+    "store_location": {
+      "aisle": 26,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Matches well with other furniture in the series. Designed to be used for years to come. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 82,
+      "width": 53,
+      "height": 65,
+      "unit": "cm"
+    },
+    "weight": 11.0,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0150",
+    "article_number": "997.677.25",
+    "name": "FRIHETEN Table, outdoor",
+    "category": "Outdoor",
+    "product_type": "Table, outdoor",
+    "price": 615,
+    "currency": "SEK",
+    "stock": 31,
+    "store_location": {
+      "aisle": 25,
+      "bay": 2,
+      "section": "B"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Made from sustainable materials. Space-saving design. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 63,
+      "width": 34,
+      "height": 33,
+      "unit": "cm"
+    },
+    "weight": 18.2,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0151",
+    "article_number": "394.508.88",
+    "name": "VIMLE Plant pot",
+    "category": "Outdoor",
+    "product_type": "Plant pot",
+    "price": 225,
+    "currency": "SEK",
+    "stock": 88,
+    "store_location": {
+      "aisle": 26,
+      "bay": 10,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Designed to be used for years to come. Renewable material (wood). Made from sustainable materials.",
+    "dimensions": {
+      "length": 148,
+      "width": 38,
+      "height": 47,
+      "unit": "cm"
+    },
+    "weight": 2.4,
+    "colors_available": [
+      "Black",
+      "Beige",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0152",
+    "article_number": "935.817.64",
+    "name": "MAJGULL Outdoor cushion",
+    "category": "Outdoor",
+    "product_type": "Outdoor cushion",
+    "price": 205,
+    "currency": "SEK",
+    "stock": 70,
+    "store_location": {
+      "aisle": 25,
+      "bay": 3,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Easy to clean and maintain. Matches well with other furniture in the series. Renewable material (wood).",
+    "dimensions": {
+      "length": 200,
+      "width": 105,
+      "height": 50,
+      "unit": "cm"
+    },
+    "weight": 49.2,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0153",
+    "article_number": "847.795.58",
+    "name": "GRADVIS Chair, outdoor",
+    "category": "Outdoor",
+    "product_type": "Chair, outdoor",
+    "price": 205,
+    "currency": "SEK",
+    "stock": 6,
+    "store_location": {
+      "aisle": 25,
+      "bay": 2,
+      "section": "B"
+    },
+    "description": "Scandinavian design meets functionality. Easy to clean and maintain. Good to know: wipe clean with a damp cloth. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 32,
+      "width": 67,
+      "height": 36,
+      "unit": "cm"
+    },
+    "weight": 5.2,
+    "colors_available": [
+      "Blue",
+      "Beige",
+      "Brown"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0154",
+    "article_number": "198.489.27",
+    "name": "BESTÅ Plant pot",
+    "category": "Outdoor",
+    "product_type": "Plant pot",
+    "price": 240,
+    "currency": "SEK",
+    "stock": 97,
+    "store_location": {
+      "aisle": 25,
+      "bay": 5,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Designed to be used for years to come. Adjustable feet for stability on uneven floors. Easy to clean and maintain. Made from sustainable materials.",
+    "dimensions": {
+      "length": 41,
+      "width": 94,
+      "height": 20,
+      "unit": "cm"
+    },
+    "weight": 21.3,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0155",
+    "article_number": "921.380.35",
+    "name": "FRIHETEN Storage bench, outdoor",
+    "category": "Outdoor",
+    "product_type": "Storage bench, outdoor",
+    "price": 905,
+    "currency": "SEK",
+    "stock": 15,
+    "store_location": {
+      "aisle": 26,
+      "bay": 5,
+      "section": "A"
+    },
+    "description": "Scandinavian design meets functionality. Matches well with other furniture in the series. Designed to be used for years to come. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 144,
+      "width": 91,
+      "height": 10,
+      "unit": "cm"
+    },
+    "weight": 8.0,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0156",
+    "article_number": "906.323.90",
+    "name": "BESTÅ Table, outdoor",
+    "category": "Outdoor",
+    "product_type": "Table, outdoor",
+    "price": 1120,
+    "currency": "SEK",
+    "stock": 39,
+    "store_location": {
+      "aisle": 25,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Made from sustainable materials. Can be placed anywhere in the room. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 155,
+      "width": 47,
+      "height": 50,
+      "unit": "cm"
+    },
+    "weight": 26.7,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0157",
+    "article_number": "178.616.65",
+    "name": "FRIHETEN Parasol",
+    "category": "Outdoor",
+    "product_type": "Parasol",
+    "price": 985,
+    "currency": "SEK",
+    "stock": 22,
+    "store_location": {
+      "aisle": 26,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Matches well with other furniture in the series. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 136,
+      "width": 118,
+      "height": 19,
+      "unit": "cm"
+    },
+    "weight": 40.1,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0158",
+    "article_number": "389.707.62",
+    "name": "GRADVIS Watering can",
+    "category": "Outdoor",
+    "product_type": "Watering can",
+    "price": 115,
+    "currency": "SEK",
+    "stock": 1,
+    "store_location": {
+      "aisle": 26,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 182,
+      "width": 66,
+      "height": 34,
+      "unit": "cm"
+    },
+    "weight": 47.9,
+    "colors_available": [
+      "Brown",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0159",
+    "article_number": "392.661.47",
+    "name": "SANELA String light, 12 bulbs",
+    "category": "Outdoor",
+    "product_type": "String light, 12 bulbs",
+    "price": 330,
+    "currency": "SEK",
+    "stock": 13,
+    "store_location": {
+      "aisle": 25,
+      "bay": 6,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Adjustable feet for stability on uneven floors. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 100,
+      "width": 35,
+      "height": 18,
+      "unit": "cm"
+    },
+    "weight": 22.0,
+    "colors_available": [
+      "Natural",
+      "Blue",
+      "White"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0160",
+    "article_number": "940.672.76",
+    "name": "NORDLI Storage bench, outdoor",
+    "category": "Outdoor",
+    "product_type": "Storage bench, outdoor",
+    "price": 1495,
+    "currency": "SEK",
+    "stock": 57,
+    "store_location": {
+      "aisle": 25,
+      "bay": 8,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Easy to clean and maintain. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 126,
+      "width": 84,
+      "height": 63,
+      "unit": "cm"
+    },
+    "weight": 41.3,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0161",
+    "article_number": "578.466.24",
+    "name": "PAX Sun lounger",
+    "category": "Outdoor",
+    "product_type": "Sun lounger",
+    "price": 675,
+    "currency": "SEK",
+    "stock": 59,
+    "store_location": {
+      "aisle": 26,
+      "bay": 9,
+      "section": "C"
+    },
+    "description": "Practical and stylish. Easy to assemble - no tools required. Renewable material (wood). Made from sustainable materials. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 73,
+      "width": 98,
+      "height": 94,
+      "unit": "cm"
+    },
+    "weight": 5.9,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0162",
+    "article_number": "211.711.86",
+    "name": "BILLY Storage bench, outdoor",
+    "category": "Outdoor",
+    "product_type": "Storage bench, outdoor",
+    "price": 740,
+    "currency": "SEK",
+    "stock": 49,
+    "store_location": {
+      "aisle": 26,
+      "bay": 8,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Easy to assemble - no tools required. Made from sustainable materials. Renewable material (wood).",
+    "dimensions": {
+      "length": 195,
+      "width": 77,
+      "height": 11,
+      "unit": "cm"
+    },
+    "weight": 11.9,
+    "colors_available": [
+      "Grey",
+      "White"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0163",
+    "article_number": "915.601.98",
+    "name": "DUNDRA Children's desk",
+    "category": "Kids",
+    "product_type": "Children's desk",
+    "price": 1035,
+    "currency": "SEK",
+    "stock": 34,
+    "store_location": {
+      "aisle": 28,
+      "bay": 8,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Renewable material (wood). Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 200,
+      "width": 31,
+      "height": 32,
+      "unit": "cm"
+    },
+    "weight": 42.6,
+    "colors_available": [
+      "White",
+      "Natural",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0164",
+    "article_number": "746.105.30",
+    "name": "MAMMUT Children's table",
+    "category": "Kids",
+    "product_type": "Children's table",
+    "price": 405,
+    "currency": "SEK",
+    "stock": 56,
+    "store_location": {
+      "aisle": 28,
+      "bay": 2,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Adjustable feet for stability on uneven floors. Space-saving design. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 134,
+      "width": 61,
+      "height": 68,
+      "unit": "cm"
+    },
+    "weight": 11.5,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0165",
+    "article_number": "790.705.99",
+    "name": "LUSTIGT Play kitchen",
+    "category": "Kids",
+    "product_type": "Play kitchen",
+    "price": 770,
+    "currency": "SEK",
+    "stock": 88,
+    "store_location": {
+      "aisle": 28,
+      "bay": 8,
+      "section": "C"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Can be placed anywhere in the room. Matches well with other furniture in the series. Made from sustainable materials.",
+    "dimensions": {
+      "length": 83,
+      "width": 112,
+      "height": 17,
+      "unit": "cm"
+    },
+    "weight": 19.5,
+    "colors_available": [
+      "Blue",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0166",
+    "article_number": "277.734.32",
+    "name": "MAMMUT Children's desk",
+    "category": "Kids",
+    "product_type": "Children's desk",
+    "price": 1185,
+    "currency": "SEK",
+    "stock": 31,
+    "store_location": {
+      "aisle": 28,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Made from sustainable materials. Designed to be used for years to come. Easy to clean and maintain. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 29,
+      "width": 119,
+      "height": 43,
+      "unit": "cm"
+    },
+    "weight": 30.2,
+    "colors_available": [
+      "Brown",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0167",
+    "article_number": "632.489.53",
+    "name": "MAMMUT Children's table",
+    "category": "Kids",
+    "product_type": "Children's table",
+    "price": 900,
+    "currency": "SEK",
+    "stock": 46,
+    "store_location": {
+      "aisle": 27,
+      "bay": 5,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 189,
+      "width": 64,
+      "height": 79,
+      "unit": "cm"
+    },
+    "weight": 13.7,
+    "colors_available": [
+      "Beige",
+      "Grey",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0168",
+    "article_number": "717.970.30",
+    "name": "KRITTER Children's desk",
+    "category": "Kids",
+    "product_type": "Children's desk",
+    "price": 800,
+    "currency": "SEK",
+    "stock": 11,
+    "store_location": {
+      "aisle": 27,
+      "bay": 5,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Designed to be used for years to come. Easy to clean and maintain. Renewable material (wood).",
+    "dimensions": {
+      "length": 83,
+      "width": 147,
+      "height": 13,
+      "unit": "cm"
+    },
+    "weight": 42.9,
+    "colors_available": [
+      "Brown",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0169",
+    "article_number": "159.493.55",
+    "name": "MAMMUT Children's bed",
+    "category": "Kids",
+    "product_type": "Children's bed",
+    "price": 955,
+    "currency": "SEK",
+    "stock": 97,
+    "store_location": {
+      "aisle": 27,
+      "bay": 2,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 34,
+      "width": 59,
+      "height": 10,
+      "unit": "cm"
+    },
+    "weight": 4.9,
+    "colors_available": [
+      "Blue",
+      "Grey",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0170",
+    "article_number": "545.612.35",
+    "name": "LATTJO Stuffed toy",
+    "category": "Kids",
+    "product_type": "Stuffed toy",
+    "price": 70,
+    "currency": "SEK",
+    "stock": 0,
+    "store_location": {
+      "aisle": 28,
+      "bay": 10,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Made from sustainable materials. Space-saving design.",
+    "dimensions": {
+      "length": 183,
+      "width": 94,
+      "height": 98,
+      "unit": "cm"
+    },
+    "weight": 34.1,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": false
+  },
+  {
+    "id": "prod_0171",
+    "article_number": "855.232.39",
+    "name": "SAGOSKATT Children's desk",
+    "category": "Kids",
+    "product_type": "Children's desk",
+    "price": 610,
+    "currency": "SEK",
+    "stock": 50,
+    "store_location": {
+      "aisle": 27,
+      "bay": 10,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Designed to be used for years to come. Good to know: wipe clean with a damp cloth. Can be placed anywhere in the room. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 146,
+      "width": 89,
+      "height": 99,
+      "unit": "cm"
+    },
+    "weight": 7.4,
+    "colors_available": [
+      "Blue",
+      "Natural",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0172",
+    "article_number": "966.604.38",
+    "name": "LATTJO Children's table",
+    "category": "Kids",
+    "product_type": "Children's table",
+    "price": 585,
+    "currency": "SEK",
+    "stock": 34,
+    "store_location": {
+      "aisle": 28,
+      "bay": 4,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Easy to assemble - no tools required. Matches well with other furniture in the series. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 126,
+      "width": 110,
+      "height": 10,
+      "unit": "cm"
+    },
+    "weight": 2.0,
+    "colors_available": [
+      "Black",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0173",
+    "article_number": "947.313.73",
+    "name": "KRITTER Children's desk",
+    "category": "Kids",
+    "product_type": "Children's desk",
+    "price": 760,
+    "currency": "SEK",
+    "stock": 23,
+    "store_location": {
+      "aisle": 27,
+      "bay": 10,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Made from sustainable materials. Renewable material (wood).",
+    "dimensions": {
+      "length": 70,
+      "width": 70,
+      "height": 19,
+      "unit": "cm"
+    },
+    "weight": 23.1,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0174",
+    "article_number": "780.535.49",
+    "name": "DUNDRA Children's bed",
+    "category": "Kids",
+    "product_type": "Children's bed",
+    "price": 1410,
+    "currency": "SEK",
+    "stock": 0,
+    "store_location": {
+      "aisle": 27,
+      "bay": 5,
+      "section": "D"
+    },
+    "description": "Timeless design that fits any home. Easy to assemble - no tools required. Adjustable feet for stability on uneven floors. Designed to be used for years to come. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 66,
+      "width": 119,
+      "height": 52,
+      "unit": "cm"
+    },
+    "weight": 32.3,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": false,
+    "in_stock": false
+  },
+  {
+    "id": "prod_0175",
+    "article_number": "931.926.65",
+    "name": "LATTJO Drawing paper roll",
+    "category": "Kids",
+    "product_type": "Drawing paper roll",
+    "price": 105,
+    "currency": "SEK",
+    "stock": 76,
+    "store_location": {
+      "aisle": 27,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Renewable material (wood). Can be placed anywhere in the room. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 144,
+      "width": 38,
+      "height": 78,
+      "unit": "cm"
+    },
+    "weight": 13.4,
+    "colors_available": [
+      "White",
+      "Grey",
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0176",
+    "article_number": "903.255.19",
+    "name": "LUSTIGT Children's desk",
+    "category": "Kids",
+    "product_type": "Children's desk",
+    "price": 605,
+    "currency": "SEK",
+    "stock": 75,
+    "store_location": {
+      "aisle": 28,
+      "bay": 10,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Can be placed anywhere in the room. Made from sustainable materials. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 101,
+      "width": 33,
+      "height": 44,
+      "unit": "cm"
+    },
+    "weight": 29.0,
+    "colors_available": [
+      "Grey",
+      "Black",
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0177",
+    "article_number": "585.220.51",
+    "name": "MÅLA Play kitchen",
+    "category": "Kids",
+    "product_type": "Play kitchen",
+    "price": 575,
+    "currency": "SEK",
+    "stock": 71,
+    "store_location": {
+      "aisle": 28,
+      "bay": 5,
+      "section": "B"
+    },
+    "description": "Scandinavian design meets functionality. Can be placed anywhere in the room. Designed to be used for years to come. Space-saving design.",
+    "dimensions": {
+      "length": 157,
+      "width": 34,
+      "height": 72,
+      "unit": "cm"
+    },
+    "weight": 6.6,
+    "colors_available": [
+      "Black",
+      "White",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0178",
+    "article_number": "151.486.34",
+    "name": "MAMMUT Children's chair",
+    "category": "Kids",
+    "product_type": "Children's chair",
+    "price": 260,
+    "currency": "SEK",
+    "stock": 96,
+    "store_location": {
+      "aisle": 27,
+      "bay": 8,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Renewable material (wood). Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 129,
+      "width": 47,
+      "height": 56,
+      "unit": "cm"
+    },
+    "weight": 10.8,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0179",
+    "article_number": "321.362.20",
+    "name": "DUNDRA Children's bed",
+    "category": "Kids",
+    "product_type": "Children's bed",
+    "price": 2490,
+    "currency": "SEK",
+    "stock": 67,
+    "store_location": {
+      "aisle": 28,
+      "bay": 8,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Renewable material (wood). Space-saving design.",
+    "dimensions": {
+      "length": 83,
+      "width": 142,
+      "height": 50,
+      "unit": "cm"
+    },
+    "weight": 3.6,
+    "colors_available": [
+      "Grey",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0180",
+    "article_number": "444.223.69",
+    "name": "MAMMUT Blackboard",
+    "category": "Kids",
+    "product_type": "Blackboard",
+    "price": 280,
+    "currency": "SEK",
+    "stock": 34,
+    "store_location": {
+      "aisle": 27,
+      "bay": 6,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Made from sustainable materials. Renewable material (wood). Easy to clean and maintain. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 79,
+      "width": 139,
+      "height": 43,
+      "unit": "cm"
+    },
+    "weight": 3.0,
+    "colors_available": [
+      "Blue",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0181",
+    "article_number": "340.467.45",
+    "name": "DUNDRA Stuffed toy",
+    "category": "Kids",
+    "product_type": "Stuffed toy",
+    "price": 50,
+    "currency": "SEK",
+    "stock": 92,
+    "store_location": {
+      "aisle": 27,
+      "bay": 6,
+      "section": "C"
+    },
+    "description": "Durable and easy to assemble. Adjustable feet for stability on uneven floors. Easy to clean and maintain. Can be placed anywhere in the room. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 105,
+      "width": 39,
+      "height": 90,
+      "unit": "cm"
+    },
+    "weight": 4.8,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0182",
+    "article_number": "567.610.68",
+    "name": "MAMMUT Toy storage",
+    "category": "Kids",
+    "product_type": "Toy storage",
+    "price": 215,
+    "currency": "SEK",
+    "stock": 60,
+    "store_location": {
+      "aisle": 28,
+      "bay": 7,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Space-saving design. Made from sustainable materials. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 140,
+      "width": 97,
+      "height": 74,
+      "unit": "cm"
+    },
+    "weight": 23.9,
+    "colors_available": [
+      "Black",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0183",
+    "article_number": "725.493.33",
+    "name": "BUSUNGE Toy storage",
+    "category": "Kids",
+    "product_type": "Toy storage",
+    "price": 695,
+    "currency": "SEK",
+    "stock": 2,
+    "store_location": {
+      "aisle": 28,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Renewable material (wood). Designed to be used for years to come. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 97,
+      "width": 132,
+      "height": 96,
+      "unit": "cm"
+    },
+    "weight": 14.0,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0184",
+    "article_number": "521.480.72",
+    "name": "DUNDRA Children's desk",
+    "category": "Kids",
+    "product_type": "Children's desk",
+    "price": 1105,
+    "currency": "SEK",
+    "stock": 53,
+    "store_location": {
+      "aisle": 28,
+      "bay": 2,
+      "section": "C"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 37,
+      "width": 74,
+      "height": 81,
+      "unit": "cm"
+    },
+    "weight": 16.6,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0185",
+    "article_number": "625.821.47",
+    "name": "SAGOSKATT Toy storage",
+    "category": "Kids",
+    "product_type": "Toy storage",
+    "price": 520,
+    "currency": "SEK",
+    "stock": 70,
+    "store_location": {
+      "aisle": 27,
+      "bay": 4,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Made from sustainable materials. Renewable material (wood). Space-saving design.",
+    "dimensions": {
+      "length": 191,
+      "width": 57,
+      "height": 94,
+      "unit": "cm"
+    },
+    "weight": 19.2,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0186",
+    "article_number": "219.159.56",
+    "name": "MÅLA Drawing paper roll",
+    "category": "Kids",
+    "product_type": "Drawing paper roll",
+    "price": 75,
+    "currency": "SEK",
+    "stock": 89,
+    "store_location": {
+      "aisle": 27,
+      "bay": 2,
+      "section": "A"
+    },
+    "description": "Scandinavian design meets functionality. Space-saving design. Designed to be used for years to come. Made from sustainable materials. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 172,
+      "width": 143,
+      "height": 47,
+      "unit": "cm"
+    },
+    "weight": 24.6,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0187",
+    "article_number": "979.586.76",
+    "name": "SAGOSKATT Step stool",
+    "category": "Kids",
+    "product_type": "Step stool",
+    "price": 215,
+    "currency": "SEK",
+    "stock": 63,
+    "store_location": {
+      "aisle": 28,
+      "bay": 7,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Easy to assemble - no tools required. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 91,
+      "width": 82,
+      "height": 88,
+      "unit": "cm"
+    },
+    "weight": 46.8,
+    "colors_available": [
+      "Brown"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0188",
+    "article_number": "368.557.17",
+    "name": "KRITTER Children's bed",
+    "category": "Kids",
+    "product_type": "Children's bed",
+    "price": 1265,
+    "currency": "SEK",
+    "stock": 27,
+    "store_location": {
+      "aisle": 28,
+      "bay": 2,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Matches well with other furniture in the series. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 155,
+      "width": 126,
+      "height": 97,
+      "unit": "cm"
+    },
+    "weight": 30.4,
+    "colors_available": [
+      "Black",
+      "Natural",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0189",
+    "article_number": "566.803.72",
+    "name": "LUSTIGT Drawing paper roll",
+    "category": "Kids",
+    "product_type": "Drawing paper roll",
+    "price": 55,
+    "currency": "SEK",
+    "stock": 77,
+    "store_location": {
+      "aisle": 27,
+      "bay": 2,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Space-saving design. Good to know: wipe clean with a damp cloth. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 116,
+      "width": 63,
+      "height": 70,
+      "unit": "cm"
+    },
+    "weight": 4.3,
+    "colors_available": [
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0190",
+    "article_number": "186.433.57",
+    "name": "PLATSA Storage stool",
+    "category": "Storage",
+    "product_type": "Storage stool",
+    "price": 320,
+    "currency": "SEK",
+    "stock": 80,
+    "store_location": {
+      "aisle": 3,
+      "bay": 7,
+      "section": "B"
+    },
+    "description": "Durable and easy to assemble. Can be placed anywhere in the room. Matches well with other furniture in the series. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 104,
+      "width": 57,
+      "height": 30,
+      "unit": "cm"
+    },
+    "weight": 31.2,
+    "colors_available": [
+      "Brown",
+      "Natural",
+      "White"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0191",
+    "article_number": "319.349.71",
+    "name": "FJÄLLA Storage stool",
+    "category": "Storage",
+    "product_type": "Storage stool",
+    "price": 435,
+    "currency": "SEK",
+    "stock": 39,
+    "store_location": {
+      "aisle": 22,
+      "bay": 8,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Renewable material (wood). Space-saving design. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 67,
+      "width": 48,
+      "height": 87,
+      "unit": "cm"
+    },
+    "weight": 6.2,
+    "colors_available": [
+      "White",
+      "Black",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0192",
+    "article_number": "939.886.76",
+    "name": "STUVA Hanging storage",
+    "category": "Storage",
+    "product_type": "Hanging storage",
+    "price": 100,
+    "currency": "SEK",
+    "stock": 100,
+    "store_location": {
+      "aisle": 20,
+      "bay": 9,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Space-saving design. Designed to be used for years to come. Renewable material (wood). Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 29,
+      "width": 81,
+      "height": 37,
+      "unit": "cm"
+    },
+    "weight": 40.1,
+    "colors_available": [
+      "Brown",
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0193",
+    "article_number": "915.515.32",
+    "name": "KALLAX Magazine file, set of 5",
+    "category": "Storage",
+    "product_type": "Magazine file, set of 5",
+    "price": 95,
+    "currency": "SEK",
+    "stock": 38,
+    "store_location": {
+      "aisle": 15,
+      "bay": 1,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Easy to assemble - no tools required. Designed to be used for years to come. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 27,
+      "width": 103,
+      "height": 32,
+      "unit": "cm"
+    },
+    "weight": 33.6,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0194",
+    "article_number": "836.701.83",
+    "name": "PLATSA Wall shelf",
+    "category": "Storage",
+    "product_type": "Wall shelf",
+    "price": 310,
+    "currency": "SEK",
+    "stock": 44,
+    "store_location": {
+      "aisle": 13,
+      "bay": 7,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Can be placed anywhere in the room. Easy to assemble - no tools required. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 114,
+      "width": 21,
+      "height": 88,
+      "unit": "cm"
+    },
+    "weight": 8.0,
+    "colors_available": [
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0195",
+    "article_number": "954.548.98",
+    "name": "IDANÄS Storage combination",
+    "category": "Storage",
+    "product_type": "Storage combination",
+    "price": 1310,
+    "currency": "SEK",
+    "stock": 6,
+    "store_location": {
+      "aisle": 15,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Durable and easy to assemble. Space-saving design. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 197,
+      "width": 96,
+      "height": 71,
+      "unit": "cm"
+    },
+    "weight": 46.2,
+    "colors_available": [
+      "White",
+      "Black",
+      "Beige"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0196",
+    "article_number": "705.310.35",
+    "name": "EKTORP Drawer organizer",
+    "category": "Storage",
+    "product_type": "Drawer organizer",
+    "price": 45,
+    "currency": "SEK",
+    "stock": 32,
+    "store_location": {
+      "aisle": 25,
+      "bay": 1,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Good to know: wipe clean with a damp cloth. Designed to be used for years to come. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 32,
+      "width": 66,
+      "height": 89,
+      "unit": "cm"
+    },
+    "weight": 42.8,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0197",
+    "article_number": "671.196.93",
+    "name": "NORDLI Storage box with lid",
+    "category": "Storage",
+    "product_type": "Storage box with lid",
+    "price": 80,
+    "currency": "SEK",
+    "stock": 51,
+    "store_location": {
+      "aisle": 25,
+      "bay": 3,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Renewable material (wood). Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 91,
+      "width": 126,
+      "height": 35,
+      "unit": "cm"
+    },
+    "weight": 7.5,
+    "colors_available": [
+      "Grey",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0198",
+    "article_number": "468.745.26",
+    "name": "VARIERA Storage combination",
+    "category": "Storage",
+    "product_type": "Storage combination",
+    "price": 1835,
+    "currency": "SEK",
+    "stock": 58,
+    "store_location": {
+      "aisle": 18,
+      "bay": 5,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Matches well with other furniture in the series. Space-saving design. Renewable material (wood). Made from sustainable materials.",
+    "dimensions": {
+      "length": 32,
+      "width": 54,
+      "height": 35,
+      "unit": "cm"
+    },
+    "weight": 8.1,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0199",
+    "article_number": "450.891.22",
+    "name": "BILLY Basket",
+    "category": "Storage",
+    "product_type": "Basket",
+    "price": 120,
+    "currency": "SEK",
+    "stock": 8,
+    "store_location": {
+      "aisle": 8,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Practical and stylish. Matches well with other furniture in the series. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 35,
+      "width": 139,
+      "height": 34,
+      "unit": "cm"
+    },
+    "weight": 26.7,
+    "colors_available": [
+      "Natural",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0200",
+    "article_number": "574.214.38",
+    "name": "BESTÅ Storage combination",
+    "category": "Storage",
+    "product_type": "Storage combination",
+    "price": 3610,
+    "currency": "SEK",
+    "stock": 81,
+    "store_location": {
+      "aisle": 20,
+      "bay": 3,
+      "section": "C"
+    },
+    "description": "Timeless design that fits any home. Matches well with other furniture in the series. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 107,
+      "width": 95,
+      "height": 62,
+      "unit": "cm"
+    },
+    "weight": 8.8,
+    "colors_available": [
+      "White"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0201",
+    "article_number": "326.693.46",
+    "name": "BYGEL Storage combination",
+    "category": "Storage",
+    "product_type": "Storage combination",
+    "price": 2130,
+    "currency": "SEK",
+    "stock": 8,
+    "store_location": {
+      "aisle": 17,
+      "bay": 9,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Renewable material (wood). Space-saving design. Can be placed anywhere in the room. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 22,
+      "width": 76,
+      "height": 98,
+      "unit": "cm"
+    },
+    "weight": 19.9,
+    "colors_available": [
+      "White",
+      "Blue",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0202",
+    "article_number": "410.950.30",
+    "name": "SAMMANHANG Shoe cabinet",
+    "category": "Storage",
+    "product_type": "Shoe cabinet",
+    "price": 1350,
+    "currency": "SEK",
+    "stock": 9,
+    "store_location": {
+      "aisle": 23,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Easy to assemble - no tools required. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 21,
+      "width": 49,
+      "height": 53,
+      "unit": "cm"
+    },
+    "weight": 21.1,
+    "colors_available": [
+      "Grey",
+      "Blue",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0203",
+    "article_number": "917.929.69",
+    "name": "IVAR Storage combination",
+    "category": "Storage",
+    "product_type": "Storage combination",
+    "price": 3170,
+    "currency": "SEK",
+    "stock": 9,
+    "store_location": {
+      "aisle": 17,
+      "bay": 6,
+      "section": "A"
+    },
+    "description": "Scandinavian design meets functionality. Renewable material (wood). Matches well with other furniture in the series. Easy to assemble - no tools required. Designed to be used for years to come.",
+    "dimensions": {
+      "length": 95,
+      "width": 149,
+      "height": 52,
+      "unit": "cm"
+    },
+    "weight": 25.7,
+    "colors_available": [
+      "Blue",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0204",
+    "article_number": "734.668.29",
+    "name": "HAUGA Hanging storage",
+    "category": "Storage",
+    "product_type": "Hanging storage",
+    "price": 135,
+    "currency": "SEK",
+    "stock": 31,
+    "store_location": {
+      "aisle": 11,
+      "bay": 9,
+      "section": "C"
+    },
+    "description": "Scandinavian design meets functionality. Easy to assemble - no tools required. Matches well with other furniture in the series. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 66,
+      "width": 76,
+      "height": 42,
+      "unit": "cm"
+    },
+    "weight": 45.5,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0205",
+    "article_number": "149.731.26",
+    "name": "DRONA Storage stool",
+    "category": "Storage",
+    "product_type": "Storage stool",
+    "price": 675,
+    "currency": "SEK",
+    "stock": 31,
+    "store_location": {
+      "aisle": 4,
+      "bay": 1,
+      "section": "A"
+    },
+    "description": "Simple, modern design with clean lines. Made from sustainable materials. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 46,
+      "width": 21,
+      "height": 66,
+      "unit": "cm"
+    },
+    "weight": 4.0,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0206",
+    "article_number": "825.184.82",
+    "name": "PAX Storage box with lid",
+    "category": "Storage",
+    "product_type": "Storage box with lid",
+    "price": 235,
+    "currency": "SEK",
+    "stock": 22,
+    "store_location": {
+      "aisle": 16,
+      "bay": 6,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Easy to assemble - no tools required. Made from sustainable materials. Space-saving design.",
+    "dimensions": {
+      "length": 166,
+      "width": 109,
+      "height": 98,
+      "unit": "cm"
+    },
+    "weight": 12.1,
+    "colors_available": [
+      "Beige",
+      "Blue",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0207",
+    "article_number": "806.879.71",
+    "name": "FRIHETEN Magazine file, set of 5",
+    "category": "Storage",
+    "product_type": "Magazine file, set of 5",
+    "price": 145,
+    "currency": "SEK",
+    "stock": 20,
+    "store_location": {
+      "aisle": 14,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Matches well with other furniture in the series. Made from sustainable materials. Space-saving design. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 71,
+      "width": 22,
+      "height": 26,
+      "unit": "cm"
+    },
+    "weight": 45.1,
+    "colors_available": [
+      "Beige",
+      "Blue",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0208",
+    "article_number": "259.368.46",
+    "name": "SAMMANHANG Basket",
+    "category": "Storage",
+    "product_type": "Basket",
+    "price": 230,
+    "currency": "SEK",
+    "stock": 54,
+    "store_location": {
+      "aisle": 13,
+      "bay": 5,
+      "section": "D"
+    },
+    "description": "Simple, modern design with clean lines. Good to know: wipe clean with a damp cloth. Renewable material (wood). Space-saving design.",
+    "dimensions": {
+      "length": 77,
+      "width": 95,
+      "height": 81,
+      "unit": "cm"
+    },
+    "weight": 39.9,
+    "colors_available": [
+      "Grey",
+      "Blue"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0209",
+    "article_number": "270.379.13",
+    "name": "EKTORP Storage stool",
+    "category": "Storage",
+    "product_type": "Storage stool",
+    "price": 520,
+    "currency": "SEK",
+    "stock": 24,
+    "store_location": {
+      "aisle": 9,
+      "bay": 7,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Matches well with other furniture in the series. Can be placed anywhere in the room. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 153,
+      "width": 41,
+      "height": 92,
+      "unit": "cm"
+    },
+    "weight": 7.1,
+    "colors_available": [
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0210",
+    "article_number": "187.771.91",
+    "name": "EKTORP Storage combination",
+    "category": "Storage",
+    "product_type": "Storage combination",
+    "price": 3575,
+    "currency": "SEK",
+    "stock": 55,
+    "store_location": {
+      "aisle": 14,
+      "bay": 6,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Adjustable feet for stability on uneven floors. Easy to assemble - no tools required. Renewable material (wood). Space-saving design.",
+    "dimensions": {
+      "length": 125,
+      "width": 38,
+      "height": 17,
+      "unit": "cm"
+    },
+    "weight": 22.2,
+    "colors_available": [
+      "Natural",
+      "Grey"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0211",
+    "article_number": "892.444.72",
+    "name": "MALM Shoe cabinet",
+    "category": "Storage",
+    "product_type": "Shoe cabinet",
+    "price": 970,
+    "currency": "SEK",
+    "stock": 81,
+    "store_location": {
+      "aisle": 13,
+      "bay": 1,
+      "section": "B"
+    },
+    "description": "Practical and stylish. Adjustable feet for stability on uneven floors. Easy to assemble - no tools required. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 154,
+      "width": 139,
+      "height": 65,
+      "unit": "cm"
+    },
+    "weight": 13.5,
+    "colors_available": [
+      "Beige",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0212",
+    "article_number": "209.327.97",
+    "name": "RÅSKOG Storage stool",
+    "category": "Storage",
+    "product_type": "Storage stool",
+    "price": 300,
+    "currency": "SEK",
+    "stock": 49,
+    "store_location": {
+      "aisle": 28,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Good to know: wipe clean with a damp cloth. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 83,
+      "width": 66,
+      "height": 25,
+      "unit": "cm"
+    },
+    "weight": 39.0,
+    "colors_available": [
+      "Black",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0213",
+    "article_number": "421.432.53",
+    "name": "NORDLI Shelf unit",
+    "category": "Storage",
+    "product_type": "Shelf unit",
+    "price": 400,
+    "currency": "SEK",
+    "stock": 10,
+    "store_location": {
+      "aisle": 25,
+      "bay": 10,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Designed to be used for years to come. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 173,
+      "width": 131,
+      "height": 29,
+      "unit": "cm"
+    },
+    "weight": 13.5,
+    "colors_available": [
+      "Grey",
+      "White",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0214",
+    "article_number": "913.661.59",
+    "name": "NORDLI Wall shelf",
+    "category": "Storage",
+    "product_type": "Wall shelf",
+    "price": 160,
+    "currency": "SEK",
+    "stock": 25,
+    "store_location": {
+      "aisle": 8,
+      "bay": 10,
+      "section": "B"
+    },
+    "description": "Simple, modern design with clean lines. Adjustable feet for stability on uneven floors. Designed to be used for years to come. Space-saving design. Matches well with other furniture in the series.",
+    "dimensions": {
+      "length": 114,
+      "width": 76,
+      "height": 11,
+      "unit": "cm"
+    },
+    "weight": 35.1,
+    "colors_available": [
+      "Grey",
+      "Brown",
+      "Natural"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0215",
+    "article_number": "556.730.77",
+    "name": "RÅSKOG Shelf unit",
+    "category": "Storage",
+    "product_type": "Shelf unit",
+    "price": 350,
+    "currency": "SEK",
+    "stock": 100,
+    "store_location": {
+      "aisle": 16,
+      "bay": 9,
+      "section": "D"
+    },
+    "description": "Practical and stylish. Easy to assemble - no tools required. Space-saving design. Renewable material (wood). Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 91,
+      "width": 56,
+      "height": 25,
+      "unit": "cm"
+    },
+    "weight": 35.6,
+    "colors_available": [
+      "Beige",
+      "Blue",
+      "White"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0216",
+    "article_number": "478.128.14",
+    "name": "VIMLE Basket",
+    "category": "Storage",
+    "product_type": "Basket",
+    "price": 125,
+    "currency": "SEK",
+    "stock": 83,
+    "store_location": {
+      "aisle": 23,
+      "bay": 5,
+      "section": "A"
+    },
+    "description": "Durable and easy to assemble. Good to know: wipe clean with a damp cloth. Designed to be used for years to come. Easy to clean and maintain.",
+    "dimensions": {
+      "length": 199,
+      "width": 121,
+      "height": 18,
+      "unit": "cm"
+    },
+    "weight": 1.3,
+    "colors_available": [
+      "Brown",
+      "Grey",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0217",
+    "article_number": "651.586.31",
+    "name": "ANTONIUS Wall shelf",
+    "category": "Storage",
+    "product_type": "Wall shelf",
+    "price": 140,
+    "currency": "SEK",
+    "stock": 62,
+    "store_location": {
+      "aisle": 24,
+      "bay": 8,
+      "section": "C"
+    },
+    "description": "Durable and easy to assemble. Easy to clean and maintain. Easy to assemble - no tools required.",
+    "dimensions": {
+      "length": 190,
+      "width": 148,
+      "height": 99,
+      "unit": "cm"
+    },
+    "weight": 7.1,
+    "colors_available": [
+      "Natural"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0218",
+    "article_number": "332.278.93",
+    "name": "KIVIK Armchair",
+    "category": "Living Room",
+    "product_type": "Armchair",
+    "price": 955,
+    "currency": "SEK",
+    "stock": 21,
+    "store_location": {
+      "aisle": 3,
+      "bay": 6,
+      "section": "D"
+    },
+    "description": "Scandinavian design meets functionality. Designed to be used for years to come. Adjustable feet for stability on uneven floors.",
+    "dimensions": {
+      "length": 127,
+      "width": 75,
+      "height": 34,
+      "unit": "cm"
+    },
+    "weight": 24.4,
+    "colors_available": [
+      "Black",
+      "Beige",
+      "Blue"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0219",
+    "article_number": "615.782.16",
+    "name": "LÄTTÖL Chair",
+    "category": "Kitchen",
+    "product_type": "Chair",
+    "price": 450,
+    "currency": "SEK",
+    "stock": 47,
+    "store_location": {
+      "aisle": 18,
+      "bay": 9,
+      "section": "B"
+    },
+    "description": "Timeless design that fits any home. Space-saving design. Renewable material (wood). Made from sustainable materials. Good to know: wipe clean with a damp cloth.",
+    "dimensions": {
+      "length": 174,
+      "width": 38,
+      "height": 49,
+      "unit": "cm"
+    },
+    "weight": 15.4,
+    "colors_available": [
+      "Brown",
+      "Grey",
+      "Black"
+    ],
+    "assembly_required": true,
+    "in_stock": true
+  },
+  {
+    "id": "prod_0220",
+    "article_number": "482.327.70",
+    "name": "SMYCKA Watering can",
+    "category": "Outdoor",
+    "product_type": "Watering can",
+    "price": 135,
+    "currency": "SEK",
+    "stock": 96,
+    "store_location": {
+      "aisle": 26,
+      "bay": 7,
+      "section": "B"
+    },
+    "description": "Scandinavian design meets functionality. Easy to clean and maintain. Easy to assemble - no tools required. Good to know: wipe clean with a damp cloth. Can be placed anywhere in the room.",
+    "dimensions": {
+      "length": 168,
+      "width": 101,
+      "height": 31,
+      "unit": "cm"
+    },
+    "weight": 39.4,
+    "colors_available": [
+      "Grey"
+    ],
+    "assembly_required": false,
+    "in_stock": true
+  }
+]

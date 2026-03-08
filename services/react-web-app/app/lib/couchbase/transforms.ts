@@ -6,23 +6,36 @@
 import type { ProductDocument } from './types';
 import type { Product, UIProductLocation } from '~/types/product';
 
+function normalizeZone(zoneValue?: string): string | undefined {
+  if (!zoneValue) return undefined;
+  const zone = zoneValue.toLowerCase();
+  if (zone.includes('showroom')) return 'showroom';
+  if (zone.includes('market')) return 'market';
+  if (zone.includes('warehouse')) return 'warehouse';
+  return undefined;
+}
+
 /**
  * Parse stock location from Couchbase document to UI location format
  * The Couchbase document has separate zone, aisle, bay, section fields
  * at the top level, which we transform into the UI location format
  */
 function parseStockLocation(doc: ProductDocument): UIProductLocation {
+  const normalizedZone = normalizeZone(doc.zone);
+
   // Prefer top-level location fields (actual format from Couchbase)
   if (doc.zone !== undefined || doc.aisle !== undefined || doc.bay !== undefined || doc.section !== undefined) {
     return {
+      zone: normalizedZone,
       aisle: String(doc.aisle ?? doc.zone ?? 'N/A'),
       bay: String(doc.bay ?? 'N/A'),
       section: String(doc.section ?? 'N/A'),
     };
   }
 
-  // Fallback: Parse from stock.location string if no top-level fields
-  const locationString = doc.stock.location;
+  // Fallback: Parse from stock.location string if stock is an object with location
+  if (typeof doc.stock === 'object' && 'location' in doc.stock) {
+    const locationString = doc.stock.location;
 
   // Try comma-separated format first (e.g., "A,12,3") - unambiguous
   const commaParts = locationString.split(',');
@@ -74,9 +87,19 @@ function parseStockLocation(doc: ProductDocument): UIProductLocation {
     };
   }
 
-  // Default: treat as a zone/area name
+    // Default: treat as a zone/area name
+    return {
+      zone: normalizeZone(locationString),
+      aisle: locationString,
+      bay: 'N/A',
+      section: 'N/A',
+    };
+  }
+
+  // If stock is a number or has no location, return default
   return {
-    aisle: locationString,
+    zone: normalizedZone,
+    aisle: 'N/A',
     bay: 'N/A',
     section: 'N/A',
   };
@@ -106,6 +129,7 @@ function formatLocationToDocument(location: UIProductLocation): {
   }
 
   return {
+    zone: location.zone,
     aisle: isNaN(aisleNum) ? location.aisle : aisleNum,
     bay: isNaN(bayNum) ? location.bay : bayNum,
     section: location.section !== 'N/A' ? location.section : undefined,
@@ -131,8 +155,14 @@ function normalizeWeight(weight: any): number {
  * Transforms the data structure to be UI-friendly
  */
 export function productDocumentToProduct(doc: ProductDocument): Product {
+  // Normalize stock to always get quantity
+  const stockQuantity = typeof doc.stock === 'number' ? doc.stock : doc.stock.quantity;
+
+  // Ensure _id is always set - use articleNumber as fallback for uniqueness
+  const productId = doc._id || `product:${doc.articleNumber}`;
+
   return {
-    _id: doc._id,
+    _id: productId,
     _rev: doc._rev,
     type: doc.type,
     articleNumber: doc.articleNumber,
@@ -161,7 +191,7 @@ export function productDocumentToProduct(doc: ProductDocument): Product {
 
     // Transform stock with lastChecked instead of location
     stock: {
-      quantity: doc.stock.quantity,
+      quantity: stockQuantity,
       lastChecked: doc.lastUpdated,
     },
 
@@ -174,6 +204,7 @@ export function productDocumentToProduct(doc: ProductDocument): Product {
 /**
  * Convert UI Product format to Couchbase Product document
  * Transforms UI format back to Couchbase storage format
+ * Always stores stock as an object with quantity and location for consistency
  */
 export function productToProductDocument(product: Product): ProductDocument {
   const locationData = formatLocationToDocument(product.location);
@@ -199,6 +230,7 @@ export function productToProductDocument(product: Product): ProductDocument {
     _pendingSync: product._pendingSync,
 
     // Store location in both formats for compatibility
+    // Always use object format when writing to ensure consistency
     stock: {
       quantity: product.stock.quantity,
       location: locationData.stockLocation,
