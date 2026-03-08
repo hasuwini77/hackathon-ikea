@@ -4,6 +4,55 @@ React Router v7 application with Bun, TypeScript, Tailwind CSS, and shadcn/ui co
 
 ## Development
 
+### Docker Stack (Phone Testing)
+
+Run the full local stack (React + Edge Server + Sync Gateway + Couchbase):
+
+```bash
+cd /Users/fredrik/claudeeverything/hackathon-ikea/worktree-offline-first/services/react-web-app
+docker compose up --build -d
+```
+
+From your phone (same Wi-Fi), open:
+
+```text
+http://<your-mac-ip>:5173
+```
+
+Camera scanning note for iPhone Safari over LAN HTTP:
+
+- Live camera (`getUserMedia`) requires HTTPS or `localhost`.
+- The app includes a fallback: take/upload a photo and scan barcode from the image.
+
+Get your Mac IP:
+
+```bash
+ipconfig getifaddr en0
+```
+
+Seed product data into Edge Server (no DB ports exposed):
+
+```bash
+docker compose --profile tools run --rm seed
+```
+
+Security model in this setup:
+
+- Exposed to LAN: `5173` only (the web app)
+- Not exposed to LAN/host: Couchbase Server, Sync Gateway, Edge Server
+
+Stop and close all openings when done:
+
+```bash
+docker compose down
+```
+
+Optional full cleanup (containers + network + DB volume):
+
+```bash
+docker compose down --volumes --remove-orphans
+```
+
 ### Running the Service
 
 The frontend runs through Polytope. From your project root:

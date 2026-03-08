@@ -615,7 +615,7 @@ export default function StockPage() {
 
               return (
                 <Card
-                  key={product._id}
+                  key={product._id || `product-${index}`}
                   ref={(el) => { if (el) productRefs.current.set(index, el); }}
                   className={`overflow-hidden transition-all ${isSelected ? 'ring-2 ring-blue-500 shadow-lg' : 'hover:shadow-md'}`}
                   onClick={() => setSelectedIndex(index)}
@@ -764,12 +764,12 @@ export default function StockPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {filteredProducts.map((product) => {
+                  {filteredProducts.map((product, index) => {
                     const isPending = hasPendingSync(product._id);
                     const isUpdating = updatingIds.has(product._id);
 
                     return (
-                      <TableRow key={product._id}>
+                      <TableRow key={product._id || `product-row-${index}`}>
                         <TableCell>
                           <div className={`w-3 h-3 rounded-full ${getStockColor(product.stock.quantity)}`} title={getStockLabel(product.stock.quantity)} />
                         </TableCell>

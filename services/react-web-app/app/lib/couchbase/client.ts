@@ -19,6 +19,7 @@ import type {
   CouchbaseError,
   ProductDocument,
 } from './types';
+import { captureException, addBreadcrumb } from '~/lib/sentry';
 
 /**
  * Custom error class for Couchbase operations
@@ -58,21 +59,41 @@ async function fetchWithTimeout(
 
     // Detect offline/network errors
     if (error.name === 'AbortError') {
-      throw new CouchbaseClientError(
+      const clientError = new CouchbaseClientError(
         'Request timeout - server may be offline',
         undefined,
         true,
         error
       );
+
+      // Add breadcrumb for timeout
+      addBreadcrumb(
+        `Request timeout: ${url}`,
+        'couchbase',
+        'warning',
+        { url, timeout }
+      );
+
+      throw clientError;
     }
 
     if (error instanceof TypeError && error.message.includes('fetch')) {
-      throw new CouchbaseClientError(
+      const clientError = new CouchbaseClientError(
         'Network error - unable to reach Edge Server',
         undefined,
         true,
         error
       );
+
+      // Add breadcrumb for network error
+      addBreadcrumb(
+        `Network error: ${url}`,
+        'couchbase',
+        'error',
+        { url, online: navigator.onLine }
+      );
+
+      throw clientError;
     }
 
     throw error;
@@ -88,16 +109,34 @@ async function parseErrorResponse(response: Response): Promise<never> {
   try {
     errorData = await response.json();
   } catch {
-    throw new CouchbaseClientError(
+    const error = new CouchbaseClientError(
       `HTTP ${response.status}: ${response.statusText}`,
       response.status
     );
+
+    // Capture HTTP errors in Sentry
+    captureException(error, {
+      url: response.url,
+      status: response.status,
+      statusText: response.statusText,
+    });
+
+    throw error;
   }
 
-  throw new CouchbaseClientError(
+  const error = new CouchbaseClientError(
     errorData.reason || errorData.error || 'Unknown error',
     response.status
   );
+
+  // Capture Couchbase errors in Sentry
+  captureException(error, {
+    url: response.url,
+    status: response.status,
+    errorData,
+  });
+
+  throw error;
 }
 
 /**
@@ -141,12 +180,27 @@ async function retryWithBackoff<T>(
  * Get a document by ID
  */
 export async function getDocument(docId: string): Promise<CouchbaseDocument> {
+  // Add breadcrumb for document fetch
+  addBreadcrumb(
+    `Fetching document: ${docId}`,
+    'couchbase',
+    'info',
+    { operation: 'getDocument', docId }
+  );
+
   return retryWithBackoff(async () => {
     const url = getDocumentUrl(docId);
     const response = await fetchWithTimeout(url);
 
     if (!response.ok) {
       if (response.status === 404) {
+        // Don't capture 404s in Sentry - they're expected
+        addBreadcrumb(
+          `Document not found: ${docId}`,
+          'couchbase',
+          'warning',
+          { docId }
+        );
         throw new CouchbaseClientError(
           `Document not found: ${docId}`,
           404
@@ -167,6 +221,14 @@ export async function putDocument(
   document: Omit<CouchbaseDocument, '_id'>,
   rev?: string
 ): Promise<{ id: string; rev: string; ok: boolean }> {
+  // Add breadcrumb for document update
+  addBreadcrumb(
+    rev ? `Updating document: ${docId}` : `Creating document: ${docId}`,
+    'couchbase',
+    'info',
+    { operation: 'putDocument', docId, hasRev: !!rev }
+  );
+
   return retryWithBackoff(async () => {
     const url = rev
       ? `${getDocumentUrl(docId)}?rev=${encodeURIComponent(rev)}`
@@ -188,6 +250,13 @@ export async function putDocument(
 
     if (!response.ok) {
       if (response.status === 409) {
+        // Add breadcrumb for conflict
+        addBreadcrumb(
+          `Document conflict: ${docId}`,
+          'couchbase',
+          'warning',
+          { docId, rev }
+        );
         throw new CouchbaseClientError(
           'Document conflict - revision mismatch',
           409
@@ -207,6 +276,14 @@ export async function deleteDocument(
   docId: string,
   rev: string
 ): Promise<{ id: string; rev: string; ok: boolean }> {
+  // Add breadcrumb for document deletion
+  addBreadcrumb(
+    `Deleting document: ${docId}`,
+    'couchbase',
+    'info',
+    { operation: 'deleteDocument', docId, rev }
+  );
+
   return retryWithBackoff(async () => {
     const url = `${getDocumentUrl(docId)}?rev=${encodeURIComponent(rev)}`;
 
@@ -216,6 +293,13 @@ export async function deleteDocument(
 
     if (!response.ok) {
       if (response.status === 409) {
+        // Add breadcrumb for conflict
+        addBreadcrumb(
+          `Delete conflict: ${docId}`,
+          'couchbase',
+          'warning',
+          { docId, rev }
+        );
         throw new CouchbaseClientError(
           'Document conflict - revision mismatch',
           409
@@ -234,6 +318,14 @@ export async function deleteDocument(
 export async function getAllDocuments(
   includeDocs: boolean = true
 ): Promise<AllDocsResponse> {
+  // Add breadcrumb for bulk query
+  addBreadcrumb(
+    'Fetching all documents',
+    'couchbase',
+    'info',
+    { operation: 'getAllDocuments', includeDocs }
+  );
+
   return retryWithBackoff(async () => {
     const url = `${getAllDocsUrl()}?include_docs=${includeDocs}`;
     const response = await fetchWithTimeout(url);

@@ -4,6 +4,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import type { ProductDocument } from '../types';
+import { getAllDocuments, searchProducts, CouchbaseClientError } from '../client';
 
 interface UseProductsOptions {
   category?: string;
@@ -47,27 +48,35 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsResult
       setError(null);
 
       try {
-        const response = await fetch('/api/couchbase/ikea_products/_all_docs?include_docs=true');
+        let productList: ProductDocument[];
 
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        // If filters are provided, use searchProducts; otherwise get all products
+        if (options.category || options.minPrice !== undefined ||
+            options.maxPrice !== undefined || options.query) {
+          productList = await searchProducts({
+            category: options.category,
+            minPrice: options.minPrice,
+            maxPrice: options.maxPrice,
+            query: options.query,
+          });
+        } else {
+          // Get all products directly
+          const allDocs = await getAllDocuments(true);
+          productList = allDocs.rows
+            .filter((row) => row.doc && row.doc.type === 'product')
+            .map((row) => row.doc as ProductDocument);
         }
 
-        const data = await response.json();
-
         if (!cancelled) {
-          const productList = data.rows
-            .filter((row: any) => row.doc && row.doc.type === 'product')
-            .map((row: any) => row.doc as ProductDocument);
-
           setProducts(productList);
           setError(null);
           setIsOffline(false);
         }
       } catch (err) {
         if (!cancelled) {
+          const isOfflineError = err instanceof CouchbaseClientError && err.isOffline;
           setError(err instanceof Error ? err.message : 'Failed to load products');
-          setIsOffline(true);
+          setIsOffline(isOfflineError);
         }
       } finally {
         if (!cancelled) {

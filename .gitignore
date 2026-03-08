@@ -3,3 +3,9 @@
 **/secrets.yml
 **/values.yml
 EDWIN.md
+
+# Local/dev artifacts to keep out of commits
+models/typescript/node_modules/
+**/__pycache__/
+exports/
+services/react-web-app/2026-03-*.txt

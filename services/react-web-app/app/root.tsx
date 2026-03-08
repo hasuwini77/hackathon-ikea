@@ -6,9 +6,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { useEffect } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { AppShell } from "~/components/AppShell";
+import { initSentry, captureException, Sentry } from "~/lib/sentry";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -24,6 +27,11 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    // Initialize Sentry as early as possible
+    initSentry();
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -63,13 +71,33 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <AppShell>
+      <Outlet />
+    </AppShell>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let message = "Oops!";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
+  let eventId: string | undefined;
+
+  // Capture error in Sentry (if not a 404)
+  useEffect(() => {
+    if (!isRouteErrorResponse(error) || (isRouteErrorResponse(error) && error.status !== 404)) {
+      // Capture the error and get event ID for user feedback
+      Sentry.captureException(error, (scope) => {
+        scope.setTag('errorBoundary', 'root');
+        scope.setContext('errorInfo', {
+          isRouteError: isRouteErrorResponse(error),
+          status: isRouteErrorResponse(error) ? error.status : undefined,
+        });
+        return scope;
+      });
+    }
+  }, [error]);
 
   if (isRouteErrorResponse(error)) {
     message = error.status === 404 ? "404" : "Error";

@@ -50,7 +50,7 @@ export interface ProductDocument extends CouchbaseDocument {
   productType: string;
   price: number;
   currency: string;
-  stock: ProductStock;
+  stock: ProductStock | number; // Can be either object { quantity, location } or direct number
   dimensions: ProductDimensions;
   weight: ProductWeight | number; // Can be either object or number for backwards compatibility
   tags: string[];

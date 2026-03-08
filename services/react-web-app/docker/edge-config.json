@@ -1,0 +1,29 @@
+{
+  "interface": "0.0.0.0:59840",
+  "enable_anonymous_users": true,
+  "databases": {
+    "ikea_products": {
+      "path": "/tmp/ikea_products.cblite2",
+      "create": true,
+      "enable_client_sync": "bidirectional",
+      "enable_client_writes": true
+    }
+  },
+  "replications": [
+    {
+      "source": "ws://sync-gateway:4984/ikea_products",
+      "target": "ikea_products",
+      "bidirectional": true,
+      "continuous": true,
+      "collections": {
+        "_default._default": {}
+      }
+    }
+  ],
+  "logging": {
+    "console": {
+      "enabled": true,
+      "log_level": "info"
+    }
+  }
+}

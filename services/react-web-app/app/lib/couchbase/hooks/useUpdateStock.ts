@@ -4,7 +4,7 @@
 
 import { useState, useCallback } from 'react';
 import { getDocument, putDocument } from '../client';
-import type { ProductDocument } from '../types';
+import type { ProductDocument, ProductStock } from '../types';
 import { useOfflineQueue } from './useOfflineQueue';
 
 interface UseUpdateStockResult {
@@ -38,12 +38,23 @@ export function useUpdateStock(): UseUpdateStockResult {
 
       // Update the stock quantity and lastUpdated timestamp
       const { _id, _rev, ...docData } = currentDoc;
-      const updatedDoc = {
-        ...docData,
-        stock: {
+
+      // Handle both stock formats: number or object { quantity, location }
+      let updatedStock: ProductStock | number;
+      if (typeof currentDoc.stock === 'number') {
+        // If stock is a direct number, keep it as a number
+        updatedStock = newQuantity;
+      } else {
+        // If stock is an object, preserve the location and update quantity
+        updatedStock = {
           ...currentDoc.stock,
           quantity: newQuantity,
-        },
+        };
+      }
+
+      const updatedDoc = {
+        ...docData,
+        stock: updatedStock,
         lastUpdated: new Date().toISOString(),
       };
 
