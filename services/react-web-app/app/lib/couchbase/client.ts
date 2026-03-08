@@ -318,7 +318,7 @@ export async function deleteDocument(
 export async function getAllDocuments(
   includeDocs: boolean = true
 ): Promise<AllDocsResponse> {
-  // Add breadcrumb for bulk query
+// Add breadcrumb for bulk query
   addBreadcrumb(
     'Fetching all documents',
     'couchbase',
