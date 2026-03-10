@@ -54,11 +54,17 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
   };
 
   const matchLabel = getMatchLabel();
+  const stockIndicatorClass =
+    product.stock.quantity < 5
+      ? "bg-red-500"
+      : product.stock.quantity < 20
+      ? "bg-yellow-500"
+      : "bg-green-500";
 
   return (
     <Card
-      className={`w-full overflow-hidden hover:shadow-lg transition-all cursor-pointer group ${
-        onClick ? "hover:border-primary" : ""
+      className={`w-full overflow-hidden transition-all cursor-pointer group ${
+        onClick ? "hover:border-primary hover:shadow-md" : ""
       }`}
       onClick={onClick}
       role={onClick ? "button" : undefined}
@@ -99,13 +105,16 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
         </div>
       )}
 
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-2">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
-            <CardTitle className="text-base font-semibold truncate">
-              {product.name}
-            </CardTitle>
-            <p className="text-xs text-muted-foreground mt-1">
+            <div className="flex items-center gap-2">
+              <span className={`inline-block h-2.5 w-2.5 rounded-full ${stockIndicatorClass}`} />
+              <CardTitle className="text-lg font-semibold truncate">
+                {product.name}
+              </CardTitle>
+            </div>
+            <p className="text-sm text-muted-foreground mt-1">
               Art. #{product.articleNumber}
             </p>
             {matchLabel && (
@@ -114,20 +123,20 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
               </Badge>
             )}
           </div>
-          <Badge variant={getStockVariant()} className="shrink-0">
+          <Badge variant={getStockVariant()} className="shrink-0 min-w-[96px] justify-center">
             <Package className="h-3 w-3 mr-1" aria-hidden="true" />
-            {product.stock.quantity}
+            {product.stock.quantity} units
           </Badge>
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-3 pt-0">
         <p className="text-sm text-muted-foreground line-clamp-2">
           {product.description}
         </p>
 
-        <div className="flex items-center gap-2 text-xs">
-          <MapPin className="h-3 w-3 text-muted-foreground shrink-0" aria-hidden="true" />
+        <div className="flex items-center gap-2 text-sm">
+          <MapPin className="h-4 w-4 text-muted-foreground shrink-0" aria-hidden="true" />
           <span className="text-muted-foreground">
             Aisle <span className="font-medium text-foreground">{product.location.aisle}</span>,
             Bay <span className="font-medium text-foreground">{product.location.bay}</span>,

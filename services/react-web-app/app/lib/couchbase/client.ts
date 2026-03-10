@@ -414,7 +414,7 @@ export async function searchProducts(params: {
     }
   }
 
-  return products;
+  return dedupeProductDocuments(products);
 }
 
 function normalizeSearchText(value: string): string {
@@ -425,6 +425,56 @@ function normalizeSearchText(value: string): string {
     .replace(/[^\p{L}\p{N}\s]/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+}
+
+function revisionNumber(rev?: string): number {
+  if (!rev) return 0;
+  const parsed = Number.parseInt(rev.split('-')[0], 10);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function toTimestamp(value?: string): number {
+  if (!value) return 0;
+  const ts = Date.parse(value);
+  return Number.isFinite(ts) ? ts : 0;
+}
+
+function normalizeArticleKey(articleNumber?: string): string | null {
+  if (!articleNumber) return null;
+  const normalized = normalizeSearchText(articleNumber).replace(/\s+/g, '');
+  return normalized.length > 0 ? normalized : null;
+}
+
+function isNewerProductCandidate(next: ProductDocument, current: ProductDocument): boolean {
+  const nextUpdated = toTimestamp(next.lastUpdated);
+  const currentUpdated = toTimestamp(current.lastUpdated);
+  if (nextUpdated !== currentUpdated) return nextUpdated > currentUpdated;
+
+  const nextRev = revisionNumber(next._rev);
+  const currentRev = revisionNumber(current._rev);
+  if (nextRev !== currentRev) return nextRev > currentRev;
+
+  return (next._id ?? '').localeCompare(current._id ?? '') < 0;
+}
+
+export function dedupeProductDocuments(products: ProductDocument[]): ProductDocument[] {
+  const byArticle = new Map<string, ProductDocument>();
+  const noArticle: ProductDocument[] = [];
+
+  for (const product of products) {
+    const key = normalizeArticleKey(product.articleNumber);
+    if (!key) {
+      noArticle.push(product);
+      continue;
+    }
+
+    const existing = byArticle.get(key);
+    if (!existing || isNewerProductCandidate(product, existing)) {
+      byArticle.set(key, product);
+    }
+  }
+
+  return [...byArticle.values(), ...noArticle];
 }
 
 function levenshteinDistance(a: string, b: string): number {

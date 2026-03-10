@@ -5,7 +5,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { ProductDocument } from '../types';
 import type { SearchMode } from '../client';
-import { getAllDocuments, searchProducts, CouchbaseClientError } from '../client';
+import { dedupeProductDocuments, getAllDocuments, searchProducts, CouchbaseClientError } from '../client';
 
 interface UseProductsOptions {
   category?: string;
@@ -68,6 +68,7 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsResult
           productList = allDocs.rows
             .filter((row) => row.doc && row.doc.type === 'product')
             .map((row) => row.doc as ProductDocument);
+          productList = dedupeProductDocuments(productList);
         }
 
         if (!cancelled) {

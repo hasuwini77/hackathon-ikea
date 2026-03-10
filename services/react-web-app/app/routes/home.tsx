@@ -81,9 +81,6 @@ export default function Home() {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-2">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-            Welcome to IKEA Staff Finder
-          </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
             Find products quickly, even offline
           </p>

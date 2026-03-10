@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Html5Qrcode } from "html5-qrcode";
-import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
@@ -9,7 +8,6 @@ import { Scan, Camera, History, X, AlertCircle } from "lucide-react";
 interface BarcodeScannerProps {
   onScan: (articleNumber: string) => void;
   onError?: (error: string) => void;
-  placeholder?: string;
 }
 
 interface RecentScan {
@@ -20,25 +18,12 @@ interface RecentScan {
 /**
  * BarcodeScanner Component
  *
- * Provides comprehensive barcode scanning functionality with validation and history.
- * Features:
- * - Real-time camera barcode/QR code scanning using html5-qrcode
- * - Text input for manual article number entry (fallback)
- * - Format validation (XXX.XXX.XX pattern)
- * - Visual feedback for valid/invalid format
- * - Recent scans list (last 5 scans) with timestamps
- * - Clear and accessible error messaging
- * - Camera permission handling and error recovery
- * - Keyboard navigation support (Enter to submit)
- * - Modal dialog for camera view with loading and error states
+ * Provides camera/photo barcode scanning plus recent-scan recall.
  */
 export function BarcodeScanner({
   onScan,
   onError,
-  placeholder = "Enter article number"
 }: BarcodeScannerProps) {
-  const [inputValue, setInputValue] = useState("");
-  const [error, setError] = useState<string | null>(null);
   const [recentScans, setRecentScans] = useState<RecentScan[]>([]);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [photoError, setPhotoError] = useState<string | null>(null);
@@ -87,56 +72,6 @@ export function BarcodeScanner({
       localStorage.setItem("recentScans", JSON.stringify(scans));
     } catch (err) {
       console.error("Failed to save recent scans:", err);
-    }
-  };
-
-  /**
-   * Validates IKEA article number format: XXX.XXX.XX
-   * where X is a digit
-   */
-  const validateArticleNumber = (value: string): boolean => {
-    // IKEA format: XXX.XXX.XX (e.g., 123.456.78)
-    const pattern = /^\d{3}\.\d{3}\.\d{2}$/;
-    return pattern.test(value);
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setInputValue(value);
-
-    // Clear error when user starts typing again
-    if (error) {
-      setError(null);
-    }
-
-    // Provide real-time validation feedback
-    if (value.length > 0 && !validateArticleNumber(value) && value.length >= 10) {
-      setError("Invalid format. Expected: XXX.XXX.XX (e.g., 123.456.78)");
-    }
-  };
-
-  const handleSubmit = () => {
-    if (!inputValue.trim()) {
-      setError("Please enter an article number");
-      return;
-    }
-
-    if (!validateArticleNumber(inputValue)) {
-      setError("Invalid format. Expected: XXX.XXX.XX (e.g., 123.456.78)");
-      return;
-    }
-
-    processScannedCode(inputValue);
-
-    // Clear input
-    setInputValue("");
-    setError(null);
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleSubmit();
     }
   };
 
@@ -374,47 +309,6 @@ export function BarcodeScanner({
           tabIndex={-1}
         />
         <div id={fileScannerContainerId} className="hidden" />
-
-        {/* Input Section */}
-        <div className="space-y-2">
-          <div className="flex gap-2">
-            <div className="flex-1">
-              <Input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                placeholder={placeholder}
-                className={error ? "border-destructive" : ""}
-                aria-label="Article number"
-                aria-invalid={!!error}
-                aria-describedby={error ? "article-error" : undefined}
-                maxLength={10}
-              />
-              {error && (
-                <p
-                  id="article-error"
-                  className="text-xs text-destructive mt-1.5"
-                  role="alert"
-                >
-                  {error}
-                </p>
-              )}
-            </div>
-            <Button
-              onClick={handleSubmit}
-              size="lg"
-              className="shrink-0"
-              aria-label="Submit article number"
-            >
-              <Scan className="h-5 w-5" />
-            </Button>
-          </div>
-
-          <p className="text-xs text-muted-foreground">
-            Format: XXX.XXX.XX (e.g., 123.456.78)
-          </p>
-        </div>
 
         {/* Camera Scanner */}
         <Button
