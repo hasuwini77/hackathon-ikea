@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { Home, ScanBarcode, Map, Package } from "lucide-react";
 import { Toaster } from "sonner";
 import { SyncStatus } from "~/components/SyncStatus";
+import { MeshStatus } from "~/components/MeshStatus";
 import { cn } from "~/lib/utils";
 
 /**
@@ -56,9 +57,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="flex flex-col h-screen">
       {/* Top Header */}
       <header className="shrink-0">
+        <MeshStatus />
         <SyncStatus />
-        <div className="bg-[#0058A3] text-white px-4 py-3 shadow-md">
-          <h1 className="text-lg font-semibold">IKEA Staff Finder</h1>
+        <div className="bg-[#0058A3] text-white px-4 py-3 shadow-md flex items-center justify-between">
+          <h1 className="text-lg font-semibold tracking-tight">IKEA AXIS</h1>
+          <span className="text-[10px] font-mono text-blue-200 uppercase tracking-widest">
+            Absolute Operational Continuity
+          </span>
         </div>
       </header>
 
