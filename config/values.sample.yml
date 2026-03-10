@@ -1,0 +1,23 @@
+# Configuration values
+# Generated and managed by Bluetext tools
+
+couchbase-edge-server-database: main
+couchbase-edge-server-port: '59840'
+couchbase-edge-server-sync-gateway-url: ws://sync-gateway:4984/main
+couchbase-server-host: couchbase
+couchbase-server-image: couchbase:enterprise-7.6.6
+couchbase-server-main-bucket-name: main
+couchbase-server-protocol: couchbase
+couchbase-server-username: asdf
+python-fast-api-dev-mode: 'true'
+python-fast-api-http-port: '3030'
+python-fast-api-log-level: INFO
+react-web-app-dev-mode: 'true'
+react-web-app-log-level: INFO
+react-web-app-port: '51732'
+service-config-manager-environment: dev
+sync-gateway-admin-port: '4985'
+sync-gateway-bucket: main
+sync-gateway-couchbase-host: couchbase
+sync-gateway-public-port: '4984'
+sync-gateway-username: asdf
