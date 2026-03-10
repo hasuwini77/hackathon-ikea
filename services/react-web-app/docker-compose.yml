@@ -52,6 +52,11 @@ services:
 
   # Couchbase Server - Internal database (not exposed to host/LAN)
   couchbase-server:
+    hostname: couchbase-server.test
+    networks:
+      default:
+        aliases:
+          - couchbase-server.test
     image: couchbase:enterprise-7.2.0
     volumes:
       - couchbase-data:/opt/couchbase/var
