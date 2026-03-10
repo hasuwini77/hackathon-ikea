@@ -20,6 +20,7 @@ import type {
   ProductDocument,
 } from './types';
 import { captureException, addBreadcrumb } from '~/lib/sentry';
+import { getProductFromIDB, saveProductToIDB, getAllProductsFromIDB } from '~/lib/pwa/indexeddb';
 
 /**
  * Custom error class for Couchbase operations
@@ -189,27 +190,38 @@ export async function getDocument(docId: string): Promise<CouchbaseDocument> {
   );
 
   return retryWithBackoff(async () => {
-    const url = getDocumentUrl(docId);
-    const response = await fetchWithTimeout(url);
+    try {
+      const url = getDocumentUrl(docId);
+      const response = await fetchWithTimeout(url);
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        // Don't capture 404s in Sentry - they're expected
-        addBreadcrumb(
-          `Document not found: ${docId}`,
-          'couchbase',
-          'warning',
-          { docId }
-        );
-        throw new CouchbaseClientError(
-          `Document not found: ${docId}`,
-          404
-        );
+      if (!response.ok) {
+        if (response.status === 404) {
+          // Don't capture 404s in Sentry - they're expected
+          addBreadcrumb(
+            `Document not found: ${docId}`,
+            'couchbase',
+            'warning',
+            { docId }
+          );
+          throw new CouchbaseClientError(
+            `Document not found: ${docId}`,
+            404
+          );
+        }
+        await parseErrorResponse(response);
       }
-      await parseErrorResponse(response);
-    }
 
-    return response.json();
+      const doc = await response.json();
+      await saveProductToIDB(doc).catch(console.error);
+      return doc;
+    } catch (err: any) {
+      if (err instanceof CouchbaseClientError && err.isOffline) {
+        console.warn(`[Offline] Falling back to IndexedDB for document: ${docId}`);
+        const cachedDoc = await getProductFromIDB(docId);
+        if (cachedDoc) return cachedDoc;
+      }
+      throw err;
+    }
   });
 }
 
@@ -318,7 +330,7 @@ export async function deleteDocument(
 export async function getAllDocuments(
   includeDocs: boolean = true
 ): Promise<AllDocsResponse> {
-// Add breadcrumb for bulk query
+  // Add breadcrumb for bulk query
   addBreadcrumb(
     'Fetching all documents',
     'couchbase',
@@ -327,14 +339,36 @@ export async function getAllDocuments(
   );
 
   return retryWithBackoff(async () => {
-    const url = `${getAllDocsUrl()}?include_docs=${includeDocs}`;
-    const response = await fetchWithTimeout(url);
+    try {
+      const url = `${getAllDocsUrl()}?include_docs=${includeDocs}`;
+      const response = await fetchWithTimeout(url);
 
-    if (!response.ok) {
-      await parseErrorResponse(response);
+      if (!response.ok) {
+        await parseErrorResponse(response);
+      }
+
+      const res = await response.json();
+      if (includeDocs && res.rows) {
+        Promise.all(res.rows.map((row: any) => saveProductToIDB(row.doc))).catch(console.error);
+      }
+      return res;
+    } catch (err: any) {
+      if (err instanceof CouchbaseClientError && err.isOffline) {
+        console.warn(`[Offline] Falling back to IndexedDB for all documents...`);
+        const cachedDocs = await getAllProductsFromIDB();
+        return {
+          total_rows: cachedDocs.length,
+          offset: 0,
+          rows: cachedDocs.map((doc: any) => ({
+            id: doc._id,
+            key: doc._id,
+            value: { rev: doc._rev },
+            doc: includeDocs ? doc : undefined
+          }))
+        };
+      }
+      throw err;
     }
-
-    return response.json();
   });
 }
 

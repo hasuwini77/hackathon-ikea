@@ -48,6 +48,11 @@ export default function StockPage() {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [sortBy, setSortBy] = useState<SortOption>("stock-asc");
   const [updatingIds, setUpdatingIds] = useState<Set<string>>(new Set());
+  const [localQuantities, setLocalQuantities] = useState<Record<string, number>>({});
+
+  // Returns the optimistically-updated quantity for display
+  const getQuantity = (product: Product) =>
+    localQuantities[product._id] ?? product.stock.quantity;
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const productRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
@@ -164,7 +169,9 @@ export default function StockPage() {
 
   // Handle stock adjustment with toast feedback
   const handleStockAdjustment = async (product: Product, delta: number) => {
-    const newQuantity = Math.max(0, product.stock.quantity + delta);
+    const currentQty = localQuantities[product._id] ?? product.stock.quantity;
+    const newQuantity = Math.max(0, currentQty + delta);
+    setLocalQuantities(prev => ({ ...prev, [product._id]: newQuantity }));
     setUpdatingIds(prev => new Set(prev).add(product._id));
 
     try {
@@ -208,7 +215,7 @@ export default function StockPage() {
           e.preventDefault();
           if (filteredProducts[selectedIndex]) {
             const product = filteredProducts[selectedIndex];
-            if (!updatingIds.has(product._id) && product.stock.quantity > 0) {
+            if (!updatingIds.has(product._id) && getQuantity(product) > 0) {
               handleStockAdjustment(product, -1);
             }
           }
@@ -236,7 +243,7 @@ export default function StockPage() {
           e.preventDefault();
           if (filteredProducts[selectedIndex]) {
             const product = filteredProducts[selectedIndex];
-            if (!updatingIds.has(product._id) && product.stock.quantity > 0) {
+            if (!updatingIds.has(product._id) && getQuantity(product) > 0) {
               handleStockAdjustment(product, -10);
             }
           }
@@ -679,14 +686,14 @@ export default function StockPage() {
                       <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
                         <div className="flex flex-col items-center gap-1">
                           <Badge
-                            variant={getStockVariant(product.stock.quantity)}
+                            variant={getStockVariant(getQuantity(product))}
                             className="min-w-[100px] justify-center"
                           >
                             <Package className="h-3 w-3 mr-1" />
-                            {product.stock.quantity} units
+                            {getQuantity(product)} units
                           </Badge>
                           <span className="text-xs text-muted-foreground">
-                            {getStockLabel(product.stock.quantity)}
+                            {getStockLabel(getQuantity(product))}
                           </span>
                         </div>
 
@@ -695,7 +702,7 @@ export default function StockPage() {
                             variant="ghost"
                             size="icon"
                             onClick={() => handleStockAdjustment(product, -1)}
-                            disabled={isUpdating || product.stock.quantity === 0}
+                            disabled={isUpdating || getQuantity(product) === 0}
                             className="h-8 w-8"
                             title="Decrease by 1"
                           >
@@ -705,7 +712,7 @@ export default function StockPage() {
                             {isUpdating ? (
                               <RefreshCw className="h-4 w-4 animate-spin mx-auto" />
                             ) : (
-                              product.stock.quantity
+                              getQuantity(product)
                             )}
                           </div>
                           <Button
@@ -725,7 +732,7 @@ export default function StockPage() {
                             variant="outline"
                             size="sm"
                             onClick={() => handleStockAdjustment(product, -10)}
-                            disabled={isUpdating || product.stock.quantity === 0}
+                            disabled={isUpdating || getQuantity(product) === 0}
                             title="Decrease by 10"
                           >
                             -10
@@ -787,8 +794,8 @@ export default function StockPage() {
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center gap-2">
-                            <Badge variant={getStockVariant(product.stock.quantity)}>
-                              {product.stock.quantity}
+                            <Badge variant={getStockVariant(getQuantity(product))}>
+                              {getQuantity(product)}
                             </Badge>
                             {isPending && (
                               <RefreshCw className="h-3 w-3 animate-spin text-orange-500" />

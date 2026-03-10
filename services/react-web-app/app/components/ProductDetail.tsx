@@ -46,8 +46,7 @@ export function ProductDetail({ product, onClose }: ProductDetailProps) {
     try {
       await updateStock(product._id, newQuantity);
     } catch (err) {
-      // Revert on error
-      setQuantity(quantity);
+      // Keep optimistic update — error is surfaced via the error banner below
       console.error('Failed to update stock:', err);
     }
   };
@@ -122,11 +121,16 @@ export function ProductDetail({ product, onClose }: ProductDetailProps) {
 
         {/* Location Card - Prominent */}
         <Card className="bg-primary/5 border-primary/20">
-          <CardHeader className="pb-3">
+          <CardHeader className="pb-3 flex flex-row items-center justify-between">
             <CardTitle className="text-sm flex items-center gap-2">
               <MapPin className="h-4 w-4" aria-hidden="true" />
               Warehouse Location
             </CardTitle>
+            <div title="IKEA AXIS Coordinate: Structural encoding for offline physical navigation">
+              <Badge variant="outline" className="font-mono bg-background border-primary/30">
+                AXIS: {product.location.zone ? product.location.zone.substring(0, 2).toUpperCase() : 'WH'}-{product.location.aisle}-{product.location.bay}{product.location.section}
+              </Badge>
+            </div>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-3 gap-3">
