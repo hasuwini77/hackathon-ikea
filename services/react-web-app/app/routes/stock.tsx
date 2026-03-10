@@ -301,6 +301,8 @@ export default function StockPage() {
     };
   }, [products, queuedOperations]);
 
+  const hasNoProducts = !loading && !error && products.length === 0;
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8">
@@ -610,7 +612,16 @@ export default function StockPage() {
           <Card>
             <CardContent className="flex flex-col items-center justify-center h-32 text-muted-foreground">
               <Package className="h-8 w-8 mb-2 opacity-50" />
-              <p>No products found matching the current filters</p>
+              {hasNoProducts ? (
+                <>
+                  <p className="font-medium text-foreground">No products in the local database yet.</p>
+                  <p className="text-sm text-muted-foreground text-center mt-1">
+                    Seed data from this folder: <code>docker compose --profile tools run --rm seed</code>
+                  </p>
+                </>
+              ) : (
+                <p>No products found matching the current filters</p>
+              )}
             </CardContent>
           </Card>
         ) : viewMode === "grid" ? (

@@ -41,6 +41,20 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
     return "In Stock";
   };
 
+  const getMatchLabel = () => {
+    if (!product.searchMatch) return null;
+    if (product.searchMatch.kind === "exact") return "Exact match";
+    if (product.searchMatch.kind === "prefix") return "Starts with";
+    if (product.searchMatch.kind === "contains") return "Contains";
+    if (product.searchMatch.kind === "fuzzy") {
+      const pct = Math.max(0, Math.min(99, Math.round((product.searchMatch.score ?? 0) * 100)));
+      return `Fuzzy ${pct}%`;
+    }
+    return null;
+  };
+
+  const matchLabel = getMatchLabel();
+
   return (
     <Card
       className={`w-full overflow-hidden hover:shadow-lg transition-all cursor-pointer group ${
@@ -94,6 +108,11 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
             <p className="text-xs text-muted-foreground mt-1">
               Art. #{product.articleNumber}
             </p>
+            {matchLabel && (
+              <Badge variant="outline" className="mt-2 text-[10px] uppercase tracking-wide">
+                {matchLabel}
+              </Badge>
+            )}
           </div>
           <Badge variant={getStockVariant()} className="shrink-0">
             <Package className="h-3 w-3 mr-1" aria-hidden="true" />

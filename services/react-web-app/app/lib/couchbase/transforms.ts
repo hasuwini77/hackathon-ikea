@@ -200,6 +200,12 @@ export function productDocumentToProduct(doc: ProductDocument): Product {
     // UI-specific fields
     imageUrl: undefined,
     hasPendingChanges: doc._pendingSync || false,
+    searchMatch: doc._searchMatchKind
+      ? {
+          kind: doc._searchMatchKind,
+          score: doc._searchScore,
+        }
+      : undefined,
   };
 }
 

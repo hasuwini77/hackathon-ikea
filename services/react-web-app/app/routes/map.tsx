@@ -1,11 +1,18 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import {
   AlertTriangle,
   ArrowLeft,
+  Crosshair,
+  Move,
+  Pause,
+  Play,
   MapPin,
   Navigation,
+  PersonStanding,
+  Route,
   Search,
+  StepForward,
   ShoppingBag,
   Store,
   Warehouse,
@@ -71,8 +78,32 @@ interface MarkerPoint {
   tier: StockTier;
 }
 
+interface SimPosition {
+  floor: FloorId;
+  point: Point;
+}
+
+interface RouteSegment {
+  floor: FloorId;
+  points: Point[];
+}
+
+interface RoutePlan {
+  segments: RouteSegment[];
+  steps: string[];
+  transferConnector: Connector | null;
+  destinationPoint: Point;
+}
+
 const LOW_STOCK_THRESHOLD = 10;
 const FLOOR_ORDER: FloorId[] = ["L1", "L0", "B1"];
+const MAP_WIDTH = 1200;
+const MAP_HEIGHT = 780;
+const GRID_SIZE = 20;
+const GRID_COLS = Math.ceil(MAP_WIDTH / GRID_SIZE);
+const GRID_ROWS = Math.ceil(MAP_HEIGHT / GRID_SIZE);
+const AISLE_BLOCK_PADDING = 2;
+const AISLE_BLOCK_SHRINK = 4;
 
 const floorMeta: Record<
   FloorId,
@@ -352,6 +383,221 @@ function toPolyline(points: Point[]): string {
   return points.map((point) => `${point.x},${point.y}`).join(" ");
 }
 
+interface GridCell {
+  col: number;
+  row: number;
+}
+
+function cellIndex(cell: GridCell): number {
+  return cell.row * GRID_COLS + cell.col;
+}
+
+function pointToCell(point: Point): GridCell {
+  return {
+    col: Math.max(0, Math.min(GRID_COLS - 1, Math.floor(point.x / GRID_SIZE))),
+    row: Math.max(0, Math.min(GRID_ROWS - 1, Math.floor(point.y / GRID_SIZE))),
+  };
+}
+
+function cellToPoint(cell: GridCell): Point {
+  return {
+    x: cell.col * GRID_SIZE + GRID_SIZE / 2,
+    y: cell.row * GRID_SIZE + GRID_SIZE / 2,
+  };
+}
+
+function inBounds(cell: GridCell): boolean {
+  return cell.col >= 0 && cell.col < GRID_COLS && cell.row >= 0 && cell.row < GRID_ROWS;
+}
+
+function manhattanCell(a: GridCell, b: GridCell): number {
+  return Math.abs(a.col - b.col) + Math.abs(a.row - b.row);
+}
+
+function isBlockedCell(floor: FloorId, cell: GridCell): boolean {
+  const center = cellToPoint(cell);
+  return floorAisles[floor].some((aisle) => {
+    const shrinkX = Math.min(AISLE_BLOCK_SHRINK, aisle.width / 3);
+    const shrinkY = Math.min(AISLE_BLOCK_SHRINK, aisle.height / 3);
+    const minX = aisle.x + shrinkX - AISLE_BLOCK_PADDING;
+    const maxX = aisle.x + aisle.width - shrinkX + AISLE_BLOCK_PADDING;
+    const minY = aisle.y + shrinkY - AISLE_BLOCK_PADDING;
+    const maxY = aisle.y + aisle.height - shrinkY + AISLE_BLOCK_PADDING;
+    return center.x >= minX && center.x <= maxX && center.y >= minY && center.y <= maxY;
+  });
+}
+
+function nearestWalkableCell(floor: FloorId, origin: GridCell): GridCell | null {
+  if (inBounds(origin) && !isBlockedCell(floor, origin)) return origin;
+
+  const queue: GridCell[] = [origin];
+  const visited = new Set<number>([cellIndex(origin)]);
+  const dirs = [
+    { col: 1, row: 0 },
+    { col: -1, row: 0 },
+    { col: 0, row: 1 },
+    { col: 0, row: -1 },
+  ];
+
+  while (queue.length > 0) {
+    const cur = queue.shift()!;
+    for (const dir of dirs) {
+      const next = { col: cur.col + dir.col, row: cur.row + dir.row };
+      if (!inBounds(next)) continue;
+      const index = cellIndex(next);
+      if (visited.has(index)) continue;
+      if (!isBlockedCell(floor, next)) return next;
+      visited.add(index);
+      queue.push(next);
+    }
+  }
+
+  return null;
+}
+
+function reconstructCellPath(cameFrom: Map<number, number>, end: GridCell): GridCell[] {
+  const path: GridCell[] = [end];
+  let current = cellIndex(end);
+
+  while (cameFrom.has(current)) {
+    const parent = cameFrom.get(current)!;
+    path.unshift({ col: parent % GRID_COLS, row: Math.floor(parent / GRID_COLS) });
+    current = parent;
+  }
+
+  return path;
+}
+
+function aStarGrid(floor: FloorId, from: Point, to: Point): Point[] | null {
+  const startCell = nearestWalkableCell(floor, pointToCell(from));
+  const endCell = nearestWalkableCell(floor, pointToCell(to));
+  if (!startCell || !endCell) return null;
+
+  const startKey = cellIndex(startCell);
+  const endKey = cellIndex(endCell);
+
+  const open: number[] = [startKey];
+  const openSet = new Set<number>([startKey]);
+  const cameFrom = new Map<number, number>();
+  const gScore = new Map<number, number>([[startKey, 0]]);
+  const fScore = new Map<number, number>([[startKey, manhattanCell(startCell, endCell)]]);
+
+  const dirs = [
+    { col: 1, row: 0 },
+    { col: -1, row: 0 },
+    { col: 0, row: 1 },
+    { col: 0, row: -1 },
+  ];
+
+  while (open.length > 0) {
+    let bestIndex = 0;
+    for (let i = 1; i < open.length; i += 1) {
+      if ((fScore.get(open[i]) ?? Infinity) < (fScore.get(open[bestIndex]) ?? Infinity)) {
+        bestIndex = i;
+      }
+    }
+
+    const current = open[bestIndex];
+    open.splice(bestIndex, 1);
+    openSet.delete(current);
+
+    if (current === endKey) {
+      const cellPath = reconstructCellPath(cameFrom, endCell);
+      return compactPath(cellPath.map(cellToPoint));
+    }
+
+    const curCell = { col: current % GRID_COLS, row: Math.floor(current / GRID_COLS) };
+
+    for (const dir of dirs) {
+      const nextCell = { col: curCell.col + dir.col, row: curCell.row + dir.row };
+      if (!inBounds(nextCell)) continue;
+      if (isBlockedCell(floor, nextCell)) continue;
+
+      const nextKey = cellIndex(nextCell);
+      const tentative = (gScore.get(current) ?? Infinity) + 1;
+      if (tentative >= (gScore.get(nextKey) ?? Infinity)) continue;
+
+      cameFrom.set(nextKey, current);
+      gScore.set(nextKey, tentative);
+      fScore.set(nextKey, tentative + manhattanCell(nextCell, endCell));
+
+      if (!openSet.has(nextKey)) {
+        open.push(nextKey);
+        openSet.add(nextKey);
+      }
+    }
+  }
+
+  return null;
+}
+
+function simplifyPath(points: Point[]): Point[] {
+  if (points.length <= 2) return points;
+  const simplified: Point[] = [points[0]];
+  for (let i = 1; i < points.length - 1; i += 1) {
+    const prev = simplified[simplified.length - 1];
+    const cur = points[i];
+    const next = points[i + 1];
+    const collinear =
+      (prev.x === cur.x && cur.x === next.x) ||
+      (prev.y === cur.y && cur.y === next.y);
+    if (!collinear) {
+      simplified.push(cur);
+    }
+  }
+  simplified.push(points[points.length - 1]);
+  return simplified;
+}
+
+function pathOnFloor(floor: FloorId, from: Point, to: Point): Point[] | null {
+  const path = aStarGrid(floor, from, to);
+  if (!path) return null;
+  return simplifyPath(path);
+}
+
+function distanceToAisleRect(point: Point, aisle: AisleGeometry): number {
+  const minX = aisle.x;
+  const maxX = aisle.x + aisle.width;
+  const minY = aisle.y;
+  const maxY = aisle.y + aisle.height;
+  const dx = Math.max(minX - point.x, 0, point.x - maxX);
+  const dy = Math.max(minY - point.y, 0, point.y - maxY);
+  return Math.hypot(dx, dy);
+}
+
+function getAislePickupCandidates(aisle: AisleGeometry, bay: number): Point[] {
+  const ratio = bayRatio(bay);
+  const aisleMidX = aisle.x + aisle.width / 2;
+  const aisleMidY = aisle.y + aisle.height / 2;
+  const walkwayOffset = AISLE_BLOCK_PADDING + GRID_SIZE * 0.75;
+
+  if (aisle.orientation === "vertical") {
+    const y = aisle.y + 12 + ratio * (aisle.height - 24);
+    return [
+      { x: aisle.x - walkwayOffset, y },
+      { x: aisle.x + aisle.width + walkwayOffset, y },
+      { x: aisleMidX, y: aisle.y - walkwayOffset },
+      { x: aisleMidX, y: aisle.y + aisle.height + walkwayOffset },
+    ];
+  }
+
+  const x = aisle.x + 12 + ratio * (aisle.width - 24);
+  return [
+    { x, y: aisle.y - walkwayOffset },
+    { x, y: aisle.y + aisle.height + walkwayOffset },
+    { x: aisle.x - walkwayOffset, y: aisleMidY },
+    { x: aisle.x + aisle.width + walkwayOffset, y: aisleMidY },
+  ];
+}
+
+function estimateDistance(points: Point[]): number {
+  let total = 0;
+  for (let i = 1; i < points.length; i += 1) {
+    total += Math.hypot(points[i].x - points[i - 1].x, points[i].y - points[i - 1].y);
+  }
+  return total;
+}
+
 function renderFloorScenery(floor: FloorId) {
   if (floor === "L1") {
     const rooms = [
@@ -525,6 +771,48 @@ export default function MapPage() {
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [bootstrapped, setBootstrapped] = useState(false);
+  const [simPosition, setSimPosition] = useState<SimPosition>({
+    floor: "L0",
+    point: floorMeta.L0.entry,
+  });
+  const [tapToMove, setTapToMove] = useState(false);
+  const [dragToMove, setDragToMove] = useState(true);
+  const [autoMove, setAutoMove] = useState(false);
+  const [transferMode, setTransferMode] = useState<"any" | Connector["kind"]>("any");
+  const [isDraggingMe, setIsDraggingMe] = useState(false);
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  const selectedProductRef = useRef<LocatedProduct | null>(null);
+  const selectedTargetPointRef = useRef<Point | null>(null);
+  const routePlanRef = useRef<RoutePlan | null>(null);
+  const dragPointerIdRef = useRef<number | null>(null);
+  const dragMovedRef = useRef(false);
+
+  const snapToWalkable = useCallback((floor: FloorId, point: Point): Point => {
+    const clamped = {
+      x: Math.max(0, Math.min(MAP_WIDTH, point.x)),
+      y: Math.max(0, Math.min(MAP_HEIGHT, point.y)),
+    };
+    const cell = pointToCell(clamped);
+    if (!isBlockedCell(floor, cell)) return clamped;
+    const nearest = nearestWalkableCell(floor, cell);
+    return nearest ? cellToPoint(nearest) : clamped;
+  }, []);
+
+  const clientToSvgPoint = useCallback((clientX: number, clientY: number): Point | null => {
+    const svg = svgRef.current;
+    if (!svg) return null;
+    const pt = svg.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+
+    const ctm = svg.getScreenCTM();
+    if (!ctm) return null;
+    const transformed = pt.matrixTransform(ctm.inverse());
+    return {
+      x: Math.max(0, Math.min(MAP_WIDTH, transformed.x)),
+      y: Math.max(0, Math.min(MAP_HEIGHT, transformed.y)),
+    };
+  }, []);
 
   useEffect(() => {
     if (bootstrapped) return;
@@ -642,6 +930,8 @@ export default function MapPage() {
       .slice(0, q ? 25 : 16);
   }, [locatedProducts, query]);
 
+  const hasNoMappedProducts = !loading && !error && locatedProducts.length === 0;
+
   const floorProducts = useMemo(
     () => locatedProducts.filter((product) => product.mapLocation.floor === activeFloor),
     [locatedProducts, activeFloor]
@@ -724,74 +1014,247 @@ export default function MapPage() {
     return getMarkerPoint(geometry, selectedProduct.mapLocation.bay);
   }, [selectedProduct]);
 
-  const activeConnector = useMemo(() => {
+  const routeOriginCell = useMemo(() => pointToCell(simPosition.point), [simPosition.point.x, simPosition.point.y]);
+  const routeOriginKey = `${simPosition.floor}:${routeOriginCell.col}:${routeOriginCell.row}`;
+
+  const routePlan = useMemo<RoutePlan | null>(() => {
     if (!selectedProduct || !selectedTargetPoint) return null;
-    if (selectedProduct.mapLocation.floor === "L0") return null;
 
-    return connectors.reduce((best, connector) => {
-      if (!best) return connector;
-      const bestDistance = Math.abs(best.x - selectedTargetPoint.x);
-      const candidateDistance = Math.abs(connector.x - selectedTargetPoint.x);
-      return candidateDistance < bestDistance ? connector : best;
-    }, null as Connector | null);
-  }, [selectedProduct, selectedTargetPoint]);
+    const fromFloor = simPosition.floor;
+    const toFloor = selectedProduct.mapLocation.floor;
+    const fromPoint = cellToPoint(routeOriginCell);
+    const destinationAisle = getAisleGeometry(toFloor, selectedProduct.mapLocation.aisle);
+    const pickupCandidates = getAislePickupCandidates(destinationAisle, selectedProduct.mapLocation.bay);
+    const clampedCandidates = pickupCandidates.map((candidate) => snapToWalkable(toFloor, candidate));
+    if (clampedCandidates.length === 0) return null;
 
-  const routeSteps = useMemo(() => {
-    if (!selectedProduct) return [] as string[];
-
-    const floorInfo = floorMeta[selectedProduct.mapLocation.floor];
-
-    if (!activeConnector || selectedProduct.mapLocation.floor === "L0") {
-      return [
-        "Enter from Ground Level entrance",
-        `Walk to aisle ${selectedProduct.mapLocation.aisle}`,
-        `Stop at bay ${selectedProduct.mapLocation.bay}, section ${selectedProduct.mapLocation.section}`,
-      ];
+    if (fromFloor === toFloor) {
+      let bestSameFloor: { path: Point[]; target: Point; distance: number } | null = null;
+      for (const candidate of clampedCandidates) {
+        const path = pathOnFloor(fromFloor, fromPoint, candidate);
+        if (!path) continue;
+        const distance = estimateDistance(path);
+        if (!bestSameFloor || distance < bestSameFloor.distance) {
+          bestSameFloor = { path, target: candidate, distance };
+        }
+      }
+      if (!bestSameFloor) return null;
+      return {
+        segments: [{ floor: fromFloor, points: bestSameFloor.path }],
+        steps: [
+          `From your position on ${floorMeta[fromFloor].label}, continue to aisle ${selectedProduct.mapLocation.aisle}.`,
+          `Stop at bay ${selectedProduct.mapLocation.bay}, section ${selectedProduct.mapLocation.section}.`,
+        ],
+        transferConnector: null,
+        destinationPoint: bestSameFloor.target,
+      };
     }
 
-    return [
-      "Enter from Ground Level entrance",
-      `Take ${activeConnector.label} to ${floorInfo.label}`,
-      `Walk to aisle ${selectedProduct.mapLocation.aisle}`,
-      `Pick from bay ${selectedProduct.mapLocation.bay}, section ${selectedProduct.mapLocation.section}`,
-    ];
-  }, [selectedProduct, activeConnector]);
+    const connectorCandidates =
+      transferMode === "any" ? connectors : connectors.filter((connector) => connector.kind === transferMode);
+
+    let best: { connector: Connector; fromPath: Point[]; toPath: Point[]; distance: number; target: Point } | null = null;
+    for (const connector of connectorCandidates) {
+      const fromPath = pathOnFloor(fromFloor, fromPoint, connector);
+      if (!fromPath) continue;
+      for (const candidate of clampedCandidates) {
+        const toPath = pathOnFloor(toFloor, connector, candidate);
+        if (!toPath) continue;
+        const distance = estimateDistance(fromPath) + estimateDistance(toPath);
+        if (!best || distance < best.distance) {
+          best = { connector, fromPath, toPath, distance, target: candidate };
+        }
+      }
+    }
+    if (!best) return null;
+
+    return {
+      segments: [
+        { floor: fromFloor, points: best.fromPath },
+        { floor: toFloor, points: best.toPath },
+      ],
+      steps: [
+        `Move from ${floorMeta[fromFloor].label} to ${best.connector.label}.`,
+        `Transfer to ${floorMeta[toFloor].label}.`,
+        `Proceed to aisle ${selectedProduct.mapLocation.aisle}, bay ${selectedProduct.mapLocation.bay}, section ${selectedProduct.mapLocation.section}.`,
+      ],
+      transferConnector: best.connector,
+      destinationPoint: best.target,
+    };
+  }, [selectedProduct, selectedTargetPoint, simPosition.floor, routeOriginKey, routeOriginCell, snapToWalkable, transferMode]);
 
   const activeFloorPath = useMemo(() => {
-    if (!selectedProduct || !selectedTargetPoint) return null;
-
-    if (selectedProduct.mapLocation.floor === "L0") {
-      if (activeFloor !== "L0") return null;
-
-      return compactPath([
-        floorMeta.L0.entry,
-        { x: floorMeta.L0.entry.x, y: selectedTargetPoint.y },
-        selectedTargetPoint,
-      ]);
-    }
-
-    if (!activeConnector) return null;
-
-    if (activeFloor === "L0") {
-      return compactPath([
-        floorMeta.L0.entry,
-        { x: floorMeta.L0.entry.x, y: activeConnector.y },
-        { x: activeConnector.x, y: activeConnector.y },
-      ]);
-    }
-
-    if (activeFloor === selectedProduct.mapLocation.floor) {
-      return compactPath([
-        { x: activeConnector.x, y: activeConnector.y },
-        { x: activeConnector.x, y: selectedTargetPoint.y },
-        selectedTargetPoint,
-      ]);
-    }
-
-    return null;
-  }, [selectedProduct, selectedTargetPoint, activeFloor, activeConnector]);
+    if (!routePlan) return null;
+    return routePlan.segments.find((segment) => segment.floor === activeFloor)?.points ?? null;
+  }, [routePlan, activeFloor]);
 
   const routePolyline = activeFloorPath ? toPolyline(activeFloorPath) : null;
+
+  const routeDistance = useMemo(() => {
+    if (!routePlan) return 0;
+    return routePlan.segments.reduce((sum, segment) => sum + estimateDistance(segment.points), 0);
+  }, [routePlan]);
+
+  const routeEtaMinutes = useMemo(() => {
+    // Rough indoor walking speed at map scale.
+    return Math.max(1, Math.round(routeDistance / 230));
+  }, [routeDistance]);
+
+  const nearestAisleToPosition = (floor: FloorId, point: Point): { aisle: number; distance: number } | null => {
+    const aisles = floorAisles[floor];
+    if (aisles.length === 0) return null;
+    let best: { aisle: number; d: number } | null = null;
+    for (const aisle of aisles) {
+      const d = distanceToAisleRect(point, aisle);
+      if (!best || d < best.d) best = { aisle: aisle.aisle, d };
+    }
+    return best ? { aisle: best.aisle, distance: best.d } : null;
+  };
+
+  const advanceAlongPath = useCallback((current: Point, path: Point[], stepPx: number): { point: Point; reachedEnd: boolean } => {
+    if (path.length === 0) return { point: current, reachedEnd: true };
+
+    let nearestIndex = 0;
+    let bestDistance = Infinity;
+    for (let i = 0; i < path.length; i += 1) {
+      const d = Math.hypot(path[i].x - current.x, path[i].y - current.y);
+      if (d < bestDistance) {
+        bestDistance = d;
+        nearestIndex = i;
+      }
+    }
+
+    let point = current;
+    let remaining = stepPx;
+    for (let i = Math.min(nearestIndex + 1, path.length - 1); i < path.length && remaining > 0; i += 1) {
+      const target = path[i];
+      const dist = Math.hypot(target.x - point.x, target.y - point.y);
+      if (dist < 0.001) continue;
+      if (dist <= remaining) {
+        point = target;
+        remaining -= dist;
+        continue;
+      }
+      const ratio = remaining / dist;
+      point = {
+        x: point.x + (target.x - point.x) * ratio,
+        y: point.y + (target.y - point.y) * ratio,
+      };
+      remaining = 0;
+    }
+
+    const end = path[path.length - 1];
+    const reachedEnd = Math.hypot(end.x - point.x, end.y - point.y) < 1;
+    return { point, reachedEnd };
+  }, []);
+
+  const advanceSimulation = useCallback((stepPx = 28) => {
+    const targetProduct = selectedProductRef.current;
+    const targetPoint = selectedTargetPointRef.current;
+    const plan = routePlanRef.current;
+    if (!targetProduct || !targetPoint || !plan) return;
+
+    setSimPosition((prev) => {
+      const currentSegment = plan.segments.find((segment) => segment.floor === prev.floor);
+      if (!currentSegment) return prev;
+
+      const stepped = advanceAlongPath(prev.point, currentSegment.points, stepPx);
+      if (!stepped.reachedEnd) {
+        return { floor: prev.floor, point: stepped.point };
+      }
+
+      if (prev.floor !== targetProduct.mapLocation.floor && plan.transferConnector) {
+        const nextFloor = targetProduct.mapLocation.floor;
+        const snapped = snapToWalkable(nextFloor, plan.transferConnector);
+        setActiveFloor(nextFloor);
+        return { floor: nextFloor, point: snapped };
+      }
+
+      setAutoMove(false);
+      return {
+        floor: prev.floor,
+        point: targetPoint ?? plan.destinationPoint,
+      };
+    });
+  }, [advanceAlongPath, snapToWalkable]);
+
+  useEffect(() => {
+    selectedProductRef.current = selectedProduct;
+    selectedTargetPointRef.current = routePlan?.destinationPoint ?? selectedTargetPoint;
+    routePlanRef.current = routePlan;
+  }, [selectedProduct, selectedTargetPoint, routePlan]);
+
+  useEffect(() => {
+    if (!autoMove) return;
+    const timer = window.setInterval(() => {
+      advanceSimulation(20);
+    }, 320);
+    return () => window.clearInterval(timer);
+  }, [autoMove, advanceSimulation]);
+
+  useEffect(() => {
+    if (tapToMove) return;
+    const nearest = nearestAisleToPosition(simPosition.floor, simPosition.point);
+    if (!nearest) return;
+
+    setSelectedAisle((prev) => {
+      if (prev === null) return nearest.aisle;
+      const previousAisle = floorAisles[simPosition.floor].find((aisle) => aisle.aisle === prev);
+      if (!previousAisle) return nearest.aisle;
+
+      const previousDistance = distanceToAisleRect(simPosition.point, previousAisle);
+      const switchHysteresis = 14;
+      if (previousDistance <= nearest.distance + switchHysteresis) {
+        return prev;
+      }
+      return nearest.aisle;
+    });
+  }, [simPosition, tapToMove]);
+
+  const handleMapTapToMove = useCallback((event: React.MouseEvent<SVGSVGElement>) => {
+    if (dragMovedRef.current) {
+      dragMovedRef.current = false;
+      return;
+    }
+    if (!tapToMove || isDraggingMe) return;
+    const point = clientToSvgPoint(event.clientX, event.clientY);
+    if (!point) return;
+    setSimPosition({ floor: activeFloor, point: snapToWalkable(activeFloor, point) });
+    setAutoMove(false);
+  }, [activeFloor, clientToSvgPoint, isDraggingMe, snapToWalkable, tapToMove]);
+
+  const handleMapPointerDown = useCallback((event: React.PointerEvent<SVGSVGElement>) => {
+    if (!dragToMove) return;
+    if (simPosition.floor !== activeFloor) return;
+    const point = clientToSvgPoint(event.clientX, event.clientY);
+    if (!point) return;
+    const dist = Math.hypot(point.x - simPosition.point.x, point.y - simPosition.point.y);
+    if (dist > 28) return;
+
+    dragPointerIdRef.current = event.pointerId;
+    dragMovedRef.current = false;
+    setIsDraggingMe(true);
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }, [activeFloor, clientToSvgPoint, dragToMove, simPosition]);
+
+  const handleMapPointerMove = useCallback((event: React.PointerEvent<SVGSVGElement>) => {
+    if (!isDraggingMe) return;
+    if (dragPointerIdRef.current !== event.pointerId) return;
+    const point = clientToSvgPoint(event.clientX, event.clientY);
+    if (!point) return;
+    dragMovedRef.current = true;
+    setSimPosition({ floor: activeFloor, point: snapToWalkable(activeFloor, point) });
+    setAutoMove(false);
+  }, [activeFloor, clientToSvgPoint, isDraggingMe, snapToWalkable]);
+
+  const handleMapPointerUp = useCallback((event: React.PointerEvent<SVGSVGElement>) => {
+    if (dragPointerIdRef.current !== event.pointerId) return;
+    dragPointerIdRef.current = null;
+    setIsDraggingMe(false);
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+  }, []);
 
   const stats = useMemo(() => {
     let lowStock = 0;
@@ -893,7 +1356,16 @@ export default function MapPage() {
               )}
 
               {!loading && !error && searchResults.length === 0 && (
-                <p className="text-sm text-muted-foreground">No products match this query.</p>
+                hasNoMappedProducts ? (
+                  <div className="rounded-md border border-[#0058A3]/30 bg-[#f2f8ff] p-3 text-sm">
+                    <p className="font-semibold text-[#0b3e75]">No mapped products yet.</p>
+                    <p className="mt-1 text-muted-foreground">
+                      Seed data from this folder: <code>docker compose --profile tools run --rm seed</code>
+                    </p>
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground">No products match this query.</p>
+                )
               )}
 
               <div className="max-h-[68vh] overflow-y-auto space-y-2 pr-1">
@@ -981,7 +1453,23 @@ export default function MapPage() {
                     <span>{floorTitle.label} Floorplate</span>
                     <span className="text-[#FFDB00]">{floorTitle.title}</span>
                   </div>
-                  <svg viewBox="0 0 1200 780" className="h-[560px] min-w-[980px] w-full" role="img" aria-label={`${floorTitle.label} map`}>
+                  <svg
+                    ref={svgRef}
+                    viewBox="0 0 1200 780"
+                    className={cn(
+                      "h-[560px] min-w-[980px] w-full",
+                      tapToMove && "cursor-crosshair",
+                      dragToMove && !tapToMove && "cursor-grab",
+                      isDraggingMe && "cursor-grabbing"
+                    )}
+                    role="img"
+                    aria-label={`${floorTitle.label} map`}
+                    onClick={handleMapTapToMove}
+                    onPointerDown={handleMapPointerDown}
+                    onPointerMove={handleMapPointerMove}
+                    onPointerUp={handleMapPointerUp}
+                    onPointerCancel={handleMapPointerUp}
+                  >
                     <rect x="0" y="0" width="1200" height="780" fill="#eef4fa" />
                     {renderFloorScenery(activeFloor)}
 
@@ -1017,6 +1505,7 @@ export default function MapPage() {
                         <g
                           key={`aisle-${activeFloor}-${aisle.aisle}`}
                           onClick={() => {
+                            if (tapToMove) return;
                             setSelectedAisle(aisle.aisle);
                             const inAisle = floorProducts
                               .filter((product) => product.mapLocation.aisle === aisle.aisle)
@@ -1076,6 +1565,69 @@ export default function MapPage() {
                       </g>
                     ))}
 
+                    {simPosition.floor === activeFloor && (
+                      <g>
+                        <circle cx={simPosition.point.x} cy={simPosition.point.y} r="24" fill="#0ea5e9" opacity="0.13" />
+                        <circle cx={simPosition.point.x} cy={simPosition.point.y} r="13" fill="#0284c7" stroke="#ffffff" strokeWidth="3" />
+                        <circle cx={simPosition.point.x} cy={simPosition.point.y - 4} r="3.5" fill="#ffffff" />
+                        <line
+                          x1={simPosition.point.x}
+                          y1={simPosition.point.y - 1}
+                          x2={simPosition.point.x}
+                          y2={simPosition.point.y + 8}
+                          stroke="#ffffff"
+                          strokeWidth="2.3"
+                          strokeLinecap="round"
+                        />
+                        <line
+                          x1={simPosition.point.x}
+                          y1={simPosition.point.y + 2}
+                          x2={simPosition.point.x - 5}
+                          y2={simPosition.point.y + 6}
+                          stroke="#ffffff"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <line
+                          x1={simPosition.point.x}
+                          y1={simPosition.point.y + 2}
+                          x2={simPosition.point.x + 5}
+                          y2={simPosition.point.y + 4}
+                          stroke="#ffffff"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <line
+                          x1={simPosition.point.x}
+                          y1={simPosition.point.y + 8}
+                          x2={simPosition.point.x - 5}
+                          y2={simPosition.point.y + 14}
+                          stroke="#ffffff"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <line
+                          x1={simPosition.point.x}
+                          y1={simPosition.point.y + 8}
+                          x2={simPosition.point.x + 5}
+                          y2={simPosition.point.y + 13}
+                          stroke="#ffffff"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                        <text
+                          x={simPosition.point.x}
+                          y={simPosition.point.y - 18}
+                          textAnchor="middle"
+                          fontSize="11"
+                          fill="#0c4a6e"
+                          fontWeight="800"
+                        >
+                          YOU ARE HERE
+                        </text>
+                      </g>
+                    )}
+
                     {routePolyline && (
                       <g>
                         <polyline
@@ -1111,6 +1663,7 @@ export default function MapPage() {
                         <g
                           key={`marker-${marker.product._id}`}
                           onClick={() => {
+                            if (tapToMove) return;
                             setSelectedProductId(marker.product._id);
                             setSelectedAisle(marker.product.mapLocation.aisle);
                           }}
@@ -1150,6 +1703,91 @@ export default function MapPage() {
                   <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Route Plan</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
+                  <div className="rounded-sm border border-[#c5d3e3] bg-[#f8fbff] p-3 space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-[#0b3e75] inline-flex items-center gap-1">
+                        <Route className="h-3.5 w-3.5" />
+                        Movement Simulator
+                      </p>
+                      <Badge variant="outline">
+                        <PersonStanding className="h-3.5 w-3.5 mr-1" />
+                        {floorMeta[simPosition.floor].label} · x{Math.round(simPosition.point.x)} y{Math.round(simPosition.point.y)}
+                      </Badge>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant={tapToMove ? "default" : "outline"}
+                        onClick={() => setTapToMove((prev) => !prev)}
+                      >
+                        <Crosshair className="h-3.5 w-3.5 mr-1" />
+                        Tap-to-Move
+                      </Button>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant={dragToMove ? "default" : "outline"}
+                        onClick={() => setDragToMove((prev) => !prev)}
+                      >
+                        <Move className="h-3.5 w-3.5 mr-1" />
+                        Drag Me
+                      </Button>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        onClick={() => {
+                          setSimPosition({ floor: "L0", point: snapToWalkable("L0", floorMeta.L0.entry) });
+                          setActiveFloor("L0");
+                          setAutoMove(false);
+                        }}
+                      >
+                        Reset Start
+                      </Button>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        onClick={() => advanceSimulation(36)}
+                        disabled={!routePlan}
+                      >
+                        <StepForward className="h-3.5 w-3.5 mr-1" />
+                        Step
+                      </Button>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant={autoMove ? "default" : "outline"}
+                        onClick={() => setAutoMove((prev) => !prev)}
+                        disabled={!routePlan}
+                      >
+                        {autoMove ? <Pause className="h-3.5 w-3.5 mr-1" /> : <Play className="h-3.5 w-3.5 mr-1" />}
+                        {autoMove ? "Pause" : "Auto Follow"}
+                      </Button>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-xs text-muted-foreground">Floor transfer:</span>
+                      <Button type="button" size="sm" variant={transferMode === "any" ? "default" : "outline"} onClick={() => setTransferMode("any")}>
+                        Any
+                      </Button>
+                      <Button type="button" size="sm" variant={transferMode === "stairs" ? "default" : "outline"} onClick={() => setTransferMode("stairs")}>
+                        Stairs
+                      </Button>
+                      <Button type="button" size="sm" variant={transferMode === "escalator" ? "default" : "outline"} onClick={() => setTransferMode("escalator")}>
+                        Escalator
+                      </Button>
+                      <Button type="button" size="sm" variant={transferMode === "elevator" ? "default" : "outline"} onClick={() => setTransferMode("elevator")}>
+                        Elevator
+                      </Button>
+                    </div>
+                    {routePlan && (
+                      <p className="text-xs text-muted-foreground">
+                        Estimated route length: {Math.round(routeDistance)} units · ETA {routeEtaMinutes} min
+                      </p>
+                    )}
+                  </div>
+
                   {selectedProduct ? (
                     <>
                       <div className="rounded-sm border border-[#0058A3]/30 bg-[#e9f3ff] p-3">
@@ -1166,7 +1804,7 @@ export default function MapPage() {
                       </div>
 
                       <ol className="space-y-2 text-sm">
-                        {routeSteps.map((step, index) => (
+                        {(routePlan?.steps ?? []).map((step, index) => (
                           <li key={step} className="flex items-start gap-2">
                             <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0058A3] text-[11px] font-semibold text-white ring-2 ring-[#FFDB00]">
                               {index + 1}
@@ -1176,10 +1814,16 @@ export default function MapPage() {
                         ))}
                       </ol>
 
-                      {activeConnector && selectedProduct.mapLocation.floor !== "L0" && (
+                      {!routePlan && (
+                        <p className="text-xs text-destructive">
+                          No walkable route found from current position. Move closer to an open lane or use Tap-to-Move.
+                        </p>
+                      )}
+
+                      {routePlan?.transferConnector && selectedProduct.mapLocation.floor !== simPosition.floor && (
                         <p className="text-xs text-muted-foreground inline-flex items-center gap-1">
                           <Navigation className="h-3.5 w-3.5" />
-                          Vertical transfer uses {activeConnector.label}.
+                          Vertical transfer uses {routePlan.transferConnector.label}.
                         </p>
                       )}
                     </>

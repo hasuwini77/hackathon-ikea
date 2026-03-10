@@ -4,6 +4,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import type { ProductDocument } from '../types';
+import type { SearchMode } from '../client';
 import { getAllDocuments, searchProducts, CouchbaseClientError } from '../client';
 
 interface UseProductsOptions {
@@ -11,6 +12,7 @@ interface UseProductsOptions {
   minPrice?: number;
   maxPrice?: number;
   query?: string;
+  searchMode?: SearchMode;
 }
 
 interface UseProductsResult {
@@ -58,6 +60,7 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsResult
             minPrice: options.minPrice,
             maxPrice: options.maxPrice,
             query: options.query,
+            searchMode: options.searchMode,
           });
         } else {
           // Get all products directly
@@ -90,7 +93,7 @@ export function useProducts(options: UseProductsOptions = {}): UseProductsResult
     return () => {
       cancelled = true;
     };
-  }, [options.category, options.minPrice, options.maxPrice, options.query, refetchTrigger]);
+  }, [options.category, options.minPrice, options.maxPrice, options.query, options.searchMode, refetchTrigger]);
 
   return {
     products,

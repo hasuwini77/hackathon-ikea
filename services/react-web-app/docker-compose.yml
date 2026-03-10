@@ -13,11 +13,12 @@ services:
       - VITE_COUCHBASE_DB=ikea_products
     depends_on:
       edge-server:
-        condition: service_healthy
+        condition: service_started
 
   # Couchbase Edge Server - Internal REST API (not exposed to host/LAN)
   edge-server:
     image: couchbase/edge-server:latest
+    platform: ${EDGE_SERVER_PLATFORM:-linux/amd64}
     volumes:
       - ./docker/edge-config.json:/etc/edge-server/config.json:ro
       - ./docker/edge-entrypoint.sh:/etc/edge-server/entrypoint.sh:ro
@@ -67,8 +68,8 @@ services:
       test: ["CMD-SHELL", "curl -fsS -u admin:password123 http://localhost:8091/pools > /dev/null"]
       interval: 10s
       timeout: 5s
-      retries: 10
-      start_period: 30s
+      retries: 30
+      start_period: 90s
 
   # One-shot data seeder (runs only when explicitly requested)
   seed:

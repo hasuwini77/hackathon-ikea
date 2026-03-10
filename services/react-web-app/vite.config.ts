@@ -68,8 +68,9 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      // Generate source maps for production
-      sourcemap: mode === 'production' || mode === 'staging',
+      // Disable browser source maps by default in production/staging.
+      // Opt in with VITE_ENABLE_BROWSER_SOURCEMAPS=true when needed.
+      sourcemap: env.VITE_ENABLE_BROWSER_SOURCEMAPS === 'true',
     },
   };
 });

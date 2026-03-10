@@ -8,6 +8,7 @@ interface ProductSearchProps {
   resultCount?: number;
   placeholder?: string;
   debounceMs?: number;
+  value?: string;
 }
 
 /**
@@ -25,6 +26,7 @@ export function ProductSearch({
   resultCount,
   placeholder = "Search by name or article number...",
   debounceMs = 300,
+  value,
 }: ProductSearchProps) {
   const [searchValue, setSearchValue] = useState("");
   const [debouncedValue, setDebouncedValue] = useState("");
@@ -42,6 +44,15 @@ export function ProductSearch({
   useEffect(() => {
     onSearch(debouncedValue);
   }, [debouncedValue, onSearch]);
+
+  // Support controlled value updates (e.g., barcode scan populating search input)
+  useEffect(() => {
+    if (value === undefined) return;
+    if (value !== searchValue) {
+      setSearchValue(value);
+      setDebouncedValue(value);
+    }
+  }, [value, searchValue]);
 
   const handleClear = useCallback(() => {
     setSearchValue("");

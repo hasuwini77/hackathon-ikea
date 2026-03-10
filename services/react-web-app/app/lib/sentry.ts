@@ -99,15 +99,7 @@ export function initSentry(): void {
     // Performance Monitoring
     integrations: [
       // Browser tracing for performance monitoring
-      Sentry.browserTracingIntegration({
-        // Enable automatic instrumentation
-        tracePropagationTargets: [
-          'localhost',
-          /^\//,
-          // Add your API domains here
-          /^https:\/\/.*\.yourdomain\.com/,
-        ],
-      }),
+      Sentry.browserTracingIntegration(),
 
       // Session Replay for error reproduction
       Sentry.replayIntegration({
@@ -130,6 +122,12 @@ export function initSentry(): void {
 
     // Performance Monitoring sample rates
     tracesSampleRate: getTracesSampleRate(),
+    tracePropagationTargets: [
+      'localhost',
+      /^\//,
+      // Add your API domains here
+      /^https:\/\/.*\.yourdomain\.com/,
+    ],
 
     // Session Replay sample rates
     replaysSessionSampleRate: getReplaysSampleRate(),

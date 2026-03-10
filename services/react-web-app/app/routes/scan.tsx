@@ -7,6 +7,7 @@ import { ProductSearch } from "~/components/ProductSearch";
 import { ProductCard } from "~/components/ProductCard";
 import { ProductDetail } from "~/components/ProductDetail";
 import { useProducts, productDocumentsToProducts } from "~/lib/couchbase";
+import type { SearchMode } from "~/lib/couchbase/client";
 import type { Product } from "~/types/product";
 import {
   Drawer,
@@ -16,6 +17,7 @@ import {
 } from "~/components/ui/drawer";
 import { Skeleton } from "~/components/ui/skeleton";
 import { Button } from "~/components/ui/button";
+import { Badge } from "~/components/ui/badge";
 import {
   Pagination,
   PaginationContent,
@@ -62,9 +64,13 @@ export default function ScanPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchMode, setSearchMode] = useState<SearchMode>("smart");
 
   // Use Couchbase hook with query parameter
-  const { products: productDocs, loading } = useProducts({ query: searchTerm || undefined });
+  const { products: productDocs, loading } = useProducts({
+    query: searchTerm || undefined,
+    searchMode,
+  });
 
   // Transform Couchbase documents to UI format
   const allProducts = productDocumentsToProducts(productDocs);
@@ -163,7 +169,33 @@ export default function ScanPage() {
                 <ProductSearch
                   onSearch={handleSearch}
                   resultCount={searchTerm ? allProducts.length : undefined}
+                  value={searchTerm}
+                  placeholder="Search by name, description, or article number..."
                 />
+                <div className="flex flex-wrap items-center gap-2 mt-2">
+                  <span className="text-xs text-muted-foreground">Search mode:</span>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant={searchMode === "strict" ? "default" : "outline"}
+                    onClick={() => setSearchMode("strict")}
+                  >
+                    Strict
+                  </Button>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant={searchMode === "smart" ? "default" : "outline"}
+                    onClick={() => setSearchMode("smart")}
+                  >
+                    Smart (Fuzzy)
+                  </Button>
+                  <Badge variant="secondary" className="text-xs">
+                    {searchMode === "strict"
+                      ? "Exact / starts-with / contains only"
+                      : "Exact first, then fuzzy fallback"}
+                  </Badge>
+                </div>
               </ErrorBoundary>
 
               {/* Results Section */}

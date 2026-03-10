@@ -68,6 +68,10 @@ export interface Product extends Omit<BaseProduct, 'stock'> {
   stock: UIProductStock;
   imageUrl?: string;
   hasPendingChanges?: boolean;
+  searchMatch?: {
+    kind: 'exact' | 'prefix' | 'contains' | 'fuzzy';
+    score?: number;
+  };
 }
 
 export interface SyncStatus {
