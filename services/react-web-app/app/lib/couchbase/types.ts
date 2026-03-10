@@ -66,6 +66,10 @@ export interface ProductDocument extends CouchbaseDocument {
   bay?: number | string;
   section?: string;
   subcategory?: string; // Additional field in actual data
+
+  // Search metadata (client-side ranking, not persisted by backend logic)
+  _searchMatchKind?: 'exact' | 'prefix' | 'contains' | 'fuzzy';
+  _searchScore?: number;
 }
 
 /**

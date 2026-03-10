@@ -20,6 +20,9 @@ import type {
   ProductDocument,
 } from './types';
 import { captureException, addBreadcrumb } from '~/lib/sentry';
+import { getAllProductsFromIDB, getProductFromIDB, saveProductToIDB } from '../pwa/indexeddb';
+
+export type SearchMode = 'strict' | 'smart';
 
 /**
  * Custom error class for Couchbase operations
@@ -189,27 +192,38 @@ export async function getDocument(docId: string): Promise<CouchbaseDocument> {
   );
 
   return retryWithBackoff(async () => {
-    const url = getDocumentUrl(docId);
-    const response = await fetchWithTimeout(url);
+    try {
+      const url = getDocumentUrl(docId);
+      const response = await fetchWithTimeout(url);
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        // Don't capture 404s in Sentry - they're expected
-        addBreadcrumb(
-          `Document not found: ${docId}`,
-          'couchbase',
-          'warning',
-          { docId }
-        );
-        throw new CouchbaseClientError(
-          `Document not found: ${docId}`,
-          404
-        );
+      if (!response.ok) {
+        if (response.status === 404) {
+          // Don't capture 404s in Sentry - they're expected
+          addBreadcrumb(
+            `Document not found: ${docId}`,
+            'couchbase',
+            'warning',
+            { docId }
+          );
+          throw new CouchbaseClientError(
+            `Document not found: ${docId}`,
+            404
+          );
+        }
+        await parseErrorResponse(response);
       }
-      await parseErrorResponse(response);
-    }
 
-    return response.json();
+      const doc = await response.json();
+      await saveProductToIDB(doc).catch(console.error);
+      return doc;
+    } catch (err: any) {
+      if (err instanceof CouchbaseClientError && err.isOffline) {
+        console.warn(`[Offline] Falling back to IndexedDB for document: ${docId}`);
+        const cachedDoc = await getProductFromIDB(docId);
+        if (cachedDoc) return cachedDoc;
+      }
+      throw err;
+    }
   });
 }
 
@@ -327,14 +341,36 @@ export async function getAllDocuments(
   );
 
   return retryWithBackoff(async () => {
-    const url = `${getAllDocsUrl()}?include_docs=${includeDocs}`;
-    const response = await fetchWithTimeout(url);
+    try {
+      const url = `${getAllDocsUrl()}?include_docs=${includeDocs}`;
+      const response = await fetchWithTimeout(url);
 
-    if (!response.ok) {
-      await parseErrorResponse(response);
+      if (!response.ok) {
+        await parseErrorResponse(response);
+      }
+
+      const res = await response.json();
+      if (includeDocs && res.rows) {
+        Promise.all(res.rows.map((row: any) => saveProductToIDB(row.doc))).catch(console.error);
+      }
+      return res;
+    } catch (err: any) {
+      if (err instanceof CouchbaseClientError && err.isOffline) {
+        console.warn(`[Offline] Falling back to IndexedDB for all documents...`);
+        const cachedDocs = await getAllProductsFromIDB();
+        return {
+          total_rows: cachedDocs.length,
+          offset: 0,
+          rows: cachedDocs.map((doc: any) => ({
+            id: doc._id,
+            key: doc._id,
+            value: { rev: doc._rev },
+            doc: includeDocs ? doc : undefined
+          }))
+        };
+      }
+      throw err;
     }
-
-    return response.json();
   });
 }
 
@@ -346,6 +382,7 @@ export async function searchProducts(params: {
   minPrice?: number;
   maxPrice?: number;
   query?: string;
+  searchMode?: SearchMode;
 }): Promise<ProductDocument[]> {
   // Get all documents and filter client-side
   // Note: For production, you'd want to use Couchbase's N1QL or views
@@ -371,16 +408,264 @@ export async function searchProducts(params: {
   }
 
   if (params.query) {
-    const searchTerm = params.query.toLowerCase();
-    products = products.filter(p =>
-      p.name?.toLowerCase().includes(searchTerm) ||
-      p.description?.toLowerCase().includes(searchTerm) ||
-      p.articleNumber?.toLowerCase().includes(searchTerm) ||
-      p.tags?.some(tag => tag.toLowerCase().includes(searchTerm))
-    );
+    const searchTerm = normalizeSearchText(params.query);
+    if (searchTerm.length > 0) {
+      products = rankProductsBySearch(products, searchTerm, params.searchMode ?? 'smart');
+    }
   }
 
-  return products;
+  return dedupeProductDocuments(products);
+}
+
+function normalizeSearchText(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function revisionNumber(rev?: string): number {
+  if (!rev) return 0;
+  const parsed = Number.parseInt(rev.split('-')[0], 10);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function toTimestamp(value?: string): number {
+  if (!value) return 0;
+  const ts = Date.parse(value);
+  return Number.isFinite(ts) ? ts : 0;
+}
+
+function normalizeArticleKey(articleNumber?: string): string | null {
+  if (!articleNumber) return null;
+  const normalized = normalizeSearchText(articleNumber).replace(/\s+/g, '');
+  return normalized.length > 0 ? normalized : null;
+}
+
+function isNewerProductCandidate(next: ProductDocument, current: ProductDocument): boolean {
+  const nextUpdated = toTimestamp(next.lastUpdated);
+  const currentUpdated = toTimestamp(current.lastUpdated);
+  if (nextUpdated !== currentUpdated) return nextUpdated > currentUpdated;
+
+  const nextRev = revisionNumber(next._rev);
+  const currentRev = revisionNumber(current._rev);
+  if (nextRev !== currentRev) return nextRev > currentRev;
+
+  return (next._id ?? '').localeCompare(current._id ?? '') < 0;
+}
+
+export function dedupeProductDocuments(products: ProductDocument[]): ProductDocument[] {
+  const byArticle = new Map<string, ProductDocument>();
+  const noArticle: ProductDocument[] = [];
+
+  for (const product of products) {
+    const key = normalizeArticleKey(product.articleNumber);
+    if (!key) {
+      noArticle.push(product);
+      continue;
+    }
+
+    const existing = byArticle.get(key);
+    if (!existing || isNewerProductCandidate(product, existing)) {
+      byArticle.set(key, product);
+    }
+  }
+
+  return [...byArticle.values(), ...noArticle];
+}
+
+function levenshteinDistance(a: string, b: string): number {
+  if (a === b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+
+  const dp: number[] = new Array(b.length + 1);
+  for (let j = 0; j <= b.length; j++) dp[j] = j;
+
+  for (let i = 1; i <= a.length; i++) {
+    let prev = dp[0];
+    dp[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const temp = dp[j];
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      dp[j] = Math.min(
+        dp[j] + 1,
+        dp[j - 1] + 1,
+        prev + cost
+      );
+      prev = temp;
+    }
+  }
+
+  return dp[b.length];
+}
+
+function tokenOverlapScore(queryTokens: string[], targetTokens: string[]): number {
+  if (queryTokens.length === 0 || targetTokens.length === 0) return 0;
+  const targetSet = new Set(targetTokens);
+  let overlap = 0;
+  for (const token of queryTokens) {
+    if (targetSet.has(token)) overlap += 1;
+  }
+  return overlap / queryTokens.length;
+}
+
+function fuzzyTextScore(query: string, target: string): number {
+  if (!target) return 0;
+  if (target.includes(query)) return 0.92;
+
+  const queryTokens = query.split(' ').filter(Boolean);
+  const targetTokens = target.split(' ').filter(Boolean);
+  const overlap = tokenOverlapScore(queryTokens, targetTokens);
+
+  const candidates = buildFuzzyCandidates(query, targetTokens);
+  let bestEditScore = 0;
+
+  for (const candidate of candidates) {
+    const distance = levenshteinDistance(query, candidate);
+    const maxLen = Math.max(query.length, candidate.length);
+    const editScore = maxLen === 0 ? 1 : 1 - distance / maxLen;
+    if (editScore > bestEditScore) bestEditScore = editScore;
+  }
+
+  return Math.max(overlap, bestEditScore * 0.95);
+}
+
+function buildFuzzyCandidates(query: string, targetTokens: string[]): string[] {
+  const candidates: string[] = [];
+  const minTokenLen = Math.max(3, query.length - 2);
+  const maxTokenLen = query.length + 4;
+
+  for (const token of targetTokens) {
+    if (token.length >= minTokenLen && token.length <= maxTokenLen) {
+      candidates.push(token);
+    }
+  }
+
+  for (let i = 0; i < targetTokens.length - 1; i++) {
+    const bigram = `${targetTokens[i]} ${targetTokens[i + 1]}`;
+    if (bigram.length >= minTokenLen && bigram.length <= maxTokenLen + 8) {
+      candidates.push(bigram);
+    }
+  }
+
+  if (candidates.length === 0 && targetTokens.length > 0) {
+    candidates.push(targetTokens[0]);
+  }
+
+  return Array.from(new Set(candidates)).slice(0, 30);
+}
+
+type SearchMatchKind = 'exact' | 'prefix' | 'contains' | 'fuzzy';
+
+const SEARCH_MATCH_TIER: Record<SearchMatchKind, number> = {
+  exact: 4,
+  prefix: 3,
+  contains: 2,
+  fuzzy: 1,
+};
+
+export function rankProductsBySearch(products: ProductDocument[], query: string, mode: SearchMode): ProductDocument[] {
+  const ranked = products
+    .map((product) => {
+      const name = normalizeSearchText(product.name ?? '');
+      const description = normalizeSearchText(product.description ?? '');
+      const articleNumber = normalizeSearchText(product.articleNumber ?? '');
+      const tags = normalizeSearchText((product.tags ?? []).join(' '));
+
+      let score = 0;
+      let matchKind: SearchMatchKind | null = null;
+      let fuzzyConfidence = 0;
+
+      // Strict matches first.
+      if (articleNumber === query && score < 1000) {
+        score = 1000;
+        matchKind = 'exact';
+      }
+      if (name === query && score < 950) {
+        score = 950;
+        matchKind = 'exact';
+      }
+      if (description === query && score < 900) {
+        score = 900;
+        matchKind = 'exact';
+      }
+
+      if (articleNumber.startsWith(query) && score < 850) {
+        score = 850;
+        matchKind = 'prefix';
+      }
+      if (name.startsWith(query) && score < 800) {
+        score = 800;
+        matchKind = 'prefix';
+      }
+      if (description.startsWith(query) && score < 750) {
+        score = 750;
+        matchKind = 'prefix';
+      }
+
+      if (articleNumber.includes(query) && score < 700) {
+        score = 700;
+        matchKind = 'contains';
+      }
+      if (name.includes(query) && score < 650) {
+        score = 650;
+        matchKind = 'contains';
+      }
+      if (description.includes(query) && score < 600) {
+        score = 600;
+        matchKind = 'contains';
+      }
+      if (tags.includes(query) && score < 500) {
+        score = 500;
+        matchKind = 'contains';
+      }
+
+      if (mode === 'smart' && query.length >= 3) {
+        // Fuzzy fallback for near matches.
+        const fuzzyBest = Math.max(
+          fuzzyTextScore(query, name),
+          fuzzyTextScore(query, description),
+          fuzzyTextScore(query, articleNumber),
+          fuzzyTextScore(query, tags)
+        );
+
+        // Boost fuzzy score into sortable range only when strict score is weak.
+        if (score < 600 && fuzzyBest >= 0.42) {
+          score = Math.max(score, Math.round(fuzzyBest * 500));
+          if (score > 0) {
+            matchKind = 'fuzzy';
+            fuzzyConfidence = fuzzyBest;
+          }
+        }
+      }
+
+      return {
+        product: {
+          ...product,
+          _searchMatchKind: matchKind ?? undefined,
+          _searchScore: matchKind === 'fuzzy' ? fuzzyConfidence : undefined,
+        },
+        score,
+        matchTier: matchKind ? SEARCH_MATCH_TIER[matchKind] : 0,
+        fuzzyConfidence,
+      };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => {
+      if (b.matchTier !== a.matchTier) return b.matchTier - a.matchTier;
+      if (a.matchTier === SEARCH_MATCH_TIER.fuzzy && b.matchTier === SEARCH_MATCH_TIER.fuzzy) {
+        if (b.fuzzyConfidence !== a.fuzzyConfidence) return b.fuzzyConfidence - a.fuzzyConfidence;
+      }
+      if (b.score !== a.score) return b.score - a.score;
+      return (a.product.name ?? '').localeCompare(b.product.name ?? '');
+    })
+    .map(({ product }) => product);
+
+  return ranked;
 }
 
 /**

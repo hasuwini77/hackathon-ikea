@@ -1,6 +1,6 @@
 {
   "bootstrap": {
-    "server": "couchbase://couchbase-server",
+    "server": "couchbase://couchbase-server.test",
     "username": "admin",
     "password": "password123",
     "use_tls_server": false

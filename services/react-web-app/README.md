@@ -10,7 +10,13 @@ Run the full local stack (React + Edge Server + Sync Gateway + Couchbase):
 
 ```bash
 cd /Users/fredrik/claudeeverything/hackathon-ikea/worktree-offline-first/services/react-web-app
-docker compose up --build -d
+npm run docker:up
+```
+
+If your machine is Apple Silicon and you need to force the Edge Server image platform:
+
+```bash
+EDGE_SERVER_PLATFORM=linux/amd64 npm run docker:up
 ```
 
 From your phone (same Wi-Fi), open:
@@ -33,7 +39,7 @@ ipconfig getifaddr en0
 Seed product data into Edge Server (no DB ports exposed):
 
 ```bash
-docker compose --profile tools run --rm seed
+npm run docker:seed
 ```
 
 Security model in this setup:
@@ -44,14 +50,16 @@ Security model in this setup:
 Stop and close all openings when done:
 
 ```bash
-docker compose down
+npm run docker:down
 ```
 
 Optional full cleanup (containers + network + DB volume):
 
 ```bash
-docker compose down --volumes --remove-orphans
+npm run docker:reset
 ```
+
+If Docker gets stuck with overlay/read-only errors, restart Docker Desktop before retrying `npm run docker:up`.
 
 ### Running the Service
 

@@ -34,7 +34,7 @@ function parseStockLocation(doc: ProductDocument): UIProductLocation {
   }
 
   // Fallback: Parse from stock.location string if stock is an object with location
-  if (typeof doc.stock === 'object' && 'location' in doc.stock) {
+  if (doc.stock && typeof doc.stock === 'object' && 'location' in doc.stock) {
     const locationString = doc.stock.location;
 
   // Try comma-separated format first (e.g., "A,12,3") - unambiguous
@@ -156,7 +156,9 @@ function normalizeWeight(weight: any): number {
  */
 export function productDocumentToProduct(doc: ProductDocument): Product {
   // Normalize stock to always get quantity
-  const stockQuantity = typeof doc.stock === 'number' ? doc.stock : doc.stock.quantity;
+  const stockQuantity = typeof doc.stock === 'number'
+    ? doc.stock
+    : (doc.stock?.quantity ?? 0);
 
   // Ensure _id is always set - use articleNumber as fallback for uniqueness
   const productId = doc._id || `product:${doc.articleNumber}`;
@@ -198,6 +200,12 @@ export function productDocumentToProduct(doc: ProductDocument): Product {
     // UI-specific fields
     imageUrl: undefined,
     hasPendingChanges: doc._pendingSync || false,
+    searchMatch: doc._searchMatchKind
+      ? {
+          kind: doc._searchMatchKind,
+          score: doc._searchScore,
+        }
+      : undefined,
   };
 }
 

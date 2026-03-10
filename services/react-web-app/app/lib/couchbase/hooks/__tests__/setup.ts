@@ -6,6 +6,10 @@ import { afterEach, beforeEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 
+declare global {
+  var IS_REACT_ACT_ENVIRONMENT: boolean;
+}
+
 // Configure React 19 testing
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 

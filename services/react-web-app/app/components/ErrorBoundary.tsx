@@ -51,6 +51,7 @@ export class ErrorBoundary extends Component<
     return {
       hasError: true,
       error,
+      eventId: null,
     };
   }
 

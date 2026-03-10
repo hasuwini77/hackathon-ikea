@@ -1,0 +1,50 @@
+#!/usr/bin/env sh
+
+set -eu
+
+cd "$(dirname "$0")/.."
+
+if ! docker info >/dev/null 2>&1; then
+  echo "Docker daemon is not available. Start Docker Desktop and retry."
+  exit 1
+fi
+
+# Edge Server image is usually amd64-only; set a safe default for Apple Silicon.
+if [ -z "${EDGE_SERVER_PLATFORM:-}" ]; then
+  arch="$(uname -m || true)"
+  if [ "$arch" = "arm64" ] || [ "$arch" = "aarch64" ]; then
+    export EDGE_SERVER_PLATFORM="linux/amd64"
+  fi
+fi
+
+echo "Starting stack (EDGE_SERVER_PLATFORM=${EDGE_SERVER_PLATFORM:-default})..."
+docker compose up -d --build
+
+echo "Waiting for Couchbase health..."
+cid="$(docker compose ps -q couchbase-server)"
+if [ -z "$cid" ]; then
+  echo "Could not find couchbase-server container."
+  exit 1
+fi
+
+i=0
+while [ "$i" -lt 90 ]; do
+  status="$(docker inspect -f '{{if .State.Health}}{{.State.Health.Status}}{{else}}none{{end}}' "$cid" 2>/dev/null || echo none)"
+  if [ "$status" = "healthy" ]; then
+    echo "Couchbase is healthy."
+    break
+  fi
+  if [ "$status" = "unhealthy" ]; then
+    echo "Couchbase currently unhealthy; still waiting..."
+  fi
+  i=$((i + 1))
+  sleep 2
+done
+
+docker compose up -d
+docker compose ps
+
+echo
+echo "Web:        http://localhost:5173"
+echo "Phone (LAN): http://<your-mac-ip>:5173"
+echo "Seed data:  docker compose --profile tools run --rm seed"

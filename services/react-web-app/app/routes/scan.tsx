@@ -7,6 +7,7 @@ import { ProductSearch } from "~/components/ProductSearch";
 import { ProductCard } from "~/components/ProductCard";
 import { ProductDetail } from "~/components/ProductDetail";
 import { useProducts, productDocumentsToProducts } from "~/lib/couchbase";
+import type { SearchMode } from "~/lib/couchbase/client";
 import type { Product } from "~/types/product";
 import {
   Drawer,
@@ -16,6 +17,8 @@ import {
 } from "~/components/ui/drawer";
 import { Skeleton } from "~/components/ui/skeleton";
 import { Button } from "~/components/ui/button";
+import { Badge } from "~/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   Pagination,
   PaginationContent,
@@ -62,9 +65,13 @@ export default function ScanPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchMode, setSearchMode] = useState<SearchMode>("smart");
 
   // Use Couchbase hook with query parameter
-  const { products: productDocs, loading } = useProducts({ query: searchTerm || undefined });
+  const { products: productDocs, loading } = useProducts({
+    query: searchTerm || undefined,
+    searchMode,
+  });
 
   // Transform Couchbase documents to UI format
   const allProducts = productDocumentsToProducts(productDocs);
@@ -128,16 +135,16 @@ export default function ScanPage() {
   return (
     <ErrorBoundary>
       <OfflineErrorBoundary>
-        <div className="min-h-screen bg-background flex flex-col">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4 sm:p-6">
           {/* Main Content - Scrollable */}
           <main className="flex-1 overflow-y-auto">
-            <div className="container max-w-6xl mx-auto p-4 md:p-6 space-y-6">
+            <div className="max-w-7xl mx-auto space-y-6">
               {/* Page Header */}
               <header className="space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h1 className="text-3xl font-bold">Product Finder</h1>
-                    <p className="text-muted-foreground">
+                    <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Product Finder</h1>
+                    <p className="text-gray-600 dark:text-gray-400">
                       Scan or search for products to check stock and location
                     </p>
                   </div>
@@ -155,20 +162,56 @@ export default function ScanPage() {
 
               {/* Scanner Section */}
               <ErrorBoundary>
-                <BarcodeScanner onScan={handleScan} />
+                <Card className="border-2">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-gray-900 dark:text-white">Scan Tools</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <BarcodeScanner onScan={handleScan} />
+                  </CardContent>
+                </Card>
               </ErrorBoundary>
 
               {/* Search Section */}
               <ErrorBoundary>
-                <ProductSearch
-                  onSearch={handleSearch}
-                  resultCount={searchTerm ? allProducts.length : undefined}
-                />
+                <Card className="border-2">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-gray-900 dark:text-white">Search Products</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ProductSearch
+                      onSearch={handleSearch}
+                      resultCount={searchTerm ? allProducts.length : undefined}
+                      value={searchTerm}
+                      placeholder="Search by name, description, or article number..."
+                    />
+                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                      <span className="text-xs text-gray-600 dark:text-gray-400">Search mode:</span>
+                      <Button
+                        type="button"
+                        size="sm"
+                        variant="outline"
+                        onClick={() => setSearchMode((prev) => (prev === "strict" ? "smart" : "strict"))}
+                      >
+                        {searchMode === "strict" ? "Mode: Strict" : "Mode: Smart (Fuzzy)"}
+                      </Button>
+                      <Badge variant="secondary" className="text-xs">
+                        {searchMode === "strict"
+                          ? "Exact / starts-with / contains only"
+                          : "Exact first, then fuzzy fallback"}
+                      </Badge>
+                    </div>
+                  </CardContent>
+                </Card>
               </ErrorBoundary>
 
               {/* Results Section */}
               <ErrorBoundary>
-                <section aria-label="Product results">
+                <Card className="border-2" aria-label="Product results">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="text-lg text-gray-900 dark:text-white">Results</CardTitle>
+                  </CardHeader>
+                  <CardContent>
                   {loading ? (
                     // Loading Skeletons
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -184,7 +227,7 @@ export default function ScanPage() {
                     // Product Grid with Pagination
                     <div className="space-y-6">
                       {/* Results info */}
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
+                      <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
                         <span>
                           Showing {startIndex + 1}-{Math.min(endIndex, allProducts.length)} of {allProducts.length} products
                         </span>
@@ -246,23 +289,24 @@ export default function ScanPage() {
                   ) : searchTerm ? (
                     // No Results
                     <div className="text-center py-12">
-                      <Package className="h-16 w-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+                      <Package className="h-16 w-16 text-gray-500 dark:text-gray-400 mx-auto mb-4 opacity-50" />
                       <h3 className="text-lg font-semibold mb-2">No products found</h3>
-                      <p className="text-muted-foreground">
-                        Try a different search term or article number
+                      <p className="text-gray-600 dark:text-gray-400">
+                        Try a different search term, product name, description, or article number
                       </p>
                     </div>
                   ) : (
                     // Initial State
                     <div className="text-center py-12">
-                      <Package className="h-16 w-16 text-muted-foreground mx-auto mb-4 opacity-50" />
+                      <Package className="h-16 w-16 text-gray-500 dark:text-gray-400 mx-auto mb-4 opacity-50" />
                       <h3 className="text-lg font-semibold mb-2">Start searching</h3>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-600 dark:text-gray-400">
                         Scan a barcode or search for products to get started
                       </p>
                     </div>
                   )}
-                </section>
+                  </CardContent>
+                </Card>
               </ErrorBoundary>
             </div>
           </main>

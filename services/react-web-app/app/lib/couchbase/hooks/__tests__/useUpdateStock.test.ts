@@ -425,11 +425,12 @@ describe('useUpdateStock', () => {
       const afterUpdate = new Date().toISOString();
       const callArgs = mockQueueWrite.mock.calls[0];
       const timestamp = callArgs[1].lastUpdated;
+      const timestampMs = Date.parse(timestamp);
 
       expect(timestamp).toBeDefined();
       expect(timestamp).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
-      expect(timestamp).toBeGreaterThanOrEqual(beforeUpdate);
-      expect(timestamp).toBeLessThanOrEqual(afterUpdate);
+      expect(timestampMs).toBeGreaterThanOrEqual(Date.parse(beforeUpdate));
+      expect(timestampMs).toBeLessThanOrEqual(Date.parse(afterUpdate));
     });
   });
 });
