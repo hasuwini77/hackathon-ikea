@@ -20,7 +20,6 @@ import type {
   ProductDocument,
 } from './types';
 import { captureException, addBreadcrumb } from '~/lib/sentry';
-import { getProductFromIDB, saveProductToIDB, getAllProductsFromIDB } from '~/lib/pwa/indexeddb';
 
 /**
  * Custom error class for Couchbase operations
@@ -194,21 +193,19 @@ export async function getDocument(docId: string): Promise<CouchbaseDocument> {
       const url = getDocumentUrl(docId);
       const response = await fetchWithTimeout(url);
 
-      if (!response.ok) {
-        if (response.status === 404) {
-          // Don't capture 404s in Sentry - they're expected
-          addBreadcrumb(
-            `Document not found: ${docId}`,
-            'couchbase',
-            'warning',
-            { docId }
-          );
-          throw new CouchbaseClientError(
-            `Document not found: ${docId}`,
-            404
-          );
-        }
-        await parseErrorResponse(response);
+    if (!response.ok) {
+      if (response.status === 404) {
+        // Don't capture 404s in Sentry - they're expected
+        addBreadcrumb(
+          `Document not found: ${docId}`,
+          'couchbase',
+          'warning',
+          { docId }
+        );
+        throw new CouchbaseClientError(
+          `Document not found: ${docId}`,
+          404
+        );
       }
 
       const doc = await response.json();
@@ -330,7 +327,7 @@ export async function deleteDocument(
 export async function getAllDocuments(
   includeDocs: boolean = true
 ): Promise<AllDocsResponse> {
-  // Add breadcrumb for bulk query
+// Add breadcrumb for bulk query
   addBreadcrumb(
     'Fetching all documents',
     'couchbase',

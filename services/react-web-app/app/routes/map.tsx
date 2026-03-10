@@ -18,7 +18,6 @@ import { Input } from "~/components/ui/input";
 import { useProducts, productDocumentsToProducts } from "~/lib/couchbase";
 import { cn } from "~/lib/utils";
 import type { Product } from "~/types/product";
-import { AnalogMapFallback } from "~/components/store-map/AnalogMapFallback";
 
 export function meta() {
   return [
@@ -526,7 +525,6 @@ export default function MapPage() {
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [bootstrapped, setBootstrapped] = useState(false);
-  const [isAnalogMode, setIsAnalogMode] = useState(false);
 
   useEffect(() => {
     if (bootstrapped) return;
@@ -623,14 +621,14 @@ export default function MapPage() {
 
     const matching = q
       ? locatedProducts.filter((product) => {
-        const tags = product.tags?.join(" ").toLowerCase() ?? "";
-        return (
-          product.name.toLowerCase().includes(q) ||
-          product.articleNumber.toLowerCase().includes(q) ||
-          product.category.toLowerCase().includes(q) ||
-          tags.includes(q)
-        );
-      })
+          const tags = product.tags?.join(" ").toLowerCase() ?? "";
+          return (
+            product.name.toLowerCase().includes(q) ||
+            product.articleNumber.toLowerCase().includes(q) ||
+            product.category.toLowerCase().includes(q) ||
+            tags.includes(q)
+          );
+        })
       : locatedProducts.slice();
 
     return matching
@@ -817,437 +815,418 @@ export default function MapPage() {
 
   return (
     <div className="min-h-full bg-[linear-gradient(180deg,#f8fafc_0%,#eef2f6_100%)]">
-      {isAnalogMode ? (
-        <div className="flex flex-col min-h-screen">
-          <div className="p-4 bg-white border-b-4 border-black flex justify-between items-center">
-            <span className="font-black uppercase tracking-widest text-black">Analog Fallback</span>
-            <Button variant="outline" className="border-4 border-black rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white uppercase font-black" onClick={() => setIsAnalogMode(false)}>
-              Restore Power
-            </Button>
-          </div>
-          <div className="flex-1 overflow-auto">
-            <AnalogMapFallback products={products} />
-          </div>
-        </div>
-      ) : (
-        <div className="mx-auto max-w-7xl p-4 md:p-6 space-y-4 pb-24">
-          <section className="overflow-hidden rounded-md border-2 border-[#0058A3] bg-[#0058A3] text-white shadow-[0_8px_0_0_rgba(0,88,163,0.2)]">
-            <div className="h-2 bg-[#FFDB00]" />
-            <div className="p-5">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.24em] text-white/80">Multi-Floor Floorplan</p>
-                  <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight">IKEA Warehouse Navigation Map</h1>
-                  <p className="text-sm text-white/90 mt-1 max-w-2xl">
-                    Three real floorplates, vertical connectors, and aisle-level routing from entrance to exact bay.
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button variant="secondary" onClick={() => setIsAnalogMode(true)} className="rounded-sm border border-[#0058A3] bg-[#FFDB00] text-[#0058A3] hover:bg-yellow-400 font-bold shadow-[2px_2px_0px_rgba(0,0,0,0.2)]">
-                    Power Save / Analog
-                  </Button>
-                  <Link to="/scan">
-                    <Button variant="secondary" className="rounded-sm border border-[#0058A3] bg-white text-[#0058A3] hover:bg-[#f6f9fc]">
-                      <ArrowLeft className="h-4 w-4 mr-2" />
-                      Back to Scan
-                    </Button>
-                  </Link>
-                </div>
+      <div className="mx-auto max-w-7xl p-4 md:p-6 space-y-4 pb-24">
+        <section className="overflow-hidden rounded-md border-2 border-[#0058A3] bg-[#0058A3] text-white shadow-[0_8px_0_0_rgba(0,88,163,0.2)]">
+          <div className="h-2 bg-[#FFDB00]" />
+          <div className="p-5">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-xs uppercase tracking-[0.24em] text-white/80">Multi-Floor Floorplan</p>
+                <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight">IKEA Warehouse Navigation Map</h1>
+                <p className="text-sm text-white/90 mt-1 max-w-2xl">
+                Three real floorplates, vertical connectors, and aisle-level routing from entrance to exact bay.
+                </p>
               </div>
+              <Link to="/scan">
+                <Button variant="secondary" className="rounded-sm border border-[#0058A3] bg-white text-[#0058A3] hover:bg-[#f6f9fc]">
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Back to Scan
+                </Button>
+              </Link>
+            </div>
 
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[#0a3f75]">
-                <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
-                  <p className="text-[11px] uppercase tracking-wide text-slate-500">Products</p>
-                  <p className="text-xl font-black">{stats.products}</p>
-                </div>
-                <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
-                  <p className="text-[11px] uppercase tracking-wide text-slate-500">Aisles</p>
-                  <p className="text-xl font-black">{stats.aisles}</p>
-                </div>
-                <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
-                  <p className="text-[11px] uppercase tracking-wide text-slate-500">Low Stock</p>
-                  <p className="text-xl font-black text-amber-700">{stats.lowStock}</p>
-                </div>
-                <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
-                  <p className="text-[11px] uppercase tracking-wide text-slate-500">Out Of Stock</p>
-                  <p className="text-xl font-black text-red-700">{stats.outOfStock}</p>
-                </div>
+            <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[#0a3f75]">
+              <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
+                <p className="text-[11px] uppercase tracking-wide text-slate-500">Products</p>
+                <p className="text-xl font-black">{stats.products}</p>
+              </div>
+              <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
+                <p className="text-[11px] uppercase tracking-wide text-slate-500">Aisles</p>
+                <p className="text-xl font-black">{stats.aisles}</p>
+              </div>
+              <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
+                <p className="text-[11px] uppercase tracking-wide text-slate-500">Low Stock</p>
+                <p className="text-xl font-black text-amber-700">{stats.lowStock}</p>
+              </div>
+              <div className="rounded-sm border border-[#0058A3]/20 bg-white p-3">
+                <p className="text-[11px] uppercase tracking-wide text-slate-500">Out Of Stock</p>
+                <p className="text-xl font-black text-red-700">{stats.outOfStock}</p>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
-            <Card className="min-h-0 border-2 border-[#b7c7da] bg-white shadow-sm order-2 xl:order-2">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_360px]">
+          <Card className="min-h-0 border-2 border-[#b7c7da] bg-white shadow-sm order-2 xl:order-2">
+            <CardHeader className="pb-2 border-b border-[#e2e8f0]">
+              <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Product Navigator</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Find product by name, article, category"
+                  className="pl-9 pr-9 border-[#bfd0e2] focus-visible:ring-[#0058A3]/30"
+                />
+                {query && (
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
+                    onClick={() => setQuery("")}
+                    aria-label="Clear search"
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+
+              {loading && <p className="text-sm text-muted-foreground">Loading mapped products...</p>}
+
+              {error && (
+                <div className="rounded-md border border-destructive/40 bg-destructive/5 p-3 text-sm text-destructive flex items-start gap-2">
+                  <AlertTriangle className="h-4 w-4 mt-0.5" />
+                  <span>{error}</span>
+                </div>
+              )}
+
+              {!loading && !error && searchResults.length === 0 && (
+                <p className="text-sm text-muted-foreground">No products match this query.</p>
+              )}
+
+              <div className="max-h-[68vh] overflow-y-auto space-y-2 pr-1">
+                {searchResults.map((product) => {
+                  const Icon = zoneMeta[product.mapLocation.zone].icon;
+                  const isSelected = selectedProductId === product._id;
+
+                  return (
+                    <button
+                      key={product._id}
+                      onClick={() => {
+                        setSelectedProductId(product._id);
+                        setActiveFloor(product.mapLocation.floor);
+                        setSelectedAisle(product.mapLocation.aisle);
+                      }}
+                      className={cn(
+                        "w-full rounded-sm border border-[#d7e1ec] p-3 text-left transition-colors hover:border-[#0058A3]/40 hover:bg-[#f7fbff]",
+                        isSelected && "border-[#0058A3] bg-[#e9f3ff]"
+                      )}
+                    >
+                      <p className="font-semibold leading-tight">{product.name}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{product.articleNumber}</p>
+                      <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+                        <Badge variant="secondary">
+                          <Icon className="h-3 w-3 mr-1" />
+                          {floorMeta[product.mapLocation.floor].label}
+                        </Badge>
+                        <Badge variant="outline">
+                          A{product.mapLocation.aisle} / B{product.mapLocation.bay}
+                        </Badge>
+                        <Badge variant={stockBadgeVariant(product.stock.quantity)}>
+                          {product.stock.quantity} units
+                        </Badge>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+
+          <div className="space-y-4 order-1 xl:order-1">
+            <Card className="border-2 border-[#b7c7da] bg-white shadow-sm">
               <CardHeader className="pb-2 border-b border-[#e2e8f0]">
-                <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Product Navigator</CardTitle>
+                <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Floor Selector</CardTitle>
+                <p className="text-xs text-muted-foreground">Switch floors to inspect geometry, aisles, and vertical connectors.</p>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    placeholder="Find product by name, article, category"
-                    className="pl-9 pr-9 border-[#bfd0e2] focus-visible:ring-[#0058A3]/30"
-                  />
-                  {query && (
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
-                      onClick={() => setQuery("")}
-                      aria-label="Clear search"
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-
-                {loading && <p className="text-sm text-muted-foreground">Loading mapped products...</p>}
-
-                {error && (
-                  <div className="rounded-md border border-destructive/40 bg-destructive/5 p-3 text-sm text-destructive flex items-start gap-2">
-                    <AlertTriangle className="h-4 w-4 mt-0.5" />
-                    <span>{error}</span>
-                  </div>
-                )}
-
-                {!loading && !error && searchResults.length === 0 && (
-                  <p className="text-sm text-muted-foreground">No products match this query.</p>
-                )}
-
-                <div className="max-h-[68vh] overflow-y-auto space-y-2 pr-1">
-                  {searchResults.map((product) => {
-                    const Icon = zoneMeta[product.mapLocation.zone].icon;
-                    const isSelected = selectedProductId === product._id;
-
+                <div className="grid gap-2 sm:grid-cols-3">
+                  {FLOOR_ORDER.map((floor) => {
+                    const meta = floorMeta[floor];
+                    const active = floor === activeFloor;
+                    const Icon = zoneMeta[meta.zone].icon;
                     return (
                       <button
-                        key={product._id}
+                        key={floor}
                         onClick={() => {
-                          setSelectedProductId(product._id);
-                          setActiveFloor(product.mapLocation.floor);
-                          setSelectedAisle(product.mapLocation.aisle);
+                          setActiveFloor(floor);
+                          setSelectedAisle(null);
                         }}
                         className={cn(
-                          "w-full rounded-sm border border-[#d7e1ec] p-3 text-left transition-colors hover:border-[#0058A3]/40 hover:bg-[#f7fbff]",
-                          isSelected && "border-[#0058A3] bg-[#e9f3ff]"
+                          "rounded-sm border p-3 text-left transition-colors",
+                          active
+                            ? "border-[#0058A3] bg-[#e9f3ff] ring-2 ring-[#FFDB00]"
+                            : "border-[#c9d5e3] bg-white hover:border-[#0058A3]/40 hover:bg-[#f7fbff]"
                         )}
                       >
-                        <p className="font-semibold leading-tight">{product.name}</p>
-                        <p className="text-xs text-muted-foreground mt-1">{product.articleNumber}</p>
-                        <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-                          <Badge variant="secondary">
-                            <Icon className="h-3 w-3 mr-1" />
-                            {floorMeta[product.mapLocation.floor].label}
-                          </Badge>
+                        <p className="text-xs text-muted-foreground">{meta.label}</p>
+                        <p className="font-semibold leading-tight mt-1">{meta.title}</p>
+                        <p className="text-[11px] text-muted-foreground mt-1">{meta.description}</p>
+                        <div className="mt-2 flex items-center gap-2 text-xs">
                           <Badge variant="outline">
-                            A{product.mapLocation.aisle} / B{product.mapLocation.bay}
+                            <Icon className="h-3 w-3 mr-1" />
+                            {zoneMeta[meta.zone].label}
                           </Badge>
-                          <Badge variant={stockBadgeVariant(product.stock.quantity)}>
-                            {product.stock.quantity} units
-                          </Badge>
+                          <Badge variant="secondary">{floorCounts[floor]} products</Badge>
                         </div>
                       </button>
                     );
                   })}
                 </div>
-              </CardContent>
-            </Card>
 
-            <div className="space-y-4 order-1 xl:order-1">
-              <Card className="border-2 border-[#b7c7da] bg-white shadow-sm">
-                <CardHeader className="pb-2 border-b border-[#e2e8f0]">
-                  <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Floor Selector</CardTitle>
-                  <p className="text-xs text-muted-foreground">Switch floors to inspect geometry, aisles, and vertical connectors.</p>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="grid gap-2 sm:grid-cols-3">
-                    {FLOOR_ORDER.map((floor) => {
-                      const meta = floorMeta[floor];
-                      const active = floor === activeFloor;
-                      const Icon = zoneMeta[meta.zone].icon;
-                      return (
-                        <button
-                          key={floor}
-                          onClick={() => {
-                            setActiveFloor(floor);
-                            setSelectedAisle(null);
-                          }}
-                          className={cn(
-                            "rounded-sm border p-3 text-left transition-colors",
-                            active
-                              ? "border-[#0058A3] bg-[#e9f3ff] ring-2 ring-[#FFDB00]"
-                              : "border-[#c9d5e3] bg-white hover:border-[#0058A3]/40 hover:bg-[#f7fbff]"
-                          )}
-                        >
-                          <p className="text-xs text-muted-foreground">{meta.label}</p>
-                          <p className="font-semibold leading-tight mt-1">{meta.title}</p>
-                          <p className="text-[11px] text-muted-foreground mt-1">{meta.description}</p>
-                          <div className="mt-2 flex items-center gap-2 text-xs">
-                            <Badge variant="outline">
-                              <Icon className="h-3 w-3 mr-1" />
-                              {zoneMeta[meta.zone].label}
-                            </Badge>
-                            <Badge variant="secondary">{floorCounts[floor]} products</Badge>
-                          </div>
-                        </button>
-                      );
-                    })}
+                <div className="overflow-x-auto rounded-sm border-2 border-[#0058A3] bg-white p-2">
+                  <div className="mb-2 flex items-center justify-between rounded-sm bg-[#0058A3] px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-white">
+                    <span>{floorTitle.label} Floorplate</span>
+                    <span className="text-[#FFDB00]">{floorTitle.title}</span>
                   </div>
+                  <svg viewBox="0 0 1200 780" className="h-[560px] min-w-[980px] w-full" role="img" aria-label={`${floorTitle.label} map`}>
+                    <rect x="0" y="0" width="1200" height="780" fill="#eef4fa" />
+                    {renderFloorScenery(activeFloor)}
 
-                  <div className="overflow-x-auto rounded-sm border-2 border-[#0058A3] bg-white p-2">
-                    <div className="mb-2 flex items-center justify-between rounded-sm bg-[#0058A3] px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-white">
-                      <span>{floorTitle.label} Floorplate</span>
-                      <span className="text-[#FFDB00]">{floorTitle.title}</span>
-                    </div>
-                    <svg viewBox="0 0 1200 780" className="h-[560px] min-w-[980px] w-full" role="img" aria-label={`${floorTitle.label} map`}>
-                      <rect x="0" y="0" width="1200" height="780" fill="#eef4fa" />
-                      {renderFloorScenery(activeFloor)}
+                    {floorAisles[activeFloor].map((aisle) => {
+                      const stat = aisleStatsByFloor.get(activeFloor)?.get(aisle.aisle);
+                      const isSelected = selectedAisle === aisle.aisle;
 
-                      {floorAisles[activeFloor].map((aisle) => {
-                        const stat = aisleStatsByFloor.get(activeFloor)?.get(aisle.aisle);
-                        const isSelected = selectedAisle === aisle.aisle;
+                      let fill = "#e5e7eb";
+                      let stroke = "#94a3b8";
+                      let textColor = "#334155";
 
-                        let fill = "#e5e7eb";
-                        let stroke = "#94a3b8";
-                        let textColor = "#334155";
+                      if (stat?.out) {
+                        fill = "#fee2e2";
+                        stroke = "#f87171";
+                        textColor = "#7f1d1d";
+                      } else if (stat?.low) {
+                        fill = "#fef3c7";
+                        stroke = "#f59e0b";
+                        textColor = "#78350f";
+                      } else if (stat && stat.total > 0) {
+                        fill = "#dcfce7";
+                        stroke = "#4ade80";
+                        textColor = "#14532d";
+                      }
 
-                        if (stat?.out) {
-                          fill = "#fee2e2";
-                          stroke = "#f87171";
-                          textColor = "#7f1d1d";
-                        } else if (stat?.low) {
-                          fill = "#fef3c7";
-                          stroke = "#f59e0b";
-                          textColor = "#78350f";
-                        } else if (stat && stat.total > 0) {
-                          fill = "#dcfce7";
-                          stroke = "#4ade80";
-                          textColor = "#14532d";
-                        }
+                      if (isSelected) {
+                        fill = "#dbeafe";
+                        stroke = "#2563eb";
+                        textColor = "#1e3a8a";
+                      }
 
-                        if (isSelected) {
-                          fill = "#dbeafe";
-                          stroke = "#2563eb";
-                          textColor = "#1e3a8a";
-                        }
+                      return (
+                        <g
+                          key={`aisle-${activeFloor}-${aisle.aisle}`}
+                          onClick={() => {
+                            setSelectedAisle(aisle.aisle);
+                            const inAisle = floorProducts
+                              .filter((product) => product.mapLocation.aisle === aisle.aisle)
+                              .sort((a, b) => stockTierRank(a.stock.quantity) - stockTierRank(b.stock.quantity));
+                            if (inAisle[0]) {
+                              setSelectedProductId(inAisle[0]._id);
+                            }
+                          }}
+                          className="cursor-pointer"
+                        >
+                          <rect
+                            x={aisle.x}
+                            y={aisle.y}
+                            width={aisle.width}
+                            height={aisle.height}
+                            rx="7"
+                            fill={fill}
+                            stroke={stroke}
+                            strokeWidth={isSelected ? "3" : "1.8"}
+                          />
 
-                        return (
-                          <g
-                            key={`aisle-${activeFloor}-${aisle.aisle}`}
-                            onClick={() => {
-                              setSelectedAisle(aisle.aisle);
-                              const inAisle = floorProducts
-                                .filter((product) => product.mapLocation.aisle === aisle.aisle)
-                                .sort((a, b) => stockTierRank(a.stock.quantity) - stockTierRank(b.stock.quantity));
-                              if (inAisle[0]) {
-                                setSelectedProductId(inAisle[0]._id);
-                              }
-                            }}
-                            className="cursor-pointer"
-                          >
-                            <rect
-                              x={aisle.x}
-                              y={aisle.y}
-                              width={aisle.width}
-                              height={aisle.height}
-                              rx="7"
-                              fill={fill}
-                              stroke={stroke}
-                              strokeWidth={isSelected ? "3" : "1.8"}
-                            />
-
-                            {aisle.orientation === "vertical" ? (
-                              <>
-                                <text
-                                  x={aisle.x + aisle.width / 2}
-                                  y={aisle.y - 7}
-                                  textAnchor="middle"
-                                  fontSize="9"
-                                  fill={textColor}
-                                  fontWeight="700"
-                                >
-                                  {aisle.aisle}
-                                </text>
-                              </>
-                            ) : (
+                          {aisle.orientation === "vertical" ? (
+                            <>
                               <text
                                 x={aisle.x + aisle.width / 2}
-                                y={aisle.y + aisle.height / 2 + 4}
+                                y={aisle.y - 7}
                                 textAnchor="middle"
-                                fontSize="12"
+                                fontSize="9"
                                 fill={textColor}
                                 fontWeight="700"
                               >
-                                A{aisle.aisle}
+                                {aisle.aisle}
                               </text>
-                            )}
-                          </g>
-                        );
-                      })}
-
-                      {connectors.map((connector) => (
-                        <g key={`connector-${connector.id}`}>
-                          {connectorGlyph(connector)}
-                          <text x={connector.x} y={connector.y + 21} textAnchor="middle" fontSize="9" fill="#0f172a" fontWeight="600">
-                            {connectorSymbol(connector.kind)}
-                          </text>
+                            </>
+                          ) : (
+                            <text
+                              x={aisle.x + aisle.width / 2}
+                              y={aisle.y + aisle.height / 2 + 4}
+                              textAnchor="middle"
+                              fontSize="12"
+                              fill={textColor}
+                              fontWeight="700"
+                            >
+                              A{aisle.aisle}
+                            </text>
+                          )}
                         </g>
-                      ))}
+                      );
+                    })}
 
-                      {routePolyline && (
-                        <g>
-                          <polyline
-                            points={routePolyline}
-                            fill="none"
-                            stroke="#0058A3"
-                            strokeWidth="6"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeDasharray="12 8"
+                    {connectors.map((connector) => (
+                      <g key={`connector-${connector.id}`}>
+                        {connectorGlyph(connector)}
+                        <text x={connector.x} y={connector.y + 21} textAnchor="middle" fontSize="9" fill="#0f172a" fontWeight="600">
+                          {connectorSymbol(connector.kind)}
+                        </text>
+                      </g>
+                    ))}
+
+                    {routePolyline && (
+                      <g>
+                        <polyline
+                          points={routePolyline}
+                          fill="none"
+                          stroke="#0058A3"
+                          strokeWidth="6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeDasharray="12 8"
+                        />
+                        {activeFloorPath?.[0] && (
+                          <circle cx={activeFloorPath[0].x} cy={activeFloorPath[0].y} r="8" fill="#0ea5e9" stroke="#ffffff" strokeWidth="3" />
+                        )}
+                        {activeFloorPath?.[activeFloorPath.length - 1] && (
+                          <circle
+                            cx={activeFloorPath[activeFloorPath.length - 1].x}
+                            cy={activeFloorPath[activeFloorPath.length - 1].y}
+                            r="8"
+                            fill="#1d4ed8"
+                            stroke="#ffffff"
+                            strokeWidth="3"
                           />
-                          {activeFloorPath?.[0] && (
-                            <circle cx={activeFloorPath[0].x} cy={activeFloorPath[0].y} r="8" fill="#0ea5e9" stroke="#ffffff" strokeWidth="3" />
-                          )}
-                          {activeFloorPath?.[activeFloorPath.length - 1] && (
-                            <circle
-                              cx={activeFloorPath[activeFloorPath.length - 1].x}
-                              cy={activeFloorPath[activeFloorPath.length - 1].y}
-                              r="8"
-                              fill="#1d4ed8"
-                              stroke="#ffffff"
-                              strokeWidth="3"
-                            />
-                          )}
+                        )}
+                      </g>
+                    )}
+
+                    {markerPoints.map((marker) => {
+                      const isSelected = selectedProductId === marker.product._id;
+                      const fill = marker.tier === "out" ? "#dc2626" : marker.tier === "low" ? "#d97706" : "#15803d";
+
+                      return (
+                        <g
+                          key={`marker-${marker.product._id}`}
+                          onClick={() => {
+                            setSelectedProductId(marker.product._id);
+                            setSelectedAisle(marker.product.mapLocation.aisle);
+                          }}
+                          className="cursor-pointer"
+                        >
+                          {isSelected && <circle cx={marker.x} cy={marker.y} r="12" fill="#bfdbfe" opacity="0.8" />}
+                          <circle cx={marker.x} cy={marker.y} r={isSelected ? 7 : 5.5} fill={fill} stroke="#ffffff" strokeWidth="2" />
+                          <title>
+                            {`${marker.product.name} - Aisle ${marker.product.mapLocation.aisle}, Bay ${marker.product.mapLocation.bay}`}
+                          </title>
                         </g>
+                      );
+                    })}
+
+                    <text x="90" y="72" fontSize="20" fill="#0f172a" fontWeight="800">
+                      {floorTitle.label} - {floorTitle.title}
+                    </text>
+                  </svg>
+                </div>
+
+                <div className="rounded-sm border border-[#c5d3e3] bg-[#f9fbfe] p-3 text-xs space-y-2">
+                  <p className="font-semibold text-sm uppercase tracking-wide text-[#0b3e75]">Map Key</p>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#dc2626]" />Out (0)</span>
+                    <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#d97706]" />Low (1-10)</span>
+                    <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#15803d]" />Healthy (11+)</span>
+                    <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#1d4ed8]" />Selected</span>
+                    <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded bg-[#ffffff] border border-slate-500" />Vertical connector</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="grid gap-4 lg:grid-cols-[320px_minmax(0,1fr)]">
+              <Card className="border-2 border-[#b7c7da] bg-white shadow-sm">
+                <CardHeader className="pb-2 border-b border-[#e2e8f0]">
+                  <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Route Plan</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {selectedProduct ? (
+                    <>
+                      <div className="rounded-sm border border-[#0058A3]/30 bg-[#e9f3ff] p-3">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-[#0058A3]">Focused Product</p>
+                        <p className="text-sm font-semibold mt-1">{selectedProduct.name}</p>
+                        <p className="text-xs text-muted-foreground">{selectedProduct.articleNumber}</p>
+                        <p className="text-xs mt-1 inline-flex items-center gap-1">
+                          <MapPin className="h-3.5 w-3.5" />
+                          {floorMeta[selectedProduct.mapLocation.floor].label}, aisle {selectedProduct.mapLocation.aisle}, bay {selectedProduct.mapLocation.bay}, section {selectedProduct.mapLocation.section}
+                        </p>
+                        <p className="text-xs mt-2 font-medium" style={{ color: stockColor(selectedProduct.stock.quantity) }}>
+                          Stock: {selectedProduct.stock.quantity}
+                        </p>
+                      </div>
+
+                      <ol className="space-y-2 text-sm">
+                        {routeSteps.map((step, index) => (
+                          <li key={step} className="flex items-start gap-2">
+                            <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0058A3] text-[11px] font-semibold text-white ring-2 ring-[#FFDB00]">
+                              {index + 1}
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+
+                      {activeConnector && selectedProduct.mapLocation.floor !== "L0" && (
+                        <p className="text-xs text-muted-foreground inline-flex items-center gap-1">
+                          <Navigation className="h-3.5 w-3.5" />
+                          Vertical transfer uses {activeConnector.label}.
+                        </p>
                       )}
-
-                      {markerPoints.map((marker) => {
-                        const isSelected = selectedProductId === marker.product._id;
-                        const fill = marker.tier === "out" ? "#dc2626" : marker.tier === "low" ? "#d97706" : "#15803d";
-
-                        return (
-                          <g
-                            key={`marker-${marker.product._id}`}
-                            onClick={() => {
-                              setSelectedProductId(marker.product._id);
-                              setSelectedAisle(marker.product.mapLocation.aisle);
-                            }}
-                            className="cursor-pointer"
-                          >
-                            {isSelected && <circle cx={marker.x} cy={marker.y} r="12" fill="#bfdbfe" opacity="0.8" />}
-                            <circle cx={marker.x} cy={marker.y} r={isSelected ? 7 : 5.5} fill={fill} stroke="#ffffff" strokeWidth="2" />
-                            <title>
-                              {`${marker.product.name} - Aisle ${marker.product.mapLocation.aisle}, Bay ${marker.product.mapLocation.bay}`}
-                            </title>
-                          </g>
-                        );
-                      })}
-
-                      <text x="90" y="72" fontSize="20" fill="#0f172a" fontWeight="800">
-                        {floorTitle.label} - {floorTitle.title}
-                      </text>
-                    </svg>
-                  </div>
-
-                  <div className="rounded-sm border border-[#c5d3e3] bg-[#f9fbfe] p-3 text-xs space-y-2">
-                    <p className="font-semibold text-sm uppercase tracking-wide text-[#0b3e75]">Map Key</p>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#dc2626]" />Out (0)</span>
-                      <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#d97706]" />Low (1-10)</span>
-                      <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#15803d]" />Healthy (11+)</span>
-                      <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded-full bg-[#1d4ed8]" />Selected</span>
-                      <span className="inline-flex items-center gap-1"><span className="h-3 w-3 rounded bg-[#ffffff] border border-slate-500" />Vertical connector</span>
-                    </div>
-                  </div>
+                    </>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">Select a product to generate a route.</p>
+                  )}
                 </CardContent>
               </Card>
 
-              <div className="grid gap-4 lg:grid-cols-[320px_minmax(0,1fr)]">
-                <Card className="border-2 border-[#b7c7da] bg-white shadow-sm">
-                  <CardHeader className="pb-2 border-b border-[#e2e8f0]">
-                    <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Route Plan</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {selectedProduct ? (
-                      <>
-                        <div className="rounded-sm border border-[#0058A3]/30 bg-[#e9f3ff] p-3">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-[#0058A3]">Focused Product</p>
-                          <p className="text-sm font-semibold mt-1">{selectedProduct.name}</p>
-                          <p className="text-xs text-muted-foreground">{selectedProduct.articleNumber}</p>
-                          <p className="text-xs mt-1 inline-flex items-center gap-1">
-                            <MapPin className="h-3.5 w-3.5" />
-                            {floorMeta[selectedProduct.mapLocation.floor].label}, aisle {selectedProduct.mapLocation.aisle}, bay {selectedProduct.mapLocation.bay}, section {selectedProduct.mapLocation.section}
-                          </p>
-                          <p className="text-xs mt-2 font-medium" style={{ color: stockColor(selectedProduct.stock.quantity) }}>
-                            Stock: {selectedProduct.stock.quantity}
-                          </p>
-                        </div>
-
-                        <ol className="space-y-2 text-sm">
-                          {routeSteps.map((step, index) => (
-                            <li key={step} className="flex items-start gap-2">
-                              <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#0058A3] text-[11px] font-semibold text-white ring-2 ring-[#FFDB00]">
-                                {index + 1}
-                              </span>
-                              <span>{step}</span>
-                            </li>
-                          ))}
-                        </ol>
-
-                        {activeConnector && selectedProduct.mapLocation.floor !== "L0" && (
-                          <p className="text-xs text-muted-foreground inline-flex items-center gap-1">
-                            <Navigation className="h-3.5 w-3.5" />
-                            Vertical transfer uses {activeConnector.label}.
-                          </p>
-                        )}
-                      </>
-                    ) : (
-                      <p className="text-sm text-muted-foreground">Select a product to generate a route.</p>
-                    )}
-                  </CardContent>
-                </Card>
-
-                <Card className="border-2 border-[#b7c7da] bg-white shadow-sm">
-                  <CardHeader className="pb-2 border-b border-[#e2e8f0]">
-                    <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Aisle Inventory ({selectedAisle ?? "-"})</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2">
-                    {selectedAisleProducts.length === 0 ? (
-                      <p className="text-sm text-muted-foreground">No mapped products in this aisle on {floorTitle.label}.</p>
-                    ) : (
-                      <div className="max-h-[320px] overflow-y-auto space-y-2 pr-1">
-                        {selectedAisleProducts.map((product) => (
-                          <button
-                            key={`aisle-product-${product._id}`}
-                            onClick={() => setSelectedProductId(product._id)}
-                            className={cn(
-                              "w-full rounded-sm border border-[#d7e1ec] p-3 text-left transition-colors hover:border-[#0058A3]/40 hover:bg-[#f7fbff]",
-                              selectedProductId === product._id && "border-[#0058A3] bg-[#e9f3ff]"
-                            )}
-                          >
-                            <div className="flex items-start justify-between gap-2">
-                              <div>
-                                <p className="font-medium leading-tight">{product.name}</p>
-                                <p className="text-xs text-muted-foreground mt-1">{product.articleNumber}</p>
-                              </div>
-                              <Badge variant={stockBadgeVariant(product.stock.quantity)}>{product.stock.quantity}</Badge>
+              <Card className="border-2 border-[#b7c7da] bg-white shadow-sm">
+                <CardHeader className="pb-2 border-b border-[#e2e8f0]">
+                  <CardTitle className="text-base font-bold uppercase tracking-wide text-[#0b3e75]">Aisle Inventory ({selectedAisle ?? "-"})</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  {selectedAisleProducts.length === 0 ? (
+                    <p className="text-sm text-muted-foreground">No mapped products in this aisle on {floorTitle.label}.</p>
+                  ) : (
+                    <div className="max-h-[320px] overflow-y-auto space-y-2 pr-1">
+                      {selectedAisleProducts.map((product) => (
+                        <button
+                          key={`aisle-product-${product._id}`}
+                          onClick={() => setSelectedProductId(product._id)}
+                          className={cn(
+                            "w-full rounded-sm border border-[#d7e1ec] p-3 text-left transition-colors hover:border-[#0058A3]/40 hover:bg-[#f7fbff]",
+                            selectedProductId === product._id && "border-[#0058A3] bg-[#e9f3ff]"
+                          )}
+                        >
+                          <div className="flex items-start justify-between gap-2">
+                            <div>
+                              <p className="font-medium leading-tight">{product.name}</p>
+                              <p className="text-xs text-muted-foreground mt-1">{product.articleNumber}</p>
                             </div>
-                            <p className="mt-2 text-xs text-muted-foreground">
-                              Bay {product.mapLocation.bay}, section {product.mapLocation.section}
-                            </p>
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              </div>
+                            <Badge variant={stockBadgeVariant(product.stock.quantity)}>{product.stock.quantity}</Badge>
+                          </div>
+                          <p className="mt-2 text-xs text-muted-foreground">
+                            Bay {product.mapLocation.bay}, section {product.mapLocation.section}
+                          </p>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
