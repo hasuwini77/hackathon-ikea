@@ -32,10 +32,6 @@ export function useUpdateStock(): UseUpdateStockResult {
       // First, fetch the current document to get the latest revision
       const currentDoc = await getDocument(productId) as ProductDocument;
 
-      if (!currentDoc._rev) {
-        throw new Error('Document revision not found');
-      }
-
       // Update the stock quantity and lastUpdated timestamp
       const { _id, _rev, ...docData } = currentDoc;
 
