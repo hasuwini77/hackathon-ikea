@@ -43,20 +43,19 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
 
   return (
     <Card
-      className={`w-full overflow-hidden hover:shadow-lg transition-all cursor-pointer group ${
-        onClick ? "hover:border-primary" : ""
-      }`}
+      className={`w-full overflow-hidden hover:shadow-lg transition-all cursor-pointer group ${onClick ? "hover:border-primary" : ""
+        }`}
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={
         onClick
           ? (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                onClick();
-              }
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              onClick();
             }
+          }
           : undefined
       }
       aria-label={`View details for ${product.name}`}
@@ -107,13 +106,18 @@ export function ProductCard({ product, onClick }: ProductCardProps) {
           {product.description}
         </p>
 
-        <div className="flex items-center gap-2 text-xs">
-          <MapPin className="h-3 w-3 text-muted-foreground shrink-0" aria-hidden="true" />
-          <span className="text-muted-foreground">
-            Aisle <span className="font-medium text-foreground">{product.location.aisle}</span>,
-            Bay <span className="font-medium text-foreground">{product.location.bay}</span>,
-            Section <span className="font-medium text-foreground">{product.location.section}</span>
-          </span>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-xs">
+            <MapPin className="h-3 w-3 text-muted-foreground shrink-0" aria-hidden="true" />
+            <span className="text-muted-foreground">
+              Aisle <span className="font-medium text-foreground">{product.location.aisle}</span>,
+              Bay <span className="font-medium text-foreground">{product.location.bay}</span>,
+              Section <span className="font-medium text-foreground">{product.location.section}</span>
+            </span>
+          </div>
+          <Badge variant="secondary" className="font-mono text-[10px] opacity-80" title="IKEA AXIS Coordinate">
+            {product.location.zone ? product.location.zone.substring(0, 2).toUpperCase() : 'WH'}-{product.location.aisle}-{product.location.bay}{product.location.section}
+          </Badge>
         </div>
 
         <div className="flex items-center justify-between pt-2 border-t">

@@ -12,6 +12,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { AppShell } from "~/components/AppShell";
 import { initSentry, captureException, Sentry } from "~/lib/sentry";
+import { registerPWA } from "~/lib/pwa/register";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -30,10 +31,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Initialize Sentry as early as possible
     initSentry();
+    // Register the Service Worker for IKEA AXIS offline mesh
+    registerPWA();
   }, []);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
